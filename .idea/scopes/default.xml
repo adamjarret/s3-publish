@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="default" pattern="file[s3-publish]:src//*||file:cli.js||file:index.js||file:package.json||file:s3p.config.js||file:README.md||file[s3-publish]:examples//*||file[s3-publish]:tests//*" />
+</component>

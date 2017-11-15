@@ -1,0 +1,42 @@
+{
+  "name": "s3-publish",
+  "version": "1.0.0",
+  "description": "Upload files to S3 with asynchronous rules",
+  "main": "index.js",
+  "bin": {
+    "s3p": "./cli.js"
+  },
+  "scripts": {
+    "ig": "npm install -g file:.",
+    "test": "node ./node_modules/tape/bin/tape tests/*.test.js"
+  },
+  "author": "Adam Jarret <adam@atj.me>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.5.0",
+    "aws-sdk": "^2.109.0",
+    "chalk": "^2.3.0",
+    "dateformat": "^3.0.2",
+    "expand-tilde": "^2.0.2",
+    "filesize": "^3.5.11",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isregexp": "^4.0.1",
+    "lodash.isstring": "^4.0.1",
+    "lodash.range": "^3.2.0",
+    "md5-file": "^3.2.3",
+    "mime": "^2.0.3",
+    "minimatch": "^3.0.4",
+    "mustache": "^2.3.0",
+    "pretty-ms": "^3.0.1",
+    "progress": "^2.0.0",
+    "walk": "^2.3.9",
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "tape": "^4.8.0"
+  },
+  "minSchemaVersion": 1,
+  "maxSchemaVersion": 1
+}
