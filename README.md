@@ -1,6 +1,8 @@
 
 # s3-publish
 
+[![npm version](https://badge.fury.io/js/s3-publish.svg)](https://badge.fury.io/js/s3-publish)
+
 The s3-publish package provides the `s3p` command which can be used to list local/remote files and sync them to S3.
 
 Options may be specified in an **s3p.config.js** file in your project root and/or on the command line

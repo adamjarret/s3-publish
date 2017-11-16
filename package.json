@@ -12,6 +12,10 @@
   },
   "author": "Adam Jarret <adam@atj.me>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamjarret/s3-publish.git"
+  },
   "dependencies": {
     "async": "^2.5.0",
     "aws-sdk": "^2.109.0",
