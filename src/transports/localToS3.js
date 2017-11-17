@@ -14,7 +14,7 @@ module.exports = (cfg, file, status, preview, progress, callback) => {
     const uriParts = splitS3Uri(destination);
     const params = {
         Bucket: uriParts.Bucket,
-        Key: path.join(uriParts.Prefix, destinationKey),
+        Key: path.join(uriParts.Prefix, destinationKey).replace(/\\/g, '/') // Normalize Windows path separator
     };
 
     function maybeDebug(action)
