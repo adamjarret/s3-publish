@@ -1,5 +1,7 @@
 const {queue, series, waterfall} = require('async');
 const chalk = require('chalk');
+const padEnd = require('pad-end');
+const padStart = require('pad-start');
 const sourceFactory = require('../sources');
 const {printError} = require('../lib/error');
 const {standardizePath} = require('../lib/path');
@@ -115,7 +117,7 @@ class LsCommand extends Command
     printHead(pathOrUri, startDate, callback)
     {
         console.log(chalk.bold('# %s\t%s\t%s\t%s'),
-            'ls'.padEnd(32, ' '),
+            this.firstColumn('ls'),
             this.dateToString(startDate),
             this.sizeToString(), // empty spacer
             pathOrUri + (pathOrUri.endsWith('/') ? '' : '/') // print pathOrUri with trailing slash to distinguish it
@@ -126,7 +128,7 @@ class LsCommand extends Command
     printFoot(pathOrUri, endDate, duration, count, size, callback)
     {
         console.log(chalk.bold('# %s\t%s\t%s\t%d files\n'),
-            `Finished in ${this.durationToString(duration)}`.padEnd(32, ' '),
+            this.firstColumn(`Finished in ${this.durationToString(duration)}`),
             this.dateToString(endDate),
             this.sizeToString(size),
             count
@@ -134,13 +136,21 @@ class LsCommand extends Command
         callback();
     }
 
-    sizeToString(sizeInBytes, minLength = 9)
+    sizeToString(sizeInBytes, minLength = 11)
     {
         // When porcelain, file sizes are in bytes (otherwise human readable ex. "42 KB")
-        // Spaces are added to the beginning of the returned value to make it at least minLength characters long
         // If sizeInBytes is not defined, pad empty string
-        return (sizeInBytes === undefined ? '' : (super.sizeToString(sizeInBytes).replace(' B', ' B ')))
-            .padStart(minLength, ' ');
+        const displaySize = sizeInBytes === undefined ? '' : (super.sizeToString(sizeInBytes).replace(' B', ' B '));
+
+        // Spaces are added to the beginning of the returned value to make it at least minLength characters long
+        return padStart(displaySize, minLength);
+    }
+
+    firstColumn(str, minLength = 30)
+    {
+        // Spaces are added to the end of the returned value to make it at least minLength characters long
+        //  The default minLength is 30 (ETag is 32 characters long, -2 for "# " line prefix)
+        return padEnd(str, minLength);
     }
 }
 
