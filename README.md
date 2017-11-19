@@ -1,7 +1,7 @@
 
 # s3-publish
 
-[![npm version](https://badge.fury.io/js/s3-publish.svg)](https://badge.fury.io/js/s3-publish)
+[![npm version](https://badge.fury.io/js/s3-publish.svg)](https://www.npmjs.com/package/s3-publish)
 
 The s3-publish package provides the `s3p` command which can be used to list local/remote files and sync them to S3.
 
@@ -66,8 +66,8 @@ One or more locations may be passed as unnamed arguments.
 
 If no location arguments are passed to `ls`, files in the origin location are listed
 (the origin defaults to the current working directory if not defined).
-If `-o` (aka `--here`) and/or `-d` (aka `--there`) is passed, that/those locations are listed
-(in addition to any locations specified as unnamed arguments).
+If `-o` (aka `--here`) and/or `-d` (aka `--there`) is passed, files in the the origin and/or destination locations
+are listed (in addition to any locations specified as unnamed arguments).
 
 The `ignore` pattern/function (if defined) is applied to files listed by `ls`. To temporarily disable the `ignore`
 option and list all files, pass `-a` (aka `--all` or `--no-ignore`).
@@ -90,8 +90,7 @@ See below for all options.
 Single character aliases for options should be used on the command line only
 (ex. to always skip the confirmation prompt, set `yes: true` in your config; setting `y: true` has no effect).
 
-The `rules` option can only be defined in the config file.
-Non-string values for `ignore` must be defined in the config file.
+The `rules` option and non-string values for `ignore` can only be defined in the config file.
 
 If a boolean value defaults to `true` or is set to `true` in the config file,
 it can be overridden on the command line by adding a `no-` prefix (ex. `--no-add`).

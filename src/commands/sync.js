@@ -1,11 +1,12 @@
 const readline = require('readline');
-const {parallel, waterfall, eachLimit} = require('async');
+const {parallel, waterfall, queue} = require('async');
 const chalk = require('chalk');
 const ProgressBar = require('../models/ProgressBar');
 const ActionableCollection = require('../models/ActionableCollection');
 const SourceFileCollection = require('../models/SourceFileCollection');
 const transportFactory = require('../transports');
 const {colors, symbols, verbs} = require('../constants/status');
+const {printError} = require('../lib/error');
 const {standardizePath} = require('../lib/path');
 const Command = require('../models/Command');
 
@@ -139,10 +140,23 @@ class SyncCommand extends Command
             return callback(DONE);
         }
 
-        // Call previewOperation for each key in actionable
-        eachLimit(keys, concurrency, (key, cb) => {
+        let hasErrors = false;
+
+        const processOperation = (key, cb) => {
             this.processOperation(files.origin[key] || files.destination[key], actionable[key], bar, cb);
-        }, callback);
+        };
+
+        // Create queue that calls processOperation for each key
+        const q = queue(processOperation, concurrency);
+
+        // Define queue completed callback
+        q.drain = () => callback(!hasErrors ? null : 'Finished with errors');
+
+        // Add keys to queue and begin processing
+        q.push(keys, (err) => {
+            // If err, set hasErrors to true and print the error
+            hasErrors = printError(err);
+        });
     }
 
     processOperation(file, status, bar, callback)
