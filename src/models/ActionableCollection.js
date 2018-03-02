@@ -48,7 +48,7 @@ class ActionableCollection
 
     determineOperation(file, callback)
     {
-        const {alternateKey, compare, opts: {add, change}} = this.cfg;
+        const {alternateKey, compare, opts: {add, change, debug}} = this.cfg;
 
         // Get the corresponding destination key for origin key (usually the same, but this allows
         //  the behavior to be overridden in config to accommodate special handling).
@@ -65,6 +65,10 @@ class ActionableCollection
 
             // Remove file from list of destination files to indicate that it has been handled
             delete this.files.destination[destinationFileKey];
+
+            if(debug) {
+                console.log('Determine operation for %s (%s)', file.Key, destinationFileKey);
+            }
 
             // If destination file does not exist, callback with ADDED status
             //  (or UNCHANGED if add opt is false)

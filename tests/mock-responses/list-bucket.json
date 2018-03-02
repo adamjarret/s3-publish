@@ -1,0 +1,66 @@
+{
+    "IsTruncated": false,
+    "Contents": [
+        {
+            "Key": "A.txt",
+            "LastModified": "2017-11-17T05:00:21.000Z",
+            "ETag": "\"c18ef623b7c79a8011bfd03e8213429b\"",
+            "Size": 14,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "B.txt",
+            "LastModified": "2017-11-17T00:06:15.000Z",
+            "ETag": "\"76a075bd7322564d11f218a4a7752429\"",
+            "Size": 341432,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "C.txt",
+            "LastModified": "2017-11-17T00:06:23.000Z",
+            "ETag": "\"0240c0dfea0c4300e64e31fef7c4243d\"",
+            "Size": 871548,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "D.txt",
+            "LastModified": "2017-11-17T00:06:28.000Z",
+            "ETag": "\"29df42eef4d2fb4929daf082129b2039\"",
+            "Size": 387176,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "E.txt",
+            "LastModified": "2017-11-17T00:06:33.000Z",
+            "ETag": "\"7f18c6b16b2b4a65cd8a0ccbfd905523\"",
+            "Size": 164613,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "Z.txt",
+            "LastModified": "2017-11-17T04:52:22.000Z",
+            "ETag": "\"41ff0912a07fdc52799ff27b38e7f140\"",
+            "Size": 2,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "public/",
+            "LastModified": "2017-11-15T01:25:50.000Z",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "sub/B.txt",
+            "LastModified": "2017-11-17T05:00:22.000Z",
+            "ETag": "\"abd9833272ec877d02e4cfa3a19e2a16\"",
+            "Size": 8,
+            "StorageClass": "STANDARD"
+        }
+    ],
+    "Name": "s3p-test",
+    "Prefix": "",
+    "MaxKeys": 1000,
+    "CommonPrefixes": [],
+    "KeyCount": 8
+}

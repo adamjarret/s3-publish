@@ -2,7 +2,7 @@ const {queue} = require('async');
 const aws = require('aws-sdk');
 const {splitS3Uri} = require('../lib/s3Uri');
 
-module.exports = (s3Uri, onFile, callback) => {
+const s3Source = (s3Uri, onFile, callback) => {
 
     let count = 0;
 
@@ -23,15 +23,10 @@ module.exports = (s3Uri, onFile, callback) => {
             if (err) { return cb && cb(err); }
 
             // Create a queue object with concurrency of 1 (callback will be called for each file listed)
-            const q = queue((file, next) => {
-
-                //  Key values ending in a slash indicate "directories"
-                if(file.Key.endsWith('/')) { return next(); }
-
+            const q = s3Source.q((file, next) => {
                 count++;
-
                 onFile(file, next);
-            }, 1);
+            }, params.Prefix);
 
             // Assign a callback for when all queue items have been processed
             q.drain = () => {
@@ -51,3 +46,24 @@ module.exports = (s3Uri, onFile, callback) => {
 
     listObjects(null, callback);
 };
+
+s3Source.q = (onFile, prefix) => {
+
+    // Create a queue object with concurrency of 1 (callback will be called for each file listed)
+    return queue((file, next) => {
+
+        // Key values ending in a slash indicate "directories"
+        if (file.Key.endsWith('/')) { return next(); }
+
+        // Key should be relative to Prefix
+        if (prefix && prefix.length) {
+            file.Key = file.Key
+                .replace(prefix, '')    // Key is relative
+                .replace(/^\/+/, '');   // Key should not begin with a slash
+        }
+
+        onFile(file, next);
+    }, 1);
+};
+
+module.exports = s3Source;
