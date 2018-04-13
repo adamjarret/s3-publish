@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const shortid = require('shortid');
 const mustache = require('mustache');
 const {standardizePath} = require('../lib/path');
 
@@ -24,6 +25,17 @@ module.exports = (cfg, callback) => {
         delete view.add;
     }
 
+    // Ignore hidden (dot prefixed) files and files in hidden (dot prefixed) directories by default
+    const ignorePlaceholder = shortid();
+    if(!view.ignore) {
+        view.ignore = ignorePlaceholder;
+    }
+
+    // Destination should have a placeholder URI by default
+    if(!view.destination) {
+        view.destination = 's3://bucket_name';
+    }
+
     fs.readFile(path.join(__dirname, '..', '..', 'templates', 's3p.config.js.mustache'), 'utf8', (err, data) => {
 
         // Handle errors encountered while loading the template file
@@ -31,7 +43,8 @@ module.exports = (cfg, callback) => {
 
         try {
             // Generate output from template
-            const output = mustache.render(data, {json: JSON.stringify(view, null, 4)});
+            const json = JSON.stringify(view, null, 4).replace(`"${ignorePlaceholder}"`, '/^\\.|\\/\\./');
+            const output = mustache.render(data, {json});
 
             console.log(`Generating ${outFile}`);
             console.log(output);

@@ -36,6 +36,7 @@
     "pad-start": "^1.0.2",
     "pretty-ms": "^3.0.1",
     "progress": "^2.0.0",
+    "shortid": "^2.2.8",
     "walk": "^2.3.9",
     "yargs": "^8.0.2"
   },
