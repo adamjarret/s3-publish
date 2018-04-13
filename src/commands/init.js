@@ -26,14 +26,20 @@ module.exports = (cfg, callback) => {
     }
 
     // Ignore hidden (dot prefixed) files and files in hidden (dot prefixed) directories by default
+    //  (respect --no-ignore flag by checking if explicitly set to false)
     const ignorePlaceholder = shortid();
-    if(!view.ignore) {
+    if(!view.ignore && view.ignore !== false) {
         view.ignore = ignorePlaceholder;
     }
 
     // Destination should have a placeholder URI by default
     if(!view.destination) {
         view.destination = 's3://bucket_name';
+    }
+
+    // Output default delete value for convenience
+    if(!view.delete) {
+        view.delete = false;
     }
 
     fs.readFile(path.join(__dirname, '..', '..', 'templates', 's3p.config.js.mustache'), 'utf8', (err, data) => {
