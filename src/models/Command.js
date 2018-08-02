@@ -1,12 +1,18 @@
 const dateformat = require('dateformat');
 const filesize = require('filesize');
 const prettyMs = require('pretty-ms');
+const chalk = require('../constants/chalk');
 
 class Command
 {
     constructor(cfg)
     {
         this.cfg = cfg;
+
+        const {porcelain} = this.cfg.opts;
+        if(porcelain) {
+            chalk.enabled = false;
+        }
     }
 
     log(msg)

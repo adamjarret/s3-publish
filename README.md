@@ -176,6 +176,7 @@ Disable ignore (list/sync all files). Equivalent to `--no-ignore`.
 ### porcelain, -u
 
 Display file sizes in bytes, dates as ISO 8601 and durations in milliseconds.
+Color/bold text styling is disabled.
 
 `[Boolean] default: false`
 

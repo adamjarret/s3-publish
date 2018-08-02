@@ -145,7 +145,7 @@ function main(cfg, callback)
         .default('a', localConfig.all)
 
         .alias('porcelain', 'u')
-        .describe('u', 'Show sizes in bytes, dates as ISO 8601, durations in ms')
+        .describe('u', 'Show sizes in bytes, dates as ISO 8601, durations in ms, no colors')
         .boolean('u')
         .default('u', localConfig.porcelain)
 

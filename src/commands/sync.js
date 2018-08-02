@@ -1,10 +1,10 @@
 const readline = require('readline');
 const {parallel, waterfall, queue} = require('async');
-const chalk = require('chalk');
 const ProgressBar = require('../models/ProgressBar');
 const ActionableCollection = require('../models/ActionableCollection');
 const SourceFileCollection = require('../models/SourceFileCollection');
 const transportFactory = require('../transports');
+const chalk = require('../constants/chalk');
 const {colors, symbols, verbs} = require('../constants/status');
 const {printError} = require('../lib/error');
 const {standardizePath} = require('../lib/path');

@@ -3,7 +3,7 @@ module.exports = {
     ls: require('./src/commands/ls'),
     sync: require('./src/commands/sync'),
     external: {
-        chalk: require('chalk'),
+        chalk: require('./src/constants/chalk'),
         mime: require('mime')
     }
 };

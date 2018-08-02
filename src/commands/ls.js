@@ -1,7 +1,7 @@
 const {queue, series, waterfall} = require('async');
-const chalk = require('chalk');
 const padEnd = require('pad-end');
 const padStart = require('pad-start');
+const chalk = require('../constants/chalk');
 const sourceFactory = require('../sources');
 const {printError} = require('../lib/error');
 const {standardizePath} = require('../lib/path');
