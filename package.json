@@ -1,6 +1,6 @@
 {
   "name": "s3-publish",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Upload files to S3 with asynchronous rules",
   "main": "index.js",
   "bin": {
