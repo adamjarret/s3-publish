@@ -1,10 +1,10 @@
 const fs = require('fs');
 const {reduce} = require('async');
-const isFun = require('lodash.isfunction');
-const isObj = require('lodash.isobject');
-const isStr = require('lodash.isstring');
-const isReg = require('lodash.isregexp');
-const range = require('lodash.range');
+const isFun = require('lodash/isFunction');
+const isObj = require('lodash/isObject');
+const isStr = require('lodash/isString');
+const isReg = require('lodash/isRegExp');
+const range = require('lodash/range');
 const minimatch = require('minimatch');
 const {minSchemaVersion, maxSchemaVersion, version} = require('../../package.json');
 

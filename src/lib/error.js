@@ -1,5 +1,5 @@
 const util = require('util');
-const isStr = require('lodash.isstring');
+const isStr = require('lodash/isString');
 const chalk = require('../constants/chalk');
 
 const errorStyle = chalk.bold.red;
