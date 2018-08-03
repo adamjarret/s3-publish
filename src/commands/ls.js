@@ -62,7 +62,9 @@ class LsCommand extends Command
         // Add locations to queue and begin processing
         q.push(pathsOrUris, (err) => {
             // If err, set hasErrors to true and print the error
-            hasErrors = printError(err);
+            if (printError(err)) {
+                hasErrors = true;
+            }
         });
     }
 

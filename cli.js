@@ -145,7 +145,7 @@ function main(cfg, callback)
         .default('a', localConfig.all)
 
         .alias('porcelain', 'u')
-        .describe('u', 'Show sizes in bytes, dates as ISO 8601, durations in ms, no colors')
+        .describe('u', 'Show sizes in bytes, dates as ISO 8601, durations in ms, no colors, no progress bar')
         .boolean('u')
         .default('u', localConfig.porcelain)
 
@@ -190,11 +190,8 @@ function main(cfg, callback)
     }
 }
 
-waterfall([
-    (next) => Configuration.fromFileOrDefaults(path.join(process.cwd(), 's3p.config.js'), next),
-    main
-], (err) => {
-    if (!err) { process.exit(0); }
-    printError(err);
-    process.exit(1);
-});
+const config = (cb) => Configuration.fromFileOrDefaults(path.join(process.cwd(), 's3p.config.js'), cb);
+
+const done = (err) => process.exit(printError(err));
+
+waterfall([config, main], done);

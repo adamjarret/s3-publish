@@ -95,7 +95,7 @@ class SyncCommand extends Command
 
         const onYes = () => callback(null, actionable, bytesToTransfer, files);
 
-        this.eachOperation(actionable, files, 1, null, (err) => {
+        this.eachOperation(actionable, files, 1, this.previewOperation.bind(this), (err) => {
 
             // Handle transport error (if present)
             if (err) { return callback(err); }
@@ -122,16 +122,18 @@ class SyncCommand extends Command
 
     performOperations(actionable, bytesToTransfer, files, callback)
     {
-        const {concurrency} = this.cfg.opts;
+        const {concurrency, porcelain} = this.cfg.opts;
 
-        // Display progress bar
-        const bar = new ProgressBar(bytesToTransfer, Object.keys(actionable).length, this.sizeToString.bind(this));
+        // Display progress bar (if not porcelain)
+        this.bar = porcelain ? null : (
+            new ProgressBar(bytesToTransfer, Object.keys(actionable).length, this.sizeToString.bind(this))
+        );
 
         // Process each actionable item
-        this.eachOperation(actionable, files, concurrency, bar, callback);
+        this.eachOperation(actionable, files, concurrency, this.performOperation.bind(this), callback);
     }
 
-    eachOperation(actionable, files, concurrency, bar, callback)
+    eachOperation(actionable, files, concurrency, processOperation, callback)
     {
         const keys = Object.keys(actionable).sort();
 
@@ -142,48 +144,76 @@ class SyncCommand extends Command
 
         let hasErrors = false;
 
-        const processOperation = (key, cb) => {
-            this.processOperation(files.origin[key] || files.destination[key], actionable[key], bar, cb);
+        // Callback called for each individual job
+        const cb = (err) => {
+            // If err, set hasErrors to true and print the error
+            if (printError(err)) {
+                hasErrors = true;
+            }
         };
 
-        // Create queue that calls processOperation for each key
+        // Create queue that calls processOperation for each job
         const q = queue(processOperation, concurrency);
 
         // Define queue completed callback
         q.drain = () => callback(!hasErrors ? null : 'Finished with errors');
 
-        // Add keys to queue and begin processing
-        q.push(keys, (err) => {
-            // If err, set hasErrors to true and print the error
-            hasErrors = printError(err);
-        });
+        // Pause queue (until all jobs are added)
+        q.pause();
+
+        // Add jobs to queue
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            q.push({
+                status: actionable[key],
+                file: files.origin[key] || files.destination[key]
+            }, cb);
+        }
+
+        // Begin processing queue jobs
+        q.resume();
     }
 
-    processOperation(file, status, bar, callback)
+    previewOperation({file, status}, callback)
     {
         // Use transport factory to determine the proper transport type for this operation and invoke it
-        transportFactory(this.cfg, file, status, !bar, (bar ? bar.tick : null), (err, to, from) => {
+        transportFactory(this.cfg, file, status, true, null, (err, to, from) => {
 
             // Handle errors and skipped files
             if (err || !to) { return callback(err); }
 
             // Write operation description to stdout
-            const description = (!from || to === from) ? to : `${from} => ${to}`;
-            if(bar) {
-                const msg = `${verbs[status]} ${description}`;
-                if(!bar.isComplete()) {
-                    bar.remainingKeys--;
-                    bar.interrupt(this.renderLogMessage(msg));
-                }
-                else {
-                    this.log(msg);
-                }
+            console.log(chalk.keyword(colors[status])(`${symbols[status]} ${this.describeOperation(from, to)}`));
+            callback();
+        });
+    }
+
+    performOperation({file, status}, callback)
+    {
+        const {bar} = this;
+
+        // Use transport factory to determine the proper transport type for this operation and invoke it
+        transportFactory(this.cfg, file, status, false, (bar ? bar.tick : null), (err, to, from) => {
+
+            // Handle errors and skipped files
+            if (err || !to) { return callback(err); }
+
+            // Write operation description to stdout
+            const msg = `${verbs[status]} ${this.describeOperation(from, to)}`;
+            if (bar && !bar.isComplete()) {
+                bar.remainingKeys--;
+                bar.interrupt(this.renderLogMessage(msg));
             }
             else {
-                console.log(chalk.keyword(colors[status])(`${symbols[status]} ${description}`));
+                this.log(msg);
             }
             callback();
         });
+    }
+
+    describeOperation(from, to)
+    {
+        return (!from || to === from ? to : `${from} => ${to}`);
     }
 
     sizeToString(sizeInBytes, suffix = ' B')
