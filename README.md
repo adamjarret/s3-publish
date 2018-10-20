@@ -307,3 +307,60 @@ File objects have the following structure:
 `LastModified` is the file modification date.
 
 `Size` is the file size in bytes.
+
+
+## Contributing
+
+Fork the repo and submit a pull request.
+
+## Versioning
+
+[SemVer][semVer] is used for versioning.
+For the versions available, see the [tags on this repository][tags]. 
+
+## Releasing
+
+This package includes bundled versions of `aws-sdk` and `lodash` to reduce install size.
+Only the functionality required by s3-publish is included in the bundles.
+The custom `aws-sdk` bundle is still compatible with EC2 environments (like Cloud9).
+
+1. Build vendor bundles:
+
+        npm run vendor
+
+2. Examine what will be included in the npm bundle:
+
+        npm run pack
+        
+    The `npm run pack` command requires npm version 6.4.1 or later (because it uses the `--dry-run` flag).
+    For older versions of npm, run `tar -tvf "$(npm pack)"` to list the contents of the generated tarball.
+
+3. Bump the version number in __package.json__ and create a git tag:
+
+        npm version patch
+
+    The [`npm version`][npmVersion] command accepts a [SemVer][semVer] argument:
+     `<newversion>|major|minor|patch` (where `<newversion>` is a standard version number, ex. 1.0.0).
+
+4. Publish a new version:
+
+        npm publish
+        git push origin master --tags
+
+## Author
+
+[Adam Jarret](https://atj.me)
+
+## License
+
+This project is licensed under the _MIT License_.
+See the [LICENSE.txt][license] file for details.
+
+
+[semVer]: https://semver.org/
+
+[npmVersion]: https://docs.npmjs.com/cli/version
+
+[tags]: https://github.com/adamjarret/s3-publish/tags
+
+[license]: https://github.com/adamjarret/s3-publish/blob/master/LICENSE.txt
