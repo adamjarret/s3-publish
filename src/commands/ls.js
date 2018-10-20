@@ -1,11 +1,10 @@
-const {queue, series, waterfall} = require('async');
-const padEnd = require('pad-end');
-const padStart = require('pad-start');
+const {queue, series, waterfall} = require('neo-async');
 const chalk = require('../constants/chalk');
 const sourceFactory = require('../sources');
 const {printError} = require('../lib/error');
 const {standardizePath} = require('../lib/path');
 const Command = require('../models/Command');
+const {padEnd, padStart} = require('../vendor/lodash');
 
 class LsCommand extends Command
 {

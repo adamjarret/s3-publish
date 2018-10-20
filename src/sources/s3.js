@@ -1,12 +1,12 @@
-const {queue} = require('async');
-const aws = require('aws-sdk');
+const {queue} = require('neo-async');
 const {splitS3Uri} = require('../lib/s3Uri');
+const {S3} = require('../vendor/aws-sdk');
 
 const s3Source = (s3Uri, onFile, callback) => {
 
     let count = 0;
 
-    const s3 = new aws.S3();
+    const s3 = new S3();
 
     // Thanks https://derickbailey.com/2016/04/13/paging-the-results-of-an-aws-s3-bucket/
 

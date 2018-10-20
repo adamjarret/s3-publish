@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const aws = require('aws-sdk');
 const mime = require('mime');
 const {splitS3Uri} = require('../lib/s3Uri');
+const {S3} = require('../vendor/aws-sdk');
 const {ADDED, CHANGED, DELETED} = require('../constants/status');
 
 module.exports = (cfg, file, status, preview, progress, callback) => {
 
-    const s3 = new aws.S3();
+    const s3 = new S3();
     const {opts: {origin, destination, acl, debug}, putParams} = cfg;
     const {Key, DestinationKey, Size, ETag} = file;
     const destinationKey = DestinationKey || Key;

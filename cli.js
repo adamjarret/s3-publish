@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const {waterfall} = require('async');
-const aws = require('aws-sdk');
-const isFun = require('lodash/isFunction');
-const isReg = require('lodash/isRegExp');
+const {waterfall} = require('neo-async');
 const yargs = require('yargs');
 const {printError} = require('./src/lib/error');
 const {standardizePath} = require('./src/lib/path');
 const Configuration = require('./src/models/Configuration');
+const {config: awsConfig, SharedIniFileCredentials} = require('./src/vendor/aws-sdk');
+const {isFunction, isRegExp} = require('./src/vendor/lodash');
 const {author, bin, version} = require('./package.json');
 const {init, ls, sync} = require('.');
 
@@ -33,9 +32,9 @@ function main(cfg, callback)
 
         // Update AWS Config
         const {profile, region} = argv;
-        aws.config.update({
+        awsConfig.update({
             region,
-            credentials: new aws.SharedIniFileCredentials({profile})
+            credentials: new SharedIniFileCredentials({profile})
         });
 
         // Update config (in case values were overridden by args)
@@ -132,8 +131,8 @@ function main(cfg, callback)
         .describe('ignore', 'Ignore pattern')
         .string('ignore')
         .default('ignore', () => localConfig.ignore,
-            isFun(localConfig.ignore) ? 'Function' : (
-                isReg(localConfig.ignore) ? localConfig.ignore.toString() : (
+            isFunction(localConfig.ignore) ? 'Function' : (
+                isRegExp(localConfig.ignore) ? localConfig.ignore.toString() : (
                     localConfig.ignore ? `"${localConfig.ignore}"` : 'undefined'
                 )
             )

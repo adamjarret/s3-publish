@@ -1,11 +1,7 @@
 const fs = require('fs');
-const {reduce} = require('async');
-const isFun = require('lodash/isFunction');
-const isObj = require('lodash/isObject');
-const isStr = require('lodash/isString');
-const isReg = require('lodash/isRegExp');
-const range = require('lodash/range');
 const minimatch = require('minimatch');
+const {reduce} = require('neo-async');
+const {isFunction, isObject, isRegExp, isString, range} = require('../vendor/lodash');
 const {minSchemaVersion, maxSchemaVersion, version} = require('../../package.json');
 
 class Configuration
@@ -62,7 +58,7 @@ class Configuration
         }
 
         // Treat string value as glob pattern (if provided)
-        if (isStr(ignore)) {
+        if (isString(ignore)) {
             try {
                 return callback(null, minimatch(file.Key, ignore));
             }
@@ -72,7 +68,7 @@ class Configuration
         }
 
         // Match regex pattern (if provided)
-        if (isReg(ignore)) {
+        if (isRegExp(ignore)) {
             try {
                 return callback(null, !!file.Key.match(ignore));
             }
@@ -82,7 +78,7 @@ class Configuration
         }
 
         // Call function (if provided)
-        if (isFun(ignore)) {
+        if (isFunction(ignore)) {
             return ignore.bind(this)(file, callback);
         }
 
@@ -98,7 +94,7 @@ class Configuration
 
             const {pattern, compare} = rule;
 
-            if (!isFun(compare) || !checkPattern(pattern, fileA)) {
+            if (!isFunction(compare) || !checkPattern(pattern, fileA)) {
                 return next(null, memo);
             }
 
@@ -113,7 +109,7 @@ class Configuration
 
             const {pattern, alternateKey} = rule;
 
-            if (!isFun(alternateKey) || !checkPattern(pattern, file)) {
+            if (!isFunction(alternateKey) || !checkPattern(pattern, file)) {
                 return next(null, memo);
             }
 
@@ -128,7 +124,7 @@ class Configuration
 
             const {pattern, putParams} = rule;
 
-            if (!isFun(putParams) || !checkPattern(pattern, file)) {
+            if (!isFunction(putParams) || !checkPattern(pattern, file)) {
                 return next(null, memo);
             }
 
@@ -152,14 +148,14 @@ class Configuration
 
         // If a function was provided, call it and merge object from callback with existing opts
         //  Note: isObj returns true for functions, so check isFun first
-        if (isFun(objectOrFunction)) {
+        if (isFunction(objectOrFunction)) {
             return objectOrFunction((err, opts) => {
 
                 // Handle callback error
                 if (err) { return callback(err); }
 
                 // Handle invalid opts type
-                if (!isObj(opts)) {
+                if (!isObject(opts)) {
                     const e = new Error('Configuration function must callback with a config object');
                     e.code = 'INVALID_CONFIG';
                     e.subcode = 'BAD_CALLBACK';
@@ -172,7 +168,7 @@ class Configuration
         }
 
         // If neither an object nor a function was provided, callback with error
-        if (!isObj(objectOrFunction)) {
+        if (!isObject(objectOrFunction)) {
             const e = new Error('Configuration file must export an object or function');
             e.code = 'INVALID_CONFIG';
             e.subcode = 'BAD_EXPORT';

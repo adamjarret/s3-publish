@@ -1,4 +1,4 @@
-const {series, each} = require('async');
+const {series, each} = require('neo-async');
 const {ADDED, CHANGED, DELETED, UNCHANGED} = require('../constants/status');
 
 class ActionableCollection

@@ -1,12 +1,12 @@
 const util = require('util');
-const isStr = require('lodash/isString');
 const chalk = require('../constants/chalk');
+const {isString} = require('../vendor/lodash');
 
 const errorStyle = chalk.bold.red;
 
 exports.printError = (error) => {
     if (!error) { return 0; }
-    if (isStr(error)) {
+    if (isString(error)) {
         console.error(errorStyle(error));
     }
     else {

@@ -1,5 +1,5 @@
 const readline = require('readline');
-const {parallel, waterfall, queue} = require('async');
+const {parallel, waterfall, queue} = require('neo-async');
 const ProgressBar = require('../models/ProgressBar');
 const ActionableCollection = require('../models/ActionableCollection');
 const SourceFileCollection = require('../models/SourceFileCollection');

@@ -1,1 +1,4 @@
-.idea
+.*
+tests
+/vendor/
+s3-publish-*.tgz

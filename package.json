@@ -8,6 +8,8 @@
   },
   "scripts": {
     "ig": "npm install -g file:.",
+    "pack": "npm pack --dry-run",
+    "vendor": "webpack -p --config vendor/webpack.config.js",
     "test": "node ./node_modules/tape/bin/tape tests/*.test.js"
   },
   "author": "Adam Jarret <adam@atj.me>",
@@ -17,19 +19,15 @@
     "url": "https://github.com/adamjarret/s3-publish.git"
   },
   "dependencies": {
-    "async": "^2.6.1",
-    "aws-sdk": "^2.286.2",
     "chalk": "^2.4.1",
     "dateformat": "^3.0.3",
     "expand-tilde": "^2.0.2",
     "filesize": "^3.5.11",
-    "lodash": "4.17.10",
     "md5-file": "^4.0.0",
     "mime": "^2.0.3",
     "minimatch": "^3.0.4",
     "mustache": "^2.3.0",
-    "pad-end": "^1.0.2",
-    "pad-start": "^1.0.2",
+    "neo-async": "^2.6.0",
     "pretty-ms": "^3.0.1",
     "progress": "^2.0.0",
     "shortid": "^2.2.8",
@@ -37,8 +35,13 @@
     "yargs": "^12.0.1"
   },
   "devDependencies": {
+    "aws-sdk": "^2.286.2",
     "eslint": "^5.2.0",
-    "tape": "^4.8.0"
+    "license-webpack-plugin": "^2.0.2",
+    "lodash": "^4.17.11",
+    "tape": "^4.8.0",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2"
   },
   "minSchemaVersion": 1,
   "maxSchemaVersion": 1
