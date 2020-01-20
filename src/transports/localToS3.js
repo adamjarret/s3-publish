@@ -17,10 +17,10 @@ module.exports = (cfg, file, status, preview, progress, callback) => {
         Key: path.join(uriParts.Prefix, destinationKey).replace(/\\/g, '/') // Normalize Windows path separator
     };
 
-    function maybeDebug(action)
+    function maybeDebug(action, p)
     {
         if (debug) {
-            console.log('%s %s %s', action, Key, JSON.stringify(params, (k, v) => {
+            console.log('%s %s %s', action, Key, JSON.stringify(p || params, (k, v) => {
                 return k === 'Body' ? v.path : v;
             }, 4));
         }
@@ -47,7 +47,7 @@ module.exports = (cfg, file, status, preview, progress, callback) => {
             if (preview) {
 
                 // If debug, output params
-                maybeDebug('PUT');
+                maybeDebug('PUT', p);
 
                 return callback(null, to, Key);
             }
