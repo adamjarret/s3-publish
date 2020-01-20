@@ -11,7 +11,7 @@ class Command
 
         const {porcelain} = this.cfg.opts;
         if(porcelain) {
-            chalk.enabled = false;
+            chalk.level = 0;
         }
     }
 
