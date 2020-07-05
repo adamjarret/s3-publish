@@ -51,5 +51,9 @@
     "typedoc-plugin-resolve-by-name": "^0.1.0",
     "typedoc-plugin-sourcefile-url": "^1.0.6",
     "typescript": "^3.9.6"
+  },
+  "resolutions": {
+    "handlebars": "^4.7.6",
+    "minimist": "^1.2.5"
   }
 }
