@@ -1,0 +1,4 @@
+[submodule "docs-src/theme"]
+	path = docs-src/theme
+	url = git@github.com:adamjarret/typedoc-default-themes.git
+	branch = site-s3-publish

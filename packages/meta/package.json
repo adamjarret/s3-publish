@@ -1,0 +1,37 @@
+{
+  "name": "s3-publish",
+  "version": "2.0.0",
+  "description": "Upload files to S3 with asynchronous rules via CLI",
+  "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
+  "license": "MIT",
+  "homepage": "https://adamjarret.github.io/s3-publish",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamjarret/s3-publish.git"
+  },
+  "bin": {
+    "s3p": "./bin/cli.js"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "config/**/*",
+    "lib/**/*"
+  ],
+  "scripts": {
+    "bundle": "webpack -p",
+    "ncu": "ncu",
+    "pak": "npm pack"
+  },
+  "devDependencies": {
+    "@s3-publish/cli": "^2.0.0",
+    "@s3-publish/core": "^1.0.0",
+    "@s3-publish/loggers": "^1.0.0",
+    "@s3-publish/provider-fs": "^1.0.0",
+    "@s3-publish/provider-s3": "^1.0.0",
+    "copy-webpack-plugin": "^6.0.3",
+    "license-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

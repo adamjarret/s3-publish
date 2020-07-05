@@ -1,48 +1,55 @@
 {
-  "name": "s3-publish",
-  "version": "1.0.13",
-  "description": "Upload files to S3 with asynchronous rules",
-  "main": "index.js",
-  "bin": {
-    "s3p": "./cli.js"
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=v10.17"
   },
   "scripts": {
-    "ig": "npm install -g file:.",
-    "pack": "npm pack --dry-run",
-    "vendor": "webpack -p --config vendor/webpack.config.js",
-    "test": "node ./node_modules/tape/bin/tape tests/*.test.js"
-  },
-  "author": "Adam Jarret <adam@atj.me>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adamjarret/s3-publish.git"
-  },
-  "dependencies": {
-    "chalk": "^3.0.0",
-    "dateformat": "^3.0.3",
-    "expand-tilde": "^2.0.2",
-    "filesize": "^6.0.1",
-    "md5-file": "^4.0.0",
-    "mime": "^2.4.4",
-    "minimatch": "^3.0.4",
-    "mustache": "^4.0.0",
-    "neo-async": "^2.6.1",
-    "pretty-ms": "^5.1.0",
-    "progress": "^2.0.3",
-    "shortid": "^2.2.15",
-    "walk": "^2.3.14",
-    "yargs": "^15.1.0"
+    "all": "yarn clean && yarn fix && yarn build && yarn test && yarn bundle && yarn docs",
+    "fix": "yarn pretty && yarn lint && yarn spell",
+    "lint": "eslint --ext .ts --ext .js .",
+    "pretty": "prettier './**/*.{ts,js,json,md}' --write --ignore-path .eslintignore",
+    "spell": "cspell './**/*' --config .vscode/cSpell.json",
+    "build": "tsc --build",
+    "clean": "rimraf docs 'packages/**/lib/' 'packages/meta/config/' '**/tsconfig.tsbuildinfo'",
+    "clean-docs": "rimraf docs",
+    "docs": "typedoc . --sourcefile-url-prefix 'https://github.com/adamjarret/s3-publish/tree/master/packages/'",
+    "serve": "serve -c serve.json",
+    "theme": "yarn --cwd docs-src/theme build",
+    "ncu": "lerna run ncu -- --packageFile package.json",
+    "bundle": "lerna run bundle",
+    "pak": "lerna run pak",
+    "cover": "COVER=1 yarn test",
+    "spec": "SPEC=1 COVER=1 yarn test",
+    "test": "jest"
   },
   "devDependencies": {
-    "aws-sdk": "^2.606.0",
-    "eslint": "^6.8.0",
-    "license-webpack-plugin": "^2.1.3",
-    "lodash": "^4.17.15",
-    "tape": "^4.13.0",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
-  },
-  "minSchemaVersion": 1,
-  "maxSchemaVersion": 1
+    "@types/jest": "^26.0.3",
+    "@types/node": "^14.0.14",
+    "@types/rimraf": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.5.0",
+    "@typescript-eslint/parser": "^3.5.0",
+    "cspell": "^4.0.63",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jest": "^23.18.0",
+    "jest": "^26.1.0",
+    "jest-mock-process": "^1.4.0",
+    "lerna": "^3.22.1",
+    "mock-stdin": "^1.0.0",
+    "npm-check-updates": "^7.0.1",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "serve": "^11.3.2",
+    "ts-jest": "^26.1.1",
+    "typedoc": "^0.17.8",
+    "typedoc-plugin-jekyll": "^0.1.0",
+    "typedoc-plugin-lerna-packages-atj": "^0.2.1",
+    "typedoc-plugin-pages": "^1.0.1",
+    "typedoc-plugin-resolve-by-name": "^0.1.0",
+    "typedoc-plugin-sourcefile-url": "^1.0.6",
+    "typescript": "^3.9.6"
+  }
 }

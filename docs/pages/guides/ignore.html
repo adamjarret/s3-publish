@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ignoring Files | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../../assets/js/search.json" data-base="../..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../../index.html">Home</a>
+				</li>
+				<li>
+					<b>Guides</b>
+				</li>
+				<li>
+					<a href="ignore.html">Ignoring Files</a>
+				</li>
+			</ul>
+			<h1><h1>Ignoring Files</h1></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section>
+				<section class=" tsd-panel tsd-typography">
+					<blockquote>
+						<p><strong>IMPORTANT</strong>: Ignoring a target file DOES NOT prevent it from being overwritten.
+						Corresponding non-ignored origin files will always be uploaded if they exist.</p>
+					</blockquote>
+					<ul>
+						<li><p>Ignored origin files will not be listed/compared/uploaded</p>
+						</li>
+						<li><p>Ignored target files will not be listed/compared (or deleted when <code>--delete</code> is used)</p>
+						</li>
+						<li><p>Use <code>--show-ignored</code> (<code>-x</code>) or set <code>showIgnored</code> to true in the config file to
+							display ignored files in command output</p>
+						</li>
+					</ul>
+					<a href="#glob-patterns" id="glob-patterns" style="color: inherit; text-decoration: none;">
+						<h3>Glob Patterns</h3>
+					</a>
+					<p>Glob patterns should adhere to the <a href="https://git-scm.com/docs/gitignore">gitignore spec</a>
+					and will be matched against the <a href="../../modules/_s3_publish_core.html#file"><code>File</code></a> <code>Key</code>.</p>
+					<p>Patterns are applied in the following order (this is significant because the gitignore
+					spec allows subsequent patterns to negate previous ones):</p>
+					<ol>
+						<li><a href="#-ignore-file">Patterns loaded from <strong>.ignore File</strong></a></li>
+						<li><a href="#config-file">Patterns loaded from <strong>Config File</strong></a></li>
+						<li><a href="#arguments">Patterns provided as <strong>Arguments</strong></a></li>
+					</ol>
+					<a href="#custom-function" id="custom-function" style="color: inherit; text-decoration: none;">
+						<h3>Custom Function</h3>
+					</a>
+					<p>Optionally, a custom <code>ignores</code> function can be defined for each provider (origin/target) in the config file.</p>
+					<p>It should accept a <a href="../../modules/_s3_publish_core.html#file"><code>File</code></a> parameter and return true if the file should be ignored,
+					otherwise false. See <a href="#config-file">below</a> for an example.</p>
+					<p>Note: If an <code>ignores</code> function is defined for a provider, glob patterns
+						(including any specified as command line arguments and/or loaded fom the related .ignore file)
+					will have NO EFFECT on that provider.</p>
+				</section>
+				<h2 id="-ignore-file">.ignore File</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>By default, <code>s3p</code> automatically loads glob patterns from <strong>.s3p.origin.ignore</strong>
+					and <strong>.s3p.target.ignore</strong> if they exist in the CWD.</p>
+					<ul>
+						<li><p>Use <code>--origin-ignore-path</code> (<code>-g</code>) and/or <code>--target-ignore-path</code> (<code>-G</code>)
+								or set <code>ignorePath</code> for the provider in the config file
+							to load patterns from a different path .</p>
+						</li>
+						<li><p>Use <code>--no-origin-ignore-path</code> and/or <code>--no-target-ignore-path</code>
+								or set <code>ignorePath</code> to false for the provider in the config file
+							to prevent the corresponding ignore file from being loaded at all.</p>
+						</li>
+					</ul>
+				</section>
+				<h2 id="config-file">Config File</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>Optionally specify glob patterns or define a custom <code>ignores</code> function for each provider.
+					If an <code>ignores</code> function is defined, patterns have no effect.</p>
+					<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+						<h3>Example</h3>
+					</a>
+					<pre><code class="language-js"><span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-comment">// Function: Ignore files with the extension '.zip'</span>
+    <span class="hljs-attr">ignores</span>: <span class="hljs-function">(<span class="hljs-params">file</span>) =&gt;</span> file.Key.endsWith(<span class="hljs-string">'.zip'</span>),
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-comment">// Patterns: Ignore files with the extension '.zip'</span>
+    <span class="hljs-attr">ignorePatterns</span>: [<span class="hljs-string">'*.zip'</span>],
+    <span class="hljs-comment">// Path: Ignore files that match patterns loaded from this path</span>
+    <span class="hljs-attr">ignorePath</span>: <span class="hljs-string">'.s3p.ignore'</span>,
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+				</section>
+				<h2 id="arguments">Arguments</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>Glob patterns may be specified on the command line:</p>
+					<ul>
+						<li><p>Use <code>--origin-ignore</code> (<code>-i</code>) and/or <code>--target-ignore</code> (<code>-I</code>)
+							to specify a pattern to ignore</p>
+						</li>
+						<li><p>Use <code>--no-origin-ignore</code> and/or <code>--no-target-ignore</code>
+							to disregard all patterns for the provider that were specified as arguments</p>
+						</li>
+					</ul>
+					<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+						<h3>Example</h3>
+					</a>
+					<p>Ignore files with extension <code>.tgz</code> and the <code>node_modules</code> folder in origin
+					and ignore files with extension <code>.tmp</code> in target:</p>
+					<pre><code class="language-text">npx s3p ls -t s3://my-bucket -I &#39;*.tmp&#39; -i &#39;*.tgz&#39; -i &#39;node_modules&#39;</code></pre>
+				</section>
+			</section>
+			<style type="text/css">
+footer {
+    display: none;
+}
+</style>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class="current pp-nav pp-page">
+						<a href="ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@s3-publish/provider-s3 | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Home</a>
+				</li>
+				<li>
+					<b>API</b>
+				</li>
+				<li>
+					<a href="../globals.html">Modules</a>
+				</li>
+				<li>
+					<a href="_s3_publish_provider_s3.html">@s3-publish/provider-s3</a>
+				</li>
+			</ul>
+			<h1><span class="model-name">@s3-publish/provider-s3</span> <span class="model-kind">Module</span></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_s3_publish_provider_s3.s3bridge.html" class="tsd-kind-icon">S3<wbr>Bridge</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_s3_publish_provider_s3.s3provider.html" class="tsd-kind-icon">S3<wbr>Provider</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-kind-icon">S3<wbr>Provider<wbr>Bridge</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_s3_publish_provider_s3.s3providerdelegate.html" class="tsd-kind-icon">S3<wbr>Provider<wbr>Delegate</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Constructor Options Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3provideroptions" class="tsd-kind-icon">S3<wbr>Provider<wbr>Options</a></li>
+							</ul>
+							<h3>Other Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3clientconfiguration" class="tsd-kind-icon">S3<wbr>Client<wbr>Configuration</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3copyparams" class="tsd-kind-icon">S3<wbr>Copy<wbr>Params</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3copyresult" class="tsd-kind-icon">S3<wbr>Copy<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3deleteparams" class="tsd-kind-icon">S3<wbr>Delete<wbr>Params</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3deleteresult" class="tsd-kind-icon">S3<wbr>Delete<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3getparams" class="tsd-kind-icon">S3<wbr>Get<wbr>Params</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3listparams" class="tsd-kind-icon">S3<wbr>List<wbr>Params</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3listresult" class="tsd-kind-icon">S3<wbr>List<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3object" class="tsd-kind-icon">S3<wbr>Object</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3objecthandler" class="tsd-kind-icon">S3<wbr>Object<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3putparams" class="tsd-kind-icon">S3<wbr>Put<wbr>Params</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3putresult" class="tsd-kind-icon">S3<wbr>Put<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#s3root" class="tsd-kind-icon">S3<wbr>Root</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#creates3bridge" class="tsd-kind-icon">create<wbr>S3Bridge</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_provider_s3.html#parses3root" class="tsd-kind-icon">parse<wbr>S3Root</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructor Options Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3provideroptions" class="tsd-anchor"></a>
+					<h3>S3<wbr>Provider<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Provider<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>bridge<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-signature-type">S3ProviderBridge</a><span class="tsd-signature-symbol">; </span>checksum<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>client<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_provider_s3.html#s3clientconfiguration" class="tsd-signature-type">S3ClientConfiguration</a><span class="tsd-signature-symbol">; </span>delegate<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_s3_publish_provider_s3.s3providerdelegate.html" class="tsd-signature-type">S3ProviderDelegate</a><span class="tsd-signature-symbol">; </span>ignores<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filepredicate" class="tsd-signature-type">FilePredicate</a><span class="tsd-signature-symbol">; </span>root<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/S3Provider.ts#L32">provider-s3/src/S3Provider.ts:32</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> bridge<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-signature-type">S3ProviderBridge</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The bridge object is responsible for sending requests to the AWS S3 API</p>
+									</div>
+									<p>Providing a custom bridge is considered <a href="https://adamjarret.github.io/s3-publish/pages/guides/advanced.html">advanced usage</a>
+									(you probably won&#39;t need to do it).</p>
+									<p>The recommended way to customize behavior is to define the <code>client</code> and/or <code>delegate</code> options instead:</p>
+									<ul>
+										<li>Use the <code>client</code> option to configure the underlying AWS S3 client instance</li>
+										<li>Use the <code>delegate</code> option to customize request parameters</li>
+									</ul>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> checksum<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Calculate the MD5 file hash so that an error is returned if the uploaded file hash does not match</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>see</dt>
+										<dd><p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/data-integrity-s3/">https://aws.amazon.com/premiumsupport/knowledge-center/data-integrity-s3/</a></p>
+										</dd>
+										<dt>default</dt>
+										<dd><p>true</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> client<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_provider_s3.html#s3clientconfiguration" class="tsd-signature-type">S3ClientConfiguration</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>This object will be passed to the AWS S3 client constructor</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>remarks</dt>
+										<dd><p>Has no effect if a <code>bridge</code> object is also defined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> delegate<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_s3_publish_provider_s3.s3providerdelegate.html" class="tsd-signature-type">S3ProviderDelegate</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The delegate object provides hooks that allow the various request parameters to be set programmatically</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> ignores<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filepredicate" class="tsd-signature-type">FilePredicate</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>If defined, this function will be called with each listed file</p>
+										<ul>
+											<li>Return true to ignore the file, otherwise return false</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>root<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>File root (ex. &quot;s3://s3p-test/foo&quot;)</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Other Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3clientconfiguration" class="tsd-anchor"></a>
+					<h3>S3<wbr>Client<wbr>Configuration</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Client<wbr>Configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">S3.ClientConfiguration</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L6">provider-s3/src/types/S3.ts:6</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property" class="external">ClientConfiguration</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3copyparams" class="tsd-anchor"></a>
+					<h3>S3<wbr>Copy<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Copy<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CopyObjectRequest</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L11">provider-s3/src/types/S3.ts:11</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property" class="external">CopyObjectRequest</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3copyresult" class="tsd-anchor"></a>
+					<h3>S3<wbr>Copy<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Copy<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CopyObjectOutput</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L16">provider-s3/src/types/S3.ts:16</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property" class="external">CopyObjectOutput</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3deleteparams" class="tsd-anchor"></a>
+					<h3>S3<wbr>Delete<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Delete<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DeleteObjectRequest</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L21">provider-s3/src/types/S3.ts:21</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property" class="external">DeleteObjectRequest</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3deleteresult" class="tsd-anchor"></a>
+					<h3>S3<wbr>Delete<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Delete<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DeleteObjectOutput</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L26">provider-s3/src/types/S3.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property" class="external">DeleteObjectOutput</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3getparams" class="tsd-anchor"></a>
+					<h3>S3<wbr>Get<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Get<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">GetObjectRequest</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L31">provider-s3/src/types/S3.ts:31</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property" class="external">GetObjectRequest</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3listparams" class="tsd-anchor"></a>
+					<h3>S3<wbr>List<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>List<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ListObjectsV2Request</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L36">provider-s3/src/types/S3.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property" class="external">ListObjectsV2Request</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3listresult" class="tsd-anchor"></a>
+					<h3>S3<wbr>List<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>List<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ListObjectsV2Output</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L41">provider-s3/src/types/S3.ts:41</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property" class="external">ListObjectsV2Output</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3object" class="tsd-anchor"></a>
+					<h3>S3<wbr>Object</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L57">provider-s3/src/types/S3.ts:57</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>S3 file information returned by <code>listObjectsV2</code></p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property" class="external">Object</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3objecthandler" class="tsd-anchor"></a>
+					<h3>S3<wbr>Object<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Object<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><a href="_s3_publish_provider_s3.html#s3object" class="tsd-signature-type">S3Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L59">provider-s3/src/types/S3.ts:59</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><a href="_s3_publish_provider_s3.html#s3object" class="tsd-signature-type">S3Object</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>obj: <a href="_s3_publish_provider_s3.html#s3object" class="tsd-signature-type">S3Object</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3putparams" class="tsd-anchor"></a>
+					<h3>S3<wbr>Put<wbr>Params</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Put<wbr>Params<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PutObjectRequest</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L46">provider-s3/src/types/S3.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property" class="external">PutObjectRequest</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3putresult" class="tsd-anchor"></a>
+					<h3>S3<wbr>Put<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Put<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PutObjectOutput</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L51">provider-s3/src/types/S3.ts:51</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property" class="external">PutObjectOutput</a></p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="s3root" class="tsd-anchor"></a>
+					<h3>S3<wbr>Root</h3>
+					<div class="tsd-signature tsd-kind-icon">S3<wbr>Root<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>Bucket<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>Prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/types/S3.ts#L61">provider-s3/src/types/S3.ts:61</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>Bucket<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Prefix<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="creates3bridge" class="tsd-anchor"></a>
+					<h3>create<wbr>S3Bridge</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>S3Bridge<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ClientConfiguration</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-signature-type">S3ProviderBridge</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/util/createS3Bridge.ts#L9">provider-s3/src/util/createS3Bridge.ts:9</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><a href="https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property" class="external">ClientConfiguration</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">ClientConfiguration</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-signature-type">S3ProviderBridge</a></h4>
+							<p><a href="../classes/_s3_publish_provider_s3.s3bridge.html"><code>S3Bridge</code></a> instance created using the provided AWS.S3 client configuration options</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="parses3root" class="tsd-anchor"></a>
+					<h3>parse<wbr>S3Root</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>S3Root<span class="tsd-signature-symbol">(</span>s3Uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_s3_publish_provider_s3.html#s3root" class="tsd-signature-type">S3Root</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/provider-s3/src/util/parseS3Root.ts#L8">provider-s3/src/util/parseS3Root.ts:8</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>s3Uri: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_s3_publish_provider_s3.html#s3root" class="tsd-signature-type">S3Root</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
+							<p><code>S3Root</code> instance if the provided URI is valid, otherwise <code>null</code></p>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_s3_publish_provider_s3.s3bridge.html" class="tsd-kind-icon">S3<wbr>Bridge</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_s3_publish_provider_s3.s3provider.html" class="tsd-kind-icon">S3<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_s3_publish_provider_s3.s3providerbridge.html" class="tsd-kind-icon">S3<wbr>Provider<wbr>Bridge</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_s3_publish_provider_s3.s3providerdelegate.html" class="tsd-kind-icon">S3<wbr>Provider<wbr>Delegate</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3clientconfiguration" class="tsd-kind-icon">S3<wbr>Client<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3copyparams" class="tsd-kind-icon">S3<wbr>Copy<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3copyresult" class="tsd-kind-icon">S3<wbr>Copy<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3deleteparams" class="tsd-kind-icon">S3<wbr>Delete<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3deleteresult" class="tsd-kind-icon">S3<wbr>Delete<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3getparams" class="tsd-kind-icon">S3<wbr>Get<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3listparams" class="tsd-kind-icon">S3<wbr>List<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3listresult" class="tsd-kind-icon">S3<wbr>List<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3object" class="tsd-kind-icon">S3<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3objecthandler" class="tsd-kind-icon">S3<wbr>Object<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3provideroptions" class="tsd-kind-icon">S3<wbr>Provider<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3putparams" class="tsd-kind-icon">S3<wbr>Put<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3putresult" class="tsd-kind-icon">S3<wbr>Put<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#s3root" class="tsd-kind-icon">S3<wbr>Root</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#creates3bridge" class="tsd-kind-icon">create<wbr>S3Bridge</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_provider_s3.html#parses3root" class="tsd-kind-icon">parse<wbr>S3Root</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

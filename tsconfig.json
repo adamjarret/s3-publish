@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.settings.json",
+  "files": [],
+  "references": [
+    { "path": "packages/cli" },
+    { "path": "packages/core" },
+    { "path": "packages/loggers" },
+    { "path": "packages/meta" },
+    { "path": "packages/provider-fs" },
+    { "path": "packages/provider-s3" }
+  ]
+}

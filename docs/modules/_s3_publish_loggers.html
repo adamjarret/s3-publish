@@ -1,0 +1,1257 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@s3-publish/loggers | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Home</a>
+				</li>
+				<li>
+					<b>API</b>
+				</li>
+				<li>
+					<a href="../globals.html">Modules</a>
+				</li>
+				<li>
+					<a href="_s3_publish_loggers.html">@s3-publish/loggers</a>
+				</li>
+			</ul>
+			<h1><span class="model-name">@s3-publish/loggers</span> <span class="model-kind">Module</span></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_s3_publish_loggers.jsonlogger.html" class="tsd-kind-icon">Json<wbr>Logger</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_s3_publish_loggers.textlogger.html" class="tsd-kind-icon">Text<wbr>Logger</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter"><a href="../interfaces/_s3_publish_loggers.logger.html" class="tsd-kind-icon">Logger</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Constructor Options Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggeroptions" class="tsd-kind-icon">Logger<wbr>Options</a></li>
+							</ul>
+							<h3>Message Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#logmessage" class="tsd-kind-icon">Log<wbr>Message</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messageerror" class="tsd-kind-icon">Message<wbr>Error</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messageinitresult" class="tsd-kind-icon">Message<wbr>Init<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagelsbegin" class="tsd-kind-icon">Message<wbr>LsBegin</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagelsresult" class="tsd-kind-icon">Message<wbr>LsResult</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagesyncoperationbegin" class="tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Begin</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagesyncoperationresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagesyncplanbegin" class="tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Begin</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagesyncplanresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messagesyncresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#messageversion" class="tsd-kind-icon">Message<wbr>Version</a></li>
+							</ul>
+							<h3>Other Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#fileignored" class="tsd-kind-icon">File<wbr>Ignored</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#fileskipped" class="tsd-kind-icon">File<wbr>Skipped</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#filesource" class="tsd-kind-icon">File<wbr>Source</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#keysource" class="tsd-kind-icon">Key<wbr>Source</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#logmessagehandler" class="tsd-kind-icon">Log<wbr>Message<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggablefile" class="tsd-kind-icon">Loggable<wbr>File</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggablefilemap" class="tsd-kind-icon">Loggable<wbr>File<wbr>Map</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-kind-icon">Loggable<wbr>Operation</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-kind-icon">Loggable<wbr>Provider</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_loggers.html#loggeroptionswithmode" class="tsd-kind-icon">Logger<wbr>Options<wbr>With<wbr>Mode</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Other Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#comparefilekeys" class="tsd-kind-icon">compare<wbr>File<wbr>Keys</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatdate" class="tsd-kind-icon">format<wbr>Date</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatduration" class="tsd-kind-icon">format<wbr>Duration</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatdurationasstring" class="tsd-kind-icon">format<wbr>Duration<wbr>AsString</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatroot" class="tsd-kind-icon">format<wbr>Root</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatsize" class="tsd-kind-icon">format<wbr>Size</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#formatsizeasstring" class="tsd-kind-icon">format<wbr>Size<wbr>AsString</a></li>
+							</ul>
+							<h3>View Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#lsresulttext" class="tsd-kind-icon">ls<wbr>Result<wbr>Text</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_loggers.html#syncplanresulttext" class="tsd-kind-icon">sync<wbr>Plan<wbr>Result<wbr>Text</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructor Options Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggeroptions" class="tsd-anchor"></a>
+					<h3>Logger<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Logger<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>onLog<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_loggers.html#logmessagehandler" class="tsd-signature-type">LogMessageHandler</a><span class="tsd-signature-symbol">; </span>showErrorStack<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>showHashes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>showIgnored<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>showParams<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>showSkipped<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>stream<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writable</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/LoggerOptions.ts#L7">loggers/src/types/LoggerOptions.ts:7</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Log<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_loggers.html#logmessagehandler" class="tsd-signature-type">LogMessageHandler</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>If defined, this function is called for each log message</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Error<wbr>Stack<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Show Error stacktrace</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Hashes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Show File ETag property</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Ignored<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Show ignored files (both in origin and target)</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Show request parameters</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> show<wbr>Skipped<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Show skipped (unchanged/unexpected) files</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> stream<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Writable</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<dl class="tsd-comment-tags">
+										<dt>see</dt>
+										<dd><p><a href="https://nodejs.org/api/stream.html#stream_class_stream_writable" class="external">Writable</a></p>
+										</dd>
+										<dt>default</dt>
+										<dd><p>process.stdout</p>
+										</dd>
+										<dt>remarks</dt>
+										<dd><p>If null, nothing will be output</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Message Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="logmessage" class="tsd-anchor"></a>
+					<h3>Log<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">Log<wbr>Message<span class="tsd-signature-symbol">:</span> <a href="_s3_publish_loggers.html#messageinitresult" class="tsd-signature-type">MessageInitResult</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagelsbegin" class="tsd-signature-type">MessageLsBegin</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagelsresult" class="tsd-signature-type">MessageLsResult</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagesyncplanbegin" class="tsd-signature-type">MessageSyncPlanBegin</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagesyncplanresult" class="tsd-signature-type">MessageSyncPlanResult</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagesyncoperationbegin" class="tsd-signature-type">MessageSyncOperationBegin</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagesyncoperationresult" class="tsd-signature-type">MessageSyncOperationResult</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messagesyncresult" class="tsd-signature-type">MessageSyncResult</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messageversion" class="tsd-signature-type">MessageVersion</a><span class="tsd-signature-symbol"> | </span><a href="_s3_publish_loggers.html#messageerror" class="tsd-signature-type">MessageError</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L112">loggers/src/types/Logger.ts:112</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messageerror" class="tsd-anchor"></a>
+					<h3>Message<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L106">loggers/src/types/Logger.ts:106</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"error"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messageinitresult" class="tsd-anchor"></a>
+					<h3>Message<wbr>Init<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Init<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"init:result"</span><span class="tsd-signature-symbol">; </span>wrote<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L28">loggers/src/types/Logger.ts:28</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"init:result"</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> wrote<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Path to output file (undefined if output to stdout)</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagelsbegin" class="tsd-anchor"></a>
+					<h3>Message<wbr>LsBegin</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>LsBegin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>provider<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-signature-type">LoggableProvider</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ls:begin"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L38">loggers/src/types/Logger.ts:38</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>provider<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-signature-type">LoggableProvider</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ls:begin"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagelsresult" class="tsd-anchor"></a>
+					<h3>Message<wbr>LsResult</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>LsResult<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>files<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefilemap" class="tsd-signature-type">LoggableFileMap</a><span class="tsd-signature-symbol">; </span>ignored<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#fileignored" class="tsd-signature-type">FileIgnored</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>ignoredCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>provider<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-signature-type">LoggableProvider</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ls:result"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L44">loggers/src/types/Logger.ts:44</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Time elapsed during request (in ms)</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>files<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefilemap" class="tsd-signature-type">LoggableFileMap</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>ignored<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#fileignored" class="tsd-signature-type">FileIgnored</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>ignored<wbr>Count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>provider<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-signature-type">LoggableProvider</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ls:result"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagesyncoperationbegin" class="tsd-anchor"></a>
+					<h3>Message<wbr>Sync<wbr>Operation<wbr>Begin</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Begin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:operation:begin"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L73">loggers/src/types/Logger.ts:73</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:operation:begin"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagesyncoperationresult" class="tsd-anchor"></a>
+					<h3>Message<wbr>Sync<wbr>Operation<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:operation:result"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L79">loggers/src/types/Logger.ts:79</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Time elapsed during operation (in ms)</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:operation:result"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagesyncplanbegin" class="tsd-anchor"></a>
+					<h3>Message<wbr>Sync<wbr>Plan<wbr>Begin</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Begin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:plan:begin"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L58">loggers/src/types/Logger.ts:58</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:plan:begin"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagesyncplanresult" class="tsd-anchor"></a>
+					<h3>Message<wbr>Sync<wbr>Plan<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>ignored<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_s3_publish_loggers.html#fileignored" class="tsd-signature-type">FileIgnored</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>ignoredCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>operations<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>skipped<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#fileskipped" class="tsd-signature-type">FileSkipped</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>skippedCount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:plan:result"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L63">loggers/src/types/Logger.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>ignored<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_s3_publish_loggers.html#fileignored" class="tsd-signature-type">FileIgnored</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>ignored<wbr>Count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>operations<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableoperation" class="tsd-signature-type">LoggableOperation</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>skipped<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#fileskipped" class="tsd-signature-type">FileSkipped</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>skipped<wbr>Count<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:plan:result"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messagesyncresult" class="tsd-anchor"></a>
+					<h3>Message<wbr>Sync<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Sync<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:result"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L90">loggers/src/types/Logger.ts:90</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Time elapsed during all operations (in ms)</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"sync:result"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="messageversion" class="tsd-anchor"></a>
+					<h3>Message<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">Message<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>packageVersions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"version"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L100">loggers/src/types/Logger.ts:100</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>package<wbr>Versions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"version"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Other Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="fileignored" class="tsd-anchor"></a>
+					<h3>File<wbr>Ignored</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Ignored<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ignore"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L22">loggers/src/types/Logger.ts:22</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ignore"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="fileskipped" class="tsd-anchor"></a>
+					<h3>File<wbr>Skipped</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Skipped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a><span class="tsd-signature-symbol">; </span>targetFile<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"skip"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L15">loggers/src/types/Logger.ts:15</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>reason<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>File<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"skip"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="filesource" class="tsd-anchor"></a>
+					<h3>File<wbr>Source</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/compareFileKeys.ts#L5">loggers/src/util/compareFileKeys.ts:5</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="_s3_publish_loggers.html#comparefilekeys"><code>compareFileKeys</code></a></p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="keysource" class="tsd-anchor"></a>
+					<h3>Key<wbr>Source</h3>
+					<div class="tsd-signature tsd-kind-icon">Key<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>Key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/compareFileKeys.ts#L2">loggers/src/util/compareFileKeys.ts:2</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>see</dt>
+							<dd><p><a href="_s3_publish_loggers.html#comparekeys"><code>compareKeys</code></a></p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> Key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="logmessagehandler" class="tsd-anchor"></a>
+					<h3>Log<wbr>Message<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">Log<wbr>Message<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#logmessage" class="tsd-signature-type">LogMessage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/LoggerOptions.ts#L4">loggers/src/types/LoggerOptions.ts:4</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#logmessage" class="tsd-signature-type">LogMessage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>message: <a href="_s3_publish_loggers.html#logmessage" class="tsd-signature-type">LogMessage</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggablefile" class="tsd-anchor"></a>
+					<h3>Loggable<wbr>File</h3>
+					<div class="tsd-signature tsd-kind-icon">Loggable<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"SourceProvider"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>SourceProvider<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggableprovider" class="tsd-signature-type">LoggableProvider</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L5">loggers/src/types/Logger.ts:5</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggablefilemap" class="tsd-anchor"></a>
+					<h3>Loggable<wbr>File<wbr>Map</h3>
+					<div class="tsd-signature tsd-kind-icon">Loggable<wbr>File<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L9">loggers/src/types/Logger.ts:9</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggableoperation" class="tsd-anchor"></a>
+					<h3>Loggable<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">Loggable<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"file"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#loggablefile" class="tsd-signature-type">LoggableFile</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L11">loggers/src/types/Logger.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggableprovider" class="tsd-anchor"></a>
+					<h3>Loggable<wbr>Provider</h3>
+					<div class="tsd-signature tsd-kind-icon">Loggable<wbr>Provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"root"</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/Logger.ts#L3">loggers/src/types/Logger.ts:3</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="loggeroptionswithmode" class="tsd-anchor"></a>
+					<h3>Logger<wbr>Options<wbr>With<wbr>Mode</h3>
+					<div class="tsd-signature tsd-kind-icon">Logger<wbr>Options<wbr>With<wbr>Mode<span class="tsd-signature-symbol">:</span> <a href="_s3_publish_loggers.html#loggeroptions" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-symbol">{ </span>mode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"json"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"text"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/types/LoggerOptions.ts#L52">loggers/src/types/LoggerOptions.ts:52</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Other Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="comparefilekeys" class="tsd-anchor"></a>
+					<h3>compare<wbr>File<wbr>Keys</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">compare<wbr>File<wbr>Keys<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#filesource" class="tsd-signature-type">FileSource</a>, b<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#filesource" class="tsd-signature-type">FileSource</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/compareFileKeys.ts#L17">loggers/src/util/compareFileKeys.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compares two objects with <a href="_s3_publish_core.html#file"><code>File</code></a>-like properties by <code>Key</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>a: <a href="_s3_publish_loggers.html#filesource" class="tsd-signature-type">FileSource</a></h5>
+								</li>
+								<li>
+									<h5>b: <a href="_s3_publish_loggers.html#filesource" class="tsd-signature-type">FileSource</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="comparekeys" class="tsd-anchor"></a>
+					<h3>compare<wbr>Keys</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">compare<wbr>Keys<span class="tsd-signature-symbol">(</span>a<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a>, b<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/compareFileKeys.ts#L10">loggers/src/util/compareFileKeys.ts:10</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compares two <a href="_s3_publish_core.html#file"><code>File</code></a>-like objects by <code>Key</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>a: <a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a></h5>
+								</li>
+								<li>
+									<h5>b: <a href="_s3_publish_loggers.html#keysource" class="tsd-signature-type">KeySource</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatdate" class="tsd-anchor"></a>
+					<h3>format<wbr>Date</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Date<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatDate.ts#L11">loggers/src/util/formatDate.ts:11</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<ul>
+										<li>If <code>date</code> is falsy, returns undefined</li>
+										<li>If <code>process.env.PORCELAIN</code> is set, returns <code>date</code> represented in UTC formatted as ISO 8601</li>
+										<li>Otherwise, returns <code>date</code> represented in local time formatted using <code>process.env.DATE_FORMAT</code>
+										(which defaults to &quot;yyyy-mm-dd HH:MM:ss&quot;)</li>
+									</ul>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p><code>DATE_FORMAT</code> <a href="https://www.npmjs.com/package/dateformat#mask-options" class="external">mask options</a></p>
+									</dd>
+									<dt>remarks</dt>
+									<dd><p>This is a thin wrapper around <a href="https://www.npmjs.com/package/dateformat" class="external">dateformat</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> date: <span class="tsd-signature-type">Date</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatduration" class="tsd-anchor"></a>
+					<h3>format<wbr>Duration</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Duration<span class="tsd-signature-symbol">(</span>milliseconds<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatDuration.ts#L8">loggers/src/util/formatDuration.ts:8</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<ul>
+										<li>If <code>process.env.PORCELAIN</code> is set, returns <code>milliseconds</code> unchanged</li>
+										<li>Otherwise, returns a human readable string (ex. &quot;15d 11h 23m 20s&quot;)</li>
+									</ul>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>remarks</dt>
+									<dd><p>This is a thin wrapper around <a href="https://www.npmjs.com/package/pretty-ms" class="external">pretty-ms</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> milliseconds: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatdurationasstring" class="tsd-anchor"></a>
+					<h3>format<wbr>Duration<wbr>AsString</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Duration<wbr>AsString<span class="tsd-signature-symbol">(</span>milliseconds<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatDuration.ts#L16">loggers/src/util/formatDuration.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Same as <a href="_s3_publish_loggers.html#formatduration"><code>formatDuration</code></a> but result is always a string
+									(with &quot;ms&quot; suffix added if needed)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> milliseconds: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatroot" class="tsd-anchor"></a>
+					<h3>format<wbr>Root</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Root<span class="tsd-signature-symbol">(</span>root<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatRoot.ts#L4">loggers/src/util/formatRoot.ts:4</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns absolute root location</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>root: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatsize" class="tsd-anchor"></a>
+					<h3>format<wbr>Size</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Size<span class="tsd-signature-symbol">(</span>sizeInBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatSize.ts#L8">loggers/src/util/formatSize.ts:8</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<ul>
+										<li>If <code>process.env.PORCELAIN</code> is set, returns <code>sizeInBytes</code> unchanged</li>
+										<li>Otherwise, returns a human readable string (ex. &quot;42 KB&quot;)</li>
+									</ul>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>remarks</dt>
+									<dd><p>This is a thin wrapper around <a href="https://www.npmjs.com/package/filesize" class="external">filesize</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> sizeInBytes: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="formatsizeasstring" class="tsd-anchor"></a>
+					<h3>format<wbr>Size<wbr>AsString</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">format<wbr>Size<wbr>AsString<span class="tsd-signature-symbol">(</span>sizeInBytes<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/util/formatSize.ts#L16">loggers/src/util/formatSize.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Same as <a href="_s3_publish_loggers.html#formatsize"><code>formatSize</code></a> but result is always a string
+									(with &quot; B&quot; suffix added if needed)</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> sizeInBytes: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>View Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="lsresulttext" class="tsd-anchor"></a>
+					<h3>ls<wbr>Result<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">ls<wbr>Result<wbr>Text<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#messagelsresult" class="tsd-signature-type">MessageLsResult</a>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_loggers.html#loggeroptions" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"showHashes"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showIgnored"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/TextLogger/views/lsResultText.ts#L19">loggers/src/TextLogger/views/lsResultText.ts:19</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return a string representing a MessageLsResult object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <a href="_s3_publish_loggers.html#messagelsresult" class="tsd-signature-type">MessageLsResult</a></h5>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_loggers.html#loggeroptions" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"showHashes"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showIgnored"</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="syncplanresulttext" class="tsd-anchor"></a>
+					<h3>sync<wbr>Plan<wbr>Result<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">sync<wbr>Plan<wbr>Result<wbr>Text<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">: </span><a href="_s3_publish_loggers.html#messagesyncplanresult" class="tsd-signature-type">MessageSyncPlanResult</a>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_loggers.html#loggeroptions" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"showIgnored"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showParams"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showSkipped"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/loggers/src/TextLogger/views/syncPlanResultText.ts#L14">loggers/src/TextLogger/views/syncPlanResultText.ts:14</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return a string representing a MessageSyncPlanResult object</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>message: <a href="_s3_publish_loggers.html#messagesyncplanresult" class="tsd-signature-type">MessageSyncPlanResult</a></h5>
+								</li>
+								<li>
+									<h5>options: <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_loggers.html#loggeroptions" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"showIgnored"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showParams"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"showSkipped"</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_s3_publish_loggers.jsonlogger.html" class="tsd-kind-icon">Json<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_s3_publish_loggers.textlogger.html" class="tsd-kind-icon">Text<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="../interfaces/_s3_publish_loggers.logger.html" class="tsd-kind-icon">Logger</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#fileignored" class="tsd-kind-icon">File<wbr>Ignored</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#fileskipped" class="tsd-kind-icon">File<wbr>Skipped</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#filesource" class="tsd-kind-icon">File<wbr>Source</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#keysource" class="tsd-kind-icon">Key<wbr>Source</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#logmessage" class="tsd-kind-icon">Log<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#logmessagehandler" class="tsd-kind-icon">Log<wbr>Message<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggablefile" class="tsd-kind-icon">Loggable<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggablefilemap" class="tsd-kind-icon">Loggable<wbr>File<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggableoperation" class="tsd-kind-icon">Loggable<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggableprovider" class="tsd-kind-icon">Loggable<wbr>Provider</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggeroptions" class="tsd-kind-icon">Logger<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#loggeroptionswithmode" class="tsd-kind-icon">Logger<wbr>Options<wbr>With<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messageerror" class="tsd-kind-icon">Message<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messageinitresult" class="tsd-kind-icon">Message<wbr>Init<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagelsbegin" class="tsd-kind-icon">Message<wbr>LsBegin</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagelsresult" class="tsd-kind-icon">Message<wbr>LsResult</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagesyncoperationbegin" class="tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Begin</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagesyncoperationresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Operation<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagesyncplanbegin" class="tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Begin</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagesyncplanresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Plan<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messagesyncresult" class="tsd-kind-icon">Message<wbr>Sync<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#messageversion" class="tsd-kind-icon">Message<wbr>Version</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#comparefilekeys" class="tsd-kind-icon">compare<wbr>File<wbr>Keys</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#comparekeys" class="tsd-kind-icon">compare<wbr>Keys</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatdate" class="tsd-kind-icon">format<wbr>Date</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatduration" class="tsd-kind-icon">format<wbr>Duration</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatdurationasstring" class="tsd-kind-icon">format<wbr>Duration<wbr>AsString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatroot" class="tsd-kind-icon">format<wbr>Root</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatsize" class="tsd-kind-icon">format<wbr>Size</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#formatsizeasstring" class="tsd-kind-icon">format<wbr>Size<wbr>AsString</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#lsresulttext" class="tsd-kind-icon">ls<wbr>Result<wbr>Text</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_loggers.html#syncplanresulttext" class="tsd-kind-icon">sync<wbr>Plan<wbr>Result<wbr>Text</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

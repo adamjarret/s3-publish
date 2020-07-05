@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.settings.json",
+  "references": [
+    { "path": "../cli" },
+    { "path": "../core" },
+    { "path": "../loggers" },
+    { "path": "../provider-fs" },
+    { "path": "../provider-s3" }
+  ],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib"
+  }
+}

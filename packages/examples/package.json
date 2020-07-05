@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "s3-publish-examples",
+  "version": "1.0.0",
+  "description": "s3-publish examples",
+  "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
+  "license": "MIT",
+  "homepage": "https://adamjarret.github.io/s3-publish",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamjarret/s3-publish.git"
+  },
+  "dependencies": {
+    "s3-publish": "^2.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+.nyc_output/
+node_modules/
+lib/
+docs/
+docs-src/theme/**/*.md
+docs-src/theme/**/*.ts
+docs-src/theme/**/*.json
+docs-src/theme/**/*.js
+!docs-src/theme/src/default/helpers/*.js
+!docs-src/theme/src/default/util/*.js
+
+**/package-lock.json

@@ -1,0 +1,25 @@
+{
+  "name": "@s3-publish/core",
+  "version": "1.0.0",
+  "description": "Keep files in sync with programmable hooks",
+  "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
+  "license": "MIT",
+  "homepage": "https://adamjarret.github.io/s3-publish",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamjarret/s3-publish.git"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "ncu": "ncu",
+    "pak": "npm pack"
+  },
+  "dependencies": {
+    "p-limit": "^3.0.1"
+  },
+  "devDependencies": {}
+}

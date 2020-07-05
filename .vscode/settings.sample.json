@@ -1,0 +1,23 @@
+{
+  "javascript.suggestionActions.enabled": false,
+  "eslint.packageManager": "yarn",
+  "prettier.packageManager": "yarn",
+  "prettier.prettierPath": "node_modules/prettier",
+  "prettier.ignorePath": ".eslintignore",
+  "search.exclude": {
+    "**/.tscache": true,
+    "**/docs": true,
+    "**/docs-src/theme/bin": true,
+    "**/docs-src/theme/src/minimal": true,
+    "**/node_modules": true,
+    "**/packages/*/lib": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true
+  },
+  "files.exclude": {
+    "**/docs-src/theme/src/minimal": true,
+    "**/node_modules": false,
+    "**/packages/*/lib": false,
+    "**/packages/*/*.tsbuildinfo": true
+  }
+}

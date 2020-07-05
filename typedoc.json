@@ -1,0 +1,22 @@
+{
+  "name": "s3-publish",
+  "mode": "modules",
+  "out": "docs",
+  "theme": "./docs-src/theme/bin/default",
+  "lernaExclude": ["s3-publish-examples", "s3-publish"],
+  "exclude": [
+    "docs*/",
+    "**/index.ts",
+    "**/node_modules/*",
+    "**/packages/examples/*",
+    "**/packages/meta/*",
+    "**/__tests__/*",
+    "**/*.test.[jt]s"
+  ],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "excludeNotExported": true,
+  "stripInternal": true,
+  "readme": "index.md"
+}

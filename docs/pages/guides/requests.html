@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Customizing Requests | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../../assets/js/search.json" data-base="../..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../../index.html">Home</a>
+				</li>
+				<li>
+					<b>Guides</b>
+				</li>
+				<li>
+					<a href="requests.html">Customizing Requests</a>
+				</li>
+			</ul>
+			<h1><h1>Customizing Requests</h1></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section>
+				<section class=" tsd-panel tsd-typography">
+					<blockquote>
+						<p>When the root provider and the origin provider support the same protocol (both local or both S3),
+						<code>copyFile</code> operations will be performed instead of <code>putFile</code> operations (to facilitate direct S3 to S3 transfers).</p>
+					</blockquote>
+					<p>Both <a href="../../classes/_s3_publish_provider_fs.fsprovider.html"><code>FSProvider</code></a> and <a href="../../classes/_s3_publish_provider_s3.s3provider.html"><code>S3Provider</code></a> can be configured with a <code>delegate</code>
+					object that allows control over the parameters sent with various requests.</p>
+					<p>See <a href="../../interfaces/_s3_publish_provider_fs.fsproviderdelegate.html"><code>FSProviderDelegate</code></a> and <a href="../../interfaces/_s3_publish_provider_s3.s3providerdelegate.html"><code>S3ProviderDelegate</code></a> for supported parameters.</p>
+					<p>To provide options that are passed to the AWS S3 client constructor, define the <code>client</code> object in <a href="../../modules/_s3_publish_provider_s3.html#s3provideroptions"><code>S3ProviderOptions</code></a>.</p>
+				</section>
+				<h2 id="cachecontrol-example">CacheControl Example</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>The following example will set max age to 900 for HTML files and 777600000 for all other files
+					when uploaded to the S3 target.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// RegEx pattern that matches file Keys ending in .html</span>
+<span class="hljs-keyword">const</span> reHtml = <span class="hljs-regexp">/\.html$/</span>;
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>,
+    <span class="hljs-attr">delegate</span>: {
+      <span class="hljs-comment">// Provide a putFileParams implementation to modify the parameters that will be sent with the PUT request.</span>
+      <span class="hljs-comment">// The following implementation will set the CacheControl param to 900 for HTML files and 777600000 for all other files.</span>
+      <span class="hljs-attr">putFileParams</span>: <span class="hljs-function">(<span class="hljs-params">file, params</span>) =&gt;</span> {
+        params.CacheControl = file.Key.match(reHtml)
+          ? <span class="hljs-string">'max-age=900'</span>
+          : <span class="hljs-string">'max-age=777600000'</span>;
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(params);
+      }
+    }
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+				</section>
+				<h2 id="gzip-example">gzip Example</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>The following example will set the <code>ContentEncoding</code> header to &#39;gzip&#39; for files with the <code>.gz</code> extension.</p>
+					<p>The files will also be &quot;re-named&quot; to remove the <code>.gz</code> extension when uploaded to the S3 target.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// RegEx pattern that matches file Keys ending in .gz</span>
+<span class="hljs-keyword">const</span> reGzip = <span class="hljs-regexp">/\.gz$/</span>;
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>,
+    <span class="hljs-attr">delegate</span>: {
+      <span class="hljs-comment">// Provide a targetFileKey implementation to map origin files to differently named target files.</span>
+      <span class="hljs-comment">// This is used when comparing files and also has the effect of "re-naming" the file when it is uploaded.</span>
+      <span class="hljs-comment">// The following implementation will remove .gz file extension (if present)</span>
+      <span class="hljs-attr">targetFileKey</span>: <span class="hljs-function">(<span class="hljs-params">originFile</span>) =&gt;</span> <span class="hljs-built_in">Promise</span>.resolve(originFile.Key.replace(reGzip, <span class="hljs-string">''</span>)),
+
+      <span class="hljs-comment">// Provide a putFileParams implementation to modify the parameters that will be sent with the PUT request.</span>
+      <span class="hljs-comment">// The following implementation will set the ContentEncoding param if the origin file Key matches,</span>
+      <span class="hljs-comment">// otherwise the default params are returned unchanged.</span>
+      <span class="hljs-attr">putFileParams</span>: <span class="hljs-function">(<span class="hljs-params">originFile, params</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (reGzip.exec(originFile.Key)) {
+          params.ContentEncoding = <span class="hljs-string">'gzip'</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.resolve(params);
+      }
+    }
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+				</section>
+			</section>
+			<style type="text/css">
+footer {
+    display: none;
+}
+</style>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class="current pp-nav pp-page">
+						<a href="requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

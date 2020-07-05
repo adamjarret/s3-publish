@@ -1,0 +1,38 @@
+{
+  "groups": [
+    {
+      "title": "guides",
+      "pages": [
+        {
+          "title": "Getting Started",
+          "source": "./docs-src/pages/getting-started.md"
+        },
+        {
+          "title": "Ignoring Files",
+          "source": "./docs-src/pages/ignore.md"
+        },
+        {
+          "title": "Comparing Files",
+          "source": "./docs-src/pages/compare.md"
+        },
+        {
+          "title": "Customizing Requests",
+          "source": "./docs-src/pages/requests.md"
+        },
+        {
+          "title": "Advanced Usage",
+          "source": "./docs-src/pages/advanced.md"
+        }
+      ]
+    },
+    {
+      "title": "cli",
+      "pages": [
+        {
+          "title": "s3p Command",
+          "source": "./docs-src/pages/s3p.md"
+        }
+      ]
+    }
+  ]
+}

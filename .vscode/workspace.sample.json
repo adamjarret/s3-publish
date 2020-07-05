@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "files.associations": {
+      "*.sample.json": "jsonc"
+    },
+    "debug.node.autoAttach": "on"
+  }
+}

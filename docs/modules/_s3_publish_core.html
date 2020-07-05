@@ -1,0 +1,1001 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@s3-publish/core | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Home</a>
+				</li>
+				<li>
+					<b>API</b>
+				</li>
+				<li>
+					<a href="../globals.html">Modules</a>
+				</li>
+				<li>
+					<a href="_s3_publish_core.html">@s3-publish/core</a>
+				</li>
+			</ul>
+			<h1><span class="model-name">@s3-publish/core</span> <span class="model-kind">Module</span></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_s3_publish_core.syncplanner.html" class="tsd-kind-icon">Sync<wbr>Planner</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_s3_publish_core.planner.html" class="tsd-kind-icon">Planner</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-kind-icon">Provider</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Constructor Options Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#syncplanneroptions" class="tsd-kind-icon">Sync<wbr>Planner<wbr>Options</a></li>
+							</ul>
+							<h3>Other Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#file" class="tsd-kind-icon">File</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_s3_publish_core.html#filehandler" class="tsd-kind-icon">File<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#filemap" class="tsd-kind-icon">File<wbr>Map</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter"><a href="_s3_publish_core.html#filepairhandler" class="tsd-kind-icon">File<wbr>Pair<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#filepredicate" class="tsd-kind-icon">File<wbr>Predicate</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#job" class="tsd-kind-icon">Job</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#listfileshandler" class="tsd-kind-icon">List<wbr>Files<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#listfilesoptions" class="tsd-kind-icon">List<wbr>Files<wbr>Options</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#listfilesresult" class="tsd-kind-icon">List<wbr>Files<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#planoptions" class="tsd-kind-icon">Plan<wbr>Options</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#provideroperation" class="tsd-kind-icon">Provider<wbr>Operation</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#provideroperationresult" class="tsd-kind-icon">Provider<wbr>Operation<wbr>Result</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#reason-1" class="tsd-kind-icon">Reason</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#runoperationshandler" class="tsd-kind-icon">Run<wbr>Operations<wbr>Handler</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#runoperationsoptions" class="tsd-kind-icon">Run<wbr>Operations<wbr>Options</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_s3_publish_core.html#skipevent" class="tsd-kind-icon">Skip<wbr>Event</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_core.html#listfiles" class="tsd-kind-icon">list<wbr>Files</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_core.html#runoperations" class="tsd-kind-icon">run<wbr>Operations</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructor Options Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="syncplanneroptions" class="tsd-anchor"></a>
+					<h3>Sync<wbr>Planner<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Sync<wbr>Planner<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>addMissing<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>compare<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filepairhandler" class="tsd-signature-type">FilePairHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">; </span>deleteOrphans<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>limitCompares<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">; </span>limitRequests<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">; </span>origin<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol">; </span>target<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/planners/SyncPlanner.ts#L16">core/src/planners/SyncPlanner.ts:16</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> add<wbr>Missing<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Upload origin files that do not exist in target</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>true</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> compare<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filepairhandler" class="tsd-signature-type">FilePairHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<ul>
+											<li>If a function is provided, it should return a Promise that resolves to false if <code>originFile</code> has changed</li>
+											<li>If false is provided, all non-ignored files will be uploaded (assume all files have changed)</li>
+											<li>If undefined is provided, the default comparator will be used (<code>ETag</code> properties must be equal)</li>
+										</ul>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> delete<wbr>Orphans<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Delete target files that do not exist in origin</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> limit<wbr>Compares<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The number of analyze jobs to execute in parallel</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>1</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> limit<wbr>Requests<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The number of list requests to execute in parallel</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>1</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>origin<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The object that provides access to the source Files</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>target<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The object that provides access to the destination Files
+										and creates operations to PUT/COPY/DELETE source files</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Other Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="file" class="tsd-anchor"></a>
+					<h3>File</h3>
+					<div class="tsd-signature tsd-kind-icon">File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>ETag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>Key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>LastModified<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">; </span>Size<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>SourceProvider<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L3">core/src/types/CoreTypes.ts:3</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> ETag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The entity tag is an MD5 hash of the object</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>remarks</dt>
+										<dd><p>ETag reflects only changes to the contents of an S3 object, not its metadata</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The path to the File relative to the SourceProvider root</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> Last<wbr>Modified<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Date</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The date the File was Last Modified</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> Size<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>The File size in bytes</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Source<wbr>Provider<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="filehandler" class="tsd-anchor"></a>
+					<h3>File<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Handler&lt;R&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">R</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L33">core/src/types/CoreTypes.ts:33</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>R</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>file: <a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="filemap" class="tsd-anchor"></a>
+					<h3>File<wbr>Map</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L31">core/src/types/CoreTypes.ts:31</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="filepairhandler" class="tsd-anchor"></a>
+					<h3>File<wbr>Pair<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Pair<wbr>Handler&lt;R&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>originFile<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a>, targetFile<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">R</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L35">core/src/types/CoreTypes.ts:35</a></li>
+						</ul>
+					</aside>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>R</h4>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>originFile<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a>, targetFile<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>originFile: <a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+											</li>
+											<li>
+												<h5>targetFile: <a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="filepredicate" class="tsd-anchor"></a>
+					<h3>File<wbr>Predicate</h3>
+					<div class="tsd-signature tsd-kind-icon">File<wbr>Predicate<span class="tsd-signature-symbol">:</span> <a href="_s3_publish_core.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L37">core/src/types/CoreTypes.ts:37</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="job" class="tsd-anchor"></a>
+					<h3>Job</h3>
+					<div class="tsd-signature tsd-kind-icon">Job<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L41">core/src/types/CoreTypes.ts:41</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="listfileshandler" class="tsd-anchor"></a>
+					<h3>List<wbr>Files<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">List<wbr>Files<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>provider<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a>, result<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#listfilesresult" class="tsd-signature-type">ListFilesResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/listFiles.ts#L5">core/src/util/listFiles.ts:5</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>provider<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a>, result<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#listfilesresult" class="tsd-signature-type">ListFilesResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>provider: <a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> result: <a href="_s3_publish_core.html#listfilesresult" class="tsd-signature-type">ListFilesResult</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="listfilesoptions" class="tsd-anchor"></a>
+					<h3>List<wbr>Files<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">List<wbr>Files<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>calculateETag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">; </span>limitRequests<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">; </span>onIgnore<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">; </span>onProgress<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#listfileshandler" class="tsd-signature-type">ListFilesHandler</a><span class="tsd-signature-symbol">; </span>providers<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/listFiles.ts#L16">core/src/util/listFiles.ts:16</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> calculateETag<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>If true, calculate ETag (md5 hash) for files (if not already defined)</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>false</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> limit<wbr>Requests<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Max parallel file list requests</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>1</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Ignore<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filehandler" class="tsd-signature-type">FileHandler</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Called for each ignored file</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Progress<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#listfileshandler" class="tsd-signature-type">ListFilesHandler</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Called twice for each provider (before start of list request and after list request finishes)</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>providers<span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.provider.html" class="tsd-signature-type">Provider</a><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>List files in these providers</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="listfilesresult" class="tsd-anchor"></a>
+					<h3>List<wbr>Files<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">List<wbr>Files<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>files<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#filemap" class="tsd-signature-type">FileMap</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/listFiles.ts#L7">core/src/util/listFiles.ts:7</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Run time of the request in milliseconds</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>files<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#filemap" class="tsd-signature-type">FileMap</a></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="planoptions" class="tsd-anchor"></a>
+					<h3>Plan<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Plan<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>onIgnore<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filehandler" class="tsd-signature-type">FileHandler</a><span class="tsd-signature-symbol">; </span>onSkip<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#skipevent" class="tsd-signature-type">SkipEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L138">core/src/types/CoreTypes.ts:138</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Ignore<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#filehandler" class="tsd-signature-type">FileHandler</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Called for each ignored <code>File</code></p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Skip<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#skipevent" class="tsd-signature-type">SkipEvent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Called for each skipped <code>File</code></p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="provideroperation" class="tsd-anchor"></a>
+					<h3>Provider<wbr>Operation</h3>
+					<div class="tsd-signature tsd-kind-icon">Provider<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">; </span>job<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#job" class="tsd-signature-type">Job</a><span class="tsd-signature-symbol">; </span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"PUT"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"COPY"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"DELETE"</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L50">core/src/types/CoreTypes.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>File object relevant to operation</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>job<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#job" class="tsd-signature-type">Job</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Function that will be invoked when this operation is performed</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Request parameters</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> reason<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Reason for put/copy operation (undefined for delete)</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"PUT"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"COPY"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"DELETE"</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="provideroperationresult" class="tsd-anchor"></a>
+					<h3>Provider<wbr>Operation<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Provider<wbr>Operation<wbr>Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L43">core/src/types/CoreTypes.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Run time of the operation in milliseconds</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="reason-1" class="tsd-anchor"></a>
+					<h3>Reason</h3>
+					<div class="tsd-signature tsd-kind-icon">Reason<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"ADD"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"CHANGE"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L39">core/src/types/CoreTypes.ts:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="runoperationshandler" class="tsd-anchor"></a>
+					<h3>Run<wbr>Operations<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">Run<wbr>Operations<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a>, result<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#provideroperationresult" class="tsd-signature-type">ProviderOperationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/runOperations.ts#L5">core/src/util/runOperations.ts:5</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>operation<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a>, result<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#provideroperationresult" class="tsd-signature-type">ProviderOperationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>operation: <a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> result: <a href="_s3_publish_core.html#provideroperationresult" class="tsd-signature-type">ProviderOperationResult</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="runoperationsoptions" class="tsd-anchor"></a>
+					<h3>Run<wbr>Operations<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Run<wbr>Operations<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>onProgress<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#runoperationshandler" class="tsd-signature-type">RunOperationsHandler</a><span class="tsd-signature-symbol">; </span>operations<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>parallel<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/runOperations.ts#L10">core/src/util/runOperations.ts:10</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> on<wbr>Progress<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#runoperationshandler" class="tsd-signature-type">RunOperationsHandler</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Called twice for each operation (before start and after end)</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>undefined</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>operations<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#provideroperation" class="tsd-signature-type">ProviderOperation</a><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Operations to run</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> parallel<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Max parallel operations</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>default</dt>
+										<dd><p>1</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="skipevent" class="tsd-anchor"></a>
+					<h3>Skip<wbr>Event</h3>
+					<div class="tsd-signature tsd-kind-icon">Skip<wbr>Event<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol">; </span>reason<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a><span class="tsd-signature-symbol">; </span>targetFile<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/types/CoreTypes.ts#L131">core/src/types/CoreTypes.ts:131</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>reason<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#reason-1" class="tsd-signature-type">Reason</a></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>File<span class="tsd-signature-symbol">?: </span><a href="_s3_publish_core.html#file" class="tsd-signature-type">File</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Undefined if reason is ADD</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="listfiles" class="tsd-anchor"></a>
+					<h3>list<wbr>Files</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">list<wbr>Files<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#listfilesoptions" class="tsd-signature-type">ListFilesOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#listfilesresult" class="tsd-signature-type">ListFilesResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/listFiles.ts#L50">core/src/util/listFiles.ts:50</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>List files in providers with start/end progress reporting</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="_s3_publish_core.html#listfilesoptions" class="tsd-signature-type">ListFilesOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#listfilesresult" class="tsd-signature-type">ListFilesResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="runoperations" class="tsd-anchor"></a>
+					<h3>run<wbr>Operations</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">run<wbr>Operations<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#runoperationsoptions" class="tsd-signature-type">RunOperationsOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#provideroperationresult" class="tsd-signature-type">ProviderOperationResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/core/src/util/runOperations.ts#L32">core/src/util/runOperations.ts:32</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Execute provided operations with start/end progress reporting</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="_s3_publish_core.html#runoperationsoptions" class="tsd-signature-type">RunOperationsOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_s3_publish_core.html#provideroperationresult" class="tsd-signature-type">ProviderOperationResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/guides/advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../pages/cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-module">
+						<a href="../classes/_s3_publish_core.syncplanner.html" class="tsd-kind-icon">Sync<wbr>Planner</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_s3_publish_core.planner.html" class="tsd-kind-icon">Planner</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_s3_publish_core.provider.html" class="tsd-kind-icon">Provider</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#file" class="tsd-kind-icon">File</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_s3_publish_core.html#filehandler" class="tsd-kind-icon">File<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#filemap" class="tsd-kind-icon">File<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="_s3_publish_core.html#filepairhandler" class="tsd-kind-icon">File<wbr>Pair<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#filepredicate" class="tsd-kind-icon">File<wbr>Predicate</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#job" class="tsd-kind-icon">Job</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#listfileshandler" class="tsd-kind-icon">List<wbr>Files<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#listfilesoptions" class="tsd-kind-icon">List<wbr>Files<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#listfilesresult" class="tsd-kind-icon">List<wbr>Files<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#planoptions" class="tsd-kind-icon">Plan<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#provideroperation" class="tsd-kind-icon">Provider<wbr>Operation</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#provideroperationresult" class="tsd-kind-icon">Provider<wbr>Operation<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#reason-1" class="tsd-kind-icon">Reason</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#runoperationshandler" class="tsd-kind-icon">Run<wbr>Operations<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#runoperationsoptions" class="tsd-kind-icon">Run<wbr>Operations<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#skipevent" class="tsd-kind-icon">Skip<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#syncplanneroptions" class="tsd-kind-icon">Sync<wbr>Planner<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#listfiles" class="tsd-kind-icon">list<wbr>Files</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_core.html#runoperations" class="tsd-kind-icon">run<wbr>Operations</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

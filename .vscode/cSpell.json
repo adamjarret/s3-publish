@@ -1,0 +1,61 @@
+// cSpell Settings
+{
+  // Version of the setting file.  Always 0.1
+  "version": "0.1",
+  // Current active spelling language
+  "language": "en",
+  // List of words to always consider correct
+  "words": [
+    "Jarret",
+    "adamjarret",
+    "eslintignore",
+    "gitignore",
+    "sourcemap",
+    "downlevel",
+    "tslib",
+    "Interop",
+    "typechecking",
+    "ESNEXT",
+    "hasha",
+    "tsbuildinfo",
+    "prettierrc",
+    "streetsidesoftware",
+    "dbaeumer",
+    "esbenp",
+    "filesize",
+    "promisify",
+    "docblock",
+    "Loggable",
+    "typedoc",
+    "linkcode",
+    "cdefhjpvxy",
+    "cdefhjpvxn",
+    "tscache",
+    "configfile",
+    "terminalizer",
+    "Lucida",
+    "Monospace",
+    "COPYFILE",
+    "YIDAY",
+    "Jcob"
+  ],
+  // List of words to always consider incorrect
+  //  (useful for offensive words and common spelling errors)
+  "flagWords": [],
+  // List of paths/files to ignore
+  "ignorePaths": [
+    ".git",
+    ".nyc_output",
+    "node_modules",
+    "lib",
+    "docs",
+    "docs-src/theme/**",
+    "!docs-src/theme/src/default/helpers/*",
+    "!docs-src/theme/src/default/util/*",
+    "packages/**/fixtures/*",
+    "*.tgz",
+    "*.tsbuildinfo",
+    "yarn.lock",
+    "yarn-error.log"
+  ]
+}

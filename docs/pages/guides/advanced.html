@@ -1,0 +1,323 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Advanced Usage | s3-publish</title>
+	<meta name="description" content="Documentation for s3-publish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../../assets/js/search.json" data-base="../..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../../index.html" class="title">s3-publish</a>
+					<a href="https://npmjs.com/package/s3-publish" class="title badge last">
+						<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+					</a>
+					<a href="https://github.com/adamjarret/s3-publish" class="title badge">
+						<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+					</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-title-spacer"></div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../../index.html">Home</a>
+				</li>
+				<li>
+					<b>Guides</b>
+				</li>
+				<li>
+					<a href="advanced.html">Advanced Usage</a>
+				</li>
+			</ul>
+			<h1><h1>Advanced Usage</h1></h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section>
+				<h2 id="index">Index</h2>
+				<section class=" tsd-panel tsd-typography">
+					<ul>
+						<li><a href="#type-checking-config-files">Type Checking Config Files</a></li>
+						<li><a href="#custom-logger">Custom Logger</a></li>
+						<li><a href="#custom-providers">Custom Providers</a></li>
+						<li><a href="#custom-bridges">Custom Bridges</a></li>
+					</ul>
+				</section>
+				<h2 id="type-checking-config-files">Type Checking Config Files</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>A <a href="../../modules/_s3_publish_cli.html#checkconfig"><code>checkConfig</code></a> function is provided to enable type checking <strong>.s3p.config.js</strong> files.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// @ts-check</span>
+<span class="hljs-keyword">const</span> { checkConfig } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/cli'</span>);
+
+<span class="hljs-built_in">module</span>.exports = checkConfig({
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+});</code></pre>
+					<p>Note: This is only useful when <code>@s3-publish/cli</code> is installed (not <code>s3-publish</code>).
+						You must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>
+					to gain access to the exported types.</p>
+				</section>
+				<h2 id="custom-logger">Custom Logger</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>A <a href="../../interfaces/_s3_publish_cli.clidelegate.html"><code>createLogger</code></a> function can be defined in <strong>.s3p.config.js</strong> to control how log messages are handled.</p>
+					<p>The function accepts a <a href="../../modules/_s3_publish_loggers.html#loggeroptionswithmode"><code>LoggerOptionsWithMode</code></a> parameter and should return an object that implements the <a href="../../interfaces/_s3_publish_loggers.logger.html"><code>Logger</code></a> interface.</p>
+					<p>For reference logger implementations, see <a href="../../classes/_s3_publish_loggers.jsonlogger.html"><code>JsonLogger</code></a> and <a href="../../classes/_s3_publish_loggers.textlogger.html"><code>TextLogger</code></a>.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// Optionally import the default implementation for fallback</span>
+<span class="hljs-keyword">const</span> { createLogger } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'s3-publish'</span>);
+<span class="hljs-comment">// or const { createLogger } = require('@s3-publish/cli');</span>
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">delegate</span>: {
+    <span class="hljs-attr">createLogger</span>: <span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> {
+      <span class="hljs-comment">// return an object that implements the Logger interface</span>
+
+      <span class="hljs-comment">// optionally fallback to the default implementation</span>
+      <span class="hljs-keyword">return</span> createLogger(options);
+    }
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+					<p>The default implementation of <code>createLogger</code> behaves as follows:</p>
+					<pre><code class="language-js"><span class="hljs-keyword">const</span> { JsonLogger, TextLogger } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/loggers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createLogger</span>(<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">const</span> { mode, ...opts } = options;
+
+  <span class="hljs-keyword">if</span> (mode === <span class="hljs-string">'json'</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JsonLogger(opts);
+  }
+
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TextLogger(opts);
+}</code></pre>
+					<p>Note: <code>JsonLogger</code> and <code>TextLogger</code> are not exported by the <code>s3-publish</code> meta package. To use them directly, you must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>.</p>
+				</section>
+				<h2 id="custom-providers">Custom Providers</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>A <a href="../../interfaces/_s3_publish_cli.clidelegate.html"><code>createProvider</code></a> function can be defined in <strong>.s3p.config.js</strong> to control how provider instances are created
+					from the configured options.</p>
+					<p>The function accepts a <a href="../../modules/_s3_publish_cli.html#provideroptions"><code>ProviderOptions</code></a> parameter and should return an object that implements the <a href="../../interfaces/_s3_publish_core.provider.html"><code>Provider</code></a> interface.</p>
+					<p>For reference provider implementations, see <a href="../../classes/_s3_publish_provider_fs.fsprovider.html"><code>FSProvider</code></a> and <a href="../../classes/_s3_publish_provider_s3.s3provider.html"><code>S3Provider</code></a>.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// Optionally import the default implementation for fallback</span>
+<span class="hljs-keyword">const</span> { createProvider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'s3-publish'</span>);
+<span class="hljs-comment">// or const { createProvider } = require('@s3-publish/cli');</span>
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">delegate</span>: {
+    <span class="hljs-attr">createProvider</span>: <span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> {
+      <span class="hljs-comment">// return an object that implements the Provider interface</span>
+
+      <span class="hljs-comment">// optionally fallback to the default implementation</span>
+      <span class="hljs-keyword">return</span> createProvider(options);
+    }
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+					<p>The default implementation of <code>createProvider</code> behaves as follows:</p>
+					<pre><code class="language-js"><span class="hljs-keyword">const</span> { FSProvider } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/provider-fs'</span>);
+<span class="hljs-keyword">const</span> { S3Provider, parseS3Root } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/provider-s3'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createProvider</span>(<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">if</span> (parseS3Root(options.root)) {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> S3Provider(options);
+  }
+
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> FSProvider(options);
+}</code></pre>
+					<p>Note: <code>FSProvider</code> and <code>S3Provider</code> are not exported by the <code>s3-publish</code> meta package. To use them directly, you must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>.</p>
+				</section>
+				<h2 id="custom-bridges">Custom Bridges</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>A <code>bridge</code> object can be defined as a provider option in <strong>.s3p.config.js</strong> to control fundamental interactions with the underlying API.</p>
+					<p>Both <a href="../../modules/_s3_publish_provider_fs.html#fsprovideroptions"><code>FSProviderOptions</code></a> and <a href="../../modules/_s3_publish_provider_s3.html#s3provideroptions"><code>S3ProviderOptions</code></a> support custom bridges.</p>
+					<blockquote>
+						<p>This option is primarily used for testing and is not typically needed by end users.</p>
+						<ul>
+							<li>The recommended way to customize request parameters is to use the <code>delegate</code> option.</li>
+							<li><code>S3ProviderOptions</code> also supports a <code>client</code> option that can be used to configure the AWS S3 client.</li>
+						</ul>
+					</blockquote>
+					<pre><code class="language-js"><span class="hljs-comment">// Optionally import the default implementation to subclass</span>
+<span class="hljs-keyword">const</span> { FSBridge } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/provider-fs'</span>);
+<span class="hljs-keyword">const</span> { Readable } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'stream'</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FSBridgeCustom</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FSBridge</span> </span>{
+  getObjectReadStream(params) {
+    <span class="hljs-comment">// Return the file path as the file content</span>
+    <span class="hljs-keyword">return</span> Readable.from([params.filePath]);
+  }
+}
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+    <span class="hljs-attr">bridge</span>: <span class="hljs-keyword">new</span> FSBridgeCustom()
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+					<p>Note: <code>FSBridge</code> and <code>S3Bridge</code> are not exported by the <code>s3-publish</code> meta package. To use them directly, you must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>.</p>
+				</section>
+			</section>
+			<style type="text/css">
+footer {
+    display: none;
+}
+</style>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<div class="close-button-container">
+				<button class="close-button close-menu">
+					<svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="close-menu">
+						<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" class="close-menu"></path>
+					</svg>
+				</button>
+			</div>
+			<nav class="tsd-navigation primary">
+				<a class="badge" href="https://github.com/adamjarret/s3-publish">
+					<img src="https://badgen.net/badge/source/GitHub/blue" alt="Git Repository" />
+				</a>
+				<a class="badge" href="https://npmjs.com/package/s3-publish">
+					<img src="https://badgen.net/npm/v/s3-publish" alt="Package Version" />
+				</a>
+				<ul>
+					<li class="label pp-nav pp-group">
+						<span>Guides</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="getting-started.html">Getting <wbr>Started</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="ignore.html">Ignoring <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="compare.html">Comparing <wbr>Files</a>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="requests.html">Customizing <wbr>Requests</a>
+					</li>
+					<li class="current pp-nav pp-page">
+						<a href="advanced.html">Advanced <wbr>Usage</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>CLI</span>
+					</li>
+					<li class=" pp-nav pp-page">
+						<a href="../cli/s3p.html">s3p <wbr>Command</a>
+					</li>
+					<li class="label pp-nav pp-group">
+						<span>API</span>
+					</li>
+					<li class="globals  ">
+						<a href="../../globals.html"><em>Modules</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_cli.html">@s3-<wbr>publish/cli</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_core.html">@s3-<wbr>publish/core</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_loggers.html">@s3-<wbr>publish/loggers</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_fs.html">@s3-<wbr>publish/provider-<wbr>fs</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../../modules/_s3_publish_provider_s3.html">@s3-<wbr>publish/provider-<wbr>s3</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

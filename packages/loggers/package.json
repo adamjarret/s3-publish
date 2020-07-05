@@ -1,0 +1,35 @@
+{
+  "name": "@s3-publish/loggers",
+  "version": "1.0.0",
+  "description": "Logger utilities for s3-publish",
+  "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
+  "license": "MIT",
+  "homepage": "https://adamjarret.github.io/s3-publish",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamjarret/s3-publish.git"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "ncu": "ncu",
+    "pak": "npm pack"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "dateformat": "^3.0.3",
+    "filesize": "^6.1.0",
+    "pretty-ms": "^7.0.0",
+    "twisters": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/dateformat": "^3.0.1",
+    "@s3-publish/core": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@s3-publish/core": "^1.0.0"
+  }
+}
