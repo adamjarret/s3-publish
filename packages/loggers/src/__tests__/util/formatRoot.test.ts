@@ -1,6 +1,8 @@
+import path from 'path';
 import { formatRoot } from '../../util/formatRoot';
 
 const cwd = process.cwd();
+const parent = path.resolve(cwd, '..');
 
 describe('formatRoot', () => {
   test('dot', () => {
@@ -11,6 +13,11 @@ describe('formatRoot', () => {
   test('relative', () => {
     const result = formatRoot('./public');
     expect(result).toBe(`${cwd}/public`);
+  });
+
+  test('relative up', () => {
+    const result = formatRoot('../public');
+    expect(result).toBe(`${parent}/public`);
   });
 
   test('absolute', () => {
