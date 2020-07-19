@@ -1,6 +1,6 @@
 {
   "name": "@s3-publish/provider-s3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "S3 provider for s3-publish",
   "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "pak": "npm pack"
   },
   "dependencies": {
-    "aws-sdk": "^2.709.0",
+    "aws-sdk": "^2.715.0",
     "mime": "^2.4.6"
   },
   "devDependencies": {
