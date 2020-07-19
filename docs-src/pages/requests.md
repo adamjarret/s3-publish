@@ -1,4 +1,4 @@
-> When the root provider and the origin provider support the same protocol (both local or both S3),
+> When the origin provider and the target provider support the same protocol (both local or both S3),
 > `copyFile` operations will be performed instead of `putFile` operations (to facilitate direct S3 to S3 transfers).
 
 Both {@linkcode FSProvider} and {@linkcode S3Provider} can be configured with a `delegate`

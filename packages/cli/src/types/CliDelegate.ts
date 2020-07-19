@@ -1,5 +1,5 @@
 import { Logger, LoggerOptionsWithMode } from '@s3-publish/loggers';
-import { Provider } from '@s3-publish/core';
+import { Planner, Provider, SyncPlannerOptions } from '@s3-publish/core';
 import { ProviderOptions } from './ProviderOptions';
 
 export interface CliDelegate {
@@ -12,4 +12,9 @@ export interface CliDelegate {
    * Return custom `Logger` instance for the given options
    */
   createLogger?(options: LoggerOptionsWithMode): Logger;
+
+  /**
+   * Return custom `Planner` instance for the given options
+   */
+  createPlanner?(options: SyncPlannerOptions): Planner;
 }

@@ -310,6 +310,53 @@ describe('createCli', () => {
     done();
   });
 
+  test('createCli: sync no delegate', async (done) => {
+    const mockStdout = mockProcessStdout();
+    const onLog = jest.fn();
+    const [node, script] = process.argv;
+    const proj = path.resolve(fix, 'cwd-a');
+    process.argv = [node, script, 'sync', '-nC', proj];
+
+    await createCli({
+      templatePath,
+      configLoader: (filePath) => ({
+        ...configLoader(filePath),
+        onLog
+      })
+    });
+
+    expect(onLog).toHaveBeenCalled();
+
+    mockStdout.mockRestore();
+
+    done();
+  });
+
+  test('createCli: sync delegate.createPlanner', async (done) => {
+    const plan = jest.fn();
+    const planner = { plan };
+    const mockStdout = mockProcessStdout();
+    const [node, script] = process.argv;
+    const proj = path.resolve(fix, 'cwd-a');
+    process.argv = [node, script, 'sync', '-nC', proj];
+
+    await createCli({
+      templatePath,
+      configLoader: (filePath) => ({
+        ...configLoader(filePath),
+        delegate: {
+          createPlanner: () => planner
+        }
+      })
+    });
+
+    expect(plan).toHaveBeenCalledTimes(1);
+
+    mockStdout.mockRestore();
+
+    done();
+  });
+
   test('createCli: delegate.createLogger', async (done) => {
     const log = jest.fn();
     const logger = { log };
@@ -345,6 +392,61 @@ describe('createCli', () => {
     await createCli({ templatePath, configLoader });
 
     expect(mockStdout).toHaveBeenCalledTimes(0);
+
+    mockStdout.mockRestore();
+
+    done();
+  });
+
+  test('createCli: parseArgs', async (done) => {
+    const mockStdout = mockProcessStdout();
+    const root = path.resolve(fix, 'root-a');
+    const parseArgs = () => ({ _: ['ls'], origin: root });
+
+    let i = 0;
+    const onLog = jest.fn((message) => {
+      switch (i) {
+        case 0:
+          expect(message).toMatchObject({ type: 'ls:begin' });
+          break;
+        case 1:
+          expect(message).toMatchObject({ type: 'ls:result', ignoredCount: 0 });
+          expect(message.files.size).toBe(7);
+          break;
+      }
+      i++;
+    });
+
+    await createCli({
+      templatePath,
+      configLoader: (filePath) => ({
+        ...configLoader(filePath),
+        onLog
+      }),
+      parseArgs
+    });
+
+    expect(onLog).toHaveBeenCalledTimes(2); // begin/end for each provider
+
+    mockStdout.mockRestore();
+
+    done();
+  });
+
+  test('createCli: handleError', async (done) => {
+    const mockStdout = mockProcessStdout();
+    const handleError = jest.fn();
+    const [node, script] = process.argv;
+    const root = path.resolve(fix, 'root-a');
+    process.argv = [node, script, 'ls', '-o', path.resolve(root, 'dne')];
+
+    await createCli({ templatePath, configLoader, handleError });
+
+    expect(handleError).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: expect.stringMatching('not found')
+      })
+    );
 
     mockStdout.mockRestore();
 

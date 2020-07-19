@@ -118,6 +118,7 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#createconfigloader" class="tsd-kind-icon">create<wbr>Config<wbr>Loader</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#createignores" class="tsd-kind-icon">create<wbr>Ignores</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#createlogger" class="tsd-kind-icon">create<wbr>Logger</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#createplanner" class="tsd-kind-icon">create<wbr>Planner</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#createprovider" class="tsd-kind-icon">create<wbr>Provider</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_s3_publish_cli.html#loadignorepatterns" class="tsd-kind-icon">load<wbr>Ignore<wbr>Patterns</a></li>
 							</ul>
@@ -435,7 +436,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
 					<a name="createclioptions" class="tsd-anchor"></a>
 					<h3>Create<wbr>Cli<wbr>Options</h3>
-					<div class="tsd-signature tsd-kind-icon">Create<wbr>Cli<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>configLoader<span class="tsd-signature-symbol">: </span><a href="_s3_publish_cli.html#configloader" class="tsd-signature-type">ConfigLoader</a><span class="tsd-signature-symbol">; </span>templatePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<div class="tsd-signature tsd-kind-icon">Create<wbr>Cli<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>configLoader<span class="tsd-signature-symbol">: </span><a href="_s3_publish_cli.html#configloader" class="tsd-signature-type">ConfigLoader</a><span class="tsd-signature-symbol">; </span>handleError<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span>parseArgs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>argv<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_s3_publish_cli.args.html" class="tsd-signature-type">Args</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span>templatePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/cli/src/util/createCli.ts#L13">cli/src/util/createCli.ts:13</a></li>
@@ -455,6 +456,27 @@
 										<dd><p><a href="_s3_publish_cli.html#createconfigloader"><code>createConfigLoader</code></a></p>
 										</dd>
 									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> handle<wbr>Error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Handle errors</p>
+									</div>
+									<dl class="tsd-comment-tags">
+										<dt>remarks</dt>
+										<dd><p>If undefined and an error occurs, process will exit with code that is greater than 0</p>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> parse<wbr>Args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>argv<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_s3_publish_cli.args.html" class="tsd-signature-type">Args</a><span class="tsd-signature-symbol">)</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Function that returns a parsed Args object</p>
+									</div>
 								</div>
 							</li>
 							<li class="tsd-parameter">
@@ -710,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/cli/src/util/createCli.ts#L29">cli/src/util/createCli.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/cli/src/util/createCli.ts#L40">cli/src/util/createCli.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -823,6 +845,34 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_s3_publish_loggers.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="createplanner" class="tsd-anchor"></a>
+					<h3>create<wbr>Planner</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Planner<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="_s3_publish_core.html#syncplanneroptions" class="tsd-signature-type">SyncPlannerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_s3_publish_core.planner.html" class="tsd-signature-type">Planner</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/adamjarret/s3-publish/tree/master/packages/cli/src/util/createPlanner.ts#L7">cli/src/util/createPlanner.ts:7</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return new instance of <a href="../classes/_s3_publish_core.syncplanner.html"><code>SyncPlanner</code></a></p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="_s3_publish_core.html#syncplanneroptions" class="tsd-signature-type">SyncPlannerOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_s3_publish_core.planner.html" class="tsd-signature-type">Planner</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -1015,6 +1065,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_s3_publish_cli.html#createlogger" class="tsd-kind-icon">create<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_s3_publish_cli.html#createplanner" class="tsd-kind-icon">create<wbr>Planner</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_s3_publish_cli.html#createprovider" class="tsd-kind-icon">create<wbr>Provider</a>

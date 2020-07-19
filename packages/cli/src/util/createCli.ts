@@ -1,7 +1,7 @@
-import { SyncPlanner } from '@s3-publish/core';
-import { ConfigLoader, Options } from '../types';
+import { ConfigLoader, Options, Args } from '../types';
 import { help, init, ls, sync, version } from '../commands';
 import { createLogger } from './createLogger';
+import { createPlanner } from './createPlanner';
 import { parseArgs } from './parseArgs';
 import { ProviderFactory } from './ProviderFactory';
 
@@ -21,13 +21,24 @@ export type CreateCliOptions = {
    * Path to s3.config.js template files
    */
   templatePath: string;
+
+  /**
+   * Function that returns a parsed Args object
+   */
+  parseArgs?: (argv: string[]) => Args;
+
+  /**
+   * Handle errors
+   * @remarks If undefined and an error occurs, process will exit with code that is greater than 0
+   */
+  handleError?: (error: Error) => void;
 };
 
 /**
  * Execute CLI
  */
 export async function createCli(options: CreateCliOptions): Promise<void> {
-  const args = parseArgs(process.argv.slice(2));
+  const args = (options.parseArgs ?? parseArgs)(process.argv.slice(2));
   const { _, cwd, configPath } = args;
   const [commandName, ...roots] = _;
 
@@ -92,7 +103,7 @@ export async function createCli(options: CreateCliOptions): Promise<void> {
 
         await sync({
           logger,
-          planner: new SyncPlanner({
+          planner: (delegate?.createPlanner ?? createPlanner)({
             origin,
             target,
             // If a function, it should return a Promise that resolves to false if origin File has changed
@@ -132,6 +143,6 @@ export async function createCli(options: CreateCliOptions): Promise<void> {
     }
   } catch (error) {
     logger.log({ type: 'error', error });
-    process.exit(1);
+    options.handleError ? options.handleError(error) : process.exit(error.code || 1);
   }
 }

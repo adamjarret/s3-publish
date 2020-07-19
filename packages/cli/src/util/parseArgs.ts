@@ -39,6 +39,17 @@ const booleanKeys: string[] = [
   'showSkipped'
 ];
 
+const negativeAliasIndex: Record<string, true> = {
+  n: true
+};
+
+const aliasIndex = Object.keys(aliases).reduce<Record<string, string>>((agg, key) => {
+  aliases[key].forEach((alias) => {
+    agg[alias] = key;
+  });
+  return agg;
+}, {});
+
 const booleanKeyIndex: Record<string, true> = {};
 
 const booleanKeysAndAliases = booleanKeys.reduce<string[]>((agg, key) => {
@@ -50,20 +61,19 @@ const booleanKeysAndAliases = booleanKeys.reduce<string[]>((agg, key) => {
   return agg;
 }, []);
 
-const aliasIndex = Object.keys(aliases).reduce<Record<string, string>>((agg, key) => {
-  aliases[key].forEach((alias) => {
-    agg[alias] = key;
-  });
-  return agg;
-}, {});
-
-const negativeAliasIndex: Record<string, true> = {
-  n: true
-};
+/** @internal */
+export function isNegativeAlias(key: string | null): boolean {
+  return !!key && !!negativeAliasIndex[key];
+}
 
 /** @internal */
-export function isNegativeAlias(key: string): boolean {
-  return Boolean(negativeAliasIndex[key]);
+export function isBooleanArg(key: string): boolean {
+  return !!key && !!booleanKeyIndex[key];
+}
+
+/** @internal */
+export function isValidArg(key: string): boolean {
+  return !!key && key in aliases;
 }
 
 /** @internal */
@@ -82,26 +92,9 @@ export function parseArgs(argv: string[]): Args {
         }
       };
 
-      if (realKey && booleanKeyIndex[realKey]) {
-        if (arg.key && isNegativeAlias(arg.key)) {
-          setValue(false);
-        } else {
-          setValue(!!arg.value);
-        }
-        return;
-      }
-
       switch (realKey) {
-        case 'configPath':
-        case 'cwd':
-        case 'origin':
-        case 'originIgnorePath':
-        case 'target':
-        case 'targetIgnorePath':
-        case 'writePath':
-          if (arg.value !== true) {
-            setValue(arg.value);
-          }
+        case null:
+          setValue(arg.value);
           break;
 
         case 'limitCompares':
@@ -136,9 +129,18 @@ export function parseArgs(argv: string[]): Args {
           break;
         }
 
-        case null:
-          setValue(arg.value);
+        default: {
+          if (isBooleanArg(realKey)) {
+            if (isNegativeAlias(arg.key)) {
+              setValue(false);
+            } else {
+              setValue(!!arg.value);
+            }
+          } else if (isValidArg(realKey) && arg.value !== true) {
+            setValue(arg.value);
+          }
           break;
+        }
       }
     }
   });

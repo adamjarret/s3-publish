@@ -7,7 +7,7 @@
     "node": ">=v10.17"
   },
   "scripts": {
-    "all": "yarn clean && yarn fix && yarn build && yarn test && yarn bundle && yarn docs",
+    "all": "yarn clean && yarn fix && yarn build && yarn bundle && yarn test && yarn theme && yarn docs",
     "fix": "yarn pretty && yarn lint && yarn spell",
     "lint": "eslint --ext .ts --ext .js .",
     "pretty": "prettier './**/*.{ts,js,json,md}' --write --ignore-path .eslintignore",

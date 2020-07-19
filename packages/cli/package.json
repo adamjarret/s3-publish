@@ -1,6 +1,6 @@
 {
   "name": "@s3-publish/cli",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Keep files in sync with programmable hooks via CLI",
   "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
   "license": "MIT",

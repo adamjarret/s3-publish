@@ -71,6 +71,7 @@
 					<ul>
 						<li><a href="#type-checking-config-files">Type Checking Config Files</a></li>
 						<li><a href="#custom-logger">Custom Logger</a></li>
+						<li><a href="#custom-planner">Custom Planner</a></li>
 						<li><a href="#custom-providers">Custom Providers</a></li>
 						<li><a href="#custom-bridges">Custom Bridges</a></li>
 					</ul>
@@ -138,6 +139,44 @@
   <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> TextLogger(opts);
 }</code></pre>
 					<p>Note: <code>JsonLogger</code> and <code>TextLogger</code> are not exported by the <code>s3-publish</code> meta package. To use them directly, you must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>.</p>
+				</section>
+				<h2 id="custom-planner">Custom Planner</h2>
+				<section class=" tsd-panel tsd-typography">
+					<p>A <a href="../../interfaces/_s3_publish_cli.clidelegate.html"><code>createPlanner</code></a> function can be defined in <strong>.s3p.config.js</strong> to control how planner instances are created
+					from the configured options.</p>
+					<p>The function accepts a <a href="../../modules/_s3_publish_core.html#syncplanneroptions"><code>SyncPlannerOptions</code></a> parameter and should return an object that implements the <a href="../../interfaces/_s3_publish_core.planner.html"><code>Planner</code></a> interface.</p>
+					<p>For reference planner implementation, see <a href="../../classes/_s3_publish_core.syncplanner.html"><code>SyncPlanner</code></a>.</p>
+					<pre><code class="language-js"><span class="hljs-comment">// Optionally import the default implementation for fallback</span>
+<span class="hljs-keyword">const</span> { createPlanner } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'s3-publish'</span>);
+<span class="hljs-comment">// or const { createPlanner } = require('@s3-publish/cli');</span>
+
+<span class="hljs-built_in">module</span>.exports = {
+  <span class="hljs-attr">origin</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'.'</span>
+  },
+
+  <span class="hljs-attr">target</span>: {
+    <span class="hljs-attr">root</span>: <span class="hljs-string">'s3://my-bucket'</span>
+  },
+
+  <span class="hljs-attr">delegate</span>: {
+    <span class="hljs-attr">createPlanner</span>: <span class="hljs-function">(<span class="hljs-params">options</span>) =&gt;</span> {
+      <span class="hljs-comment">// return an object that implements the Planner interface</span>
+
+      <span class="hljs-comment">// optionally fallback to the default implementation</span>
+      <span class="hljs-keyword">return</span> createPlanner(options);
+    }
+  },
+
+  <span class="hljs-attr">schemaVersion</span>: <span class="hljs-number">2</span>
+};</code></pre>
+					<p>The default implementation of <code>createPlanner</code> behaves as follows:</p>
+					<pre><code class="language-js"><span class="hljs-keyword">const</span> { SyncPlanner } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@s3-publish/core'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPlanner</span>(<span class="hljs-params">options</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SyncPlanner(options);
+}</code></pre>
+					<p>Note: <code>SyncPlanner</code> is not exported by the <code>s3-publish</code> meta package. To use it directly, you must <a href="getting-started.html#individual-modules">install the bundled modules individually</a>.</p>
 				</section>
 				<h2 id="custom-providers">Custom Providers</h2>
 				<section class=" tsd-panel tsd-typography">

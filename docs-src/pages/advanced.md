@@ -2,6 +2,7 @@
 
 - [Type Checking Config Files](#type-checking-config-files)
 - [Custom Logger](#custom-logger)
+- [Custom Planner](#custom-planner)
 - [Custom Providers](#custom-providers)
 - [Custom Bridges](#custom-bridges)
 
@@ -82,6 +83,54 @@ function createLogger(options) {
 ```
 
 Note: `JsonLogger` and `TextLogger` are not exported by the `s3-publish` meta package. To use them directly, you must [install the bundled modules individually](getting-started.html#individual-modules).
+
+## Custom Planner
+
+A {@linkcode CliDelegate | createPlanner} function can be defined in **.s3p.config.js** to control how planner instances are created
+from the configured options.
+
+The function accepts a {@linkcode SyncPlannerOptions} parameter and should return an object that implements the {@linkcode Planner} interface.
+
+For reference planner implementation, see {@linkcode SyncPlanner}.
+
+```js
+// Optionally import the default implementation for fallback
+const { createPlanner } = require('s3-publish');
+// or const { createPlanner } = require('@s3-publish/cli');
+
+module.exports = {
+  origin: {
+    root: '.'
+  },
+
+  target: {
+    root: 's3://my-bucket'
+  },
+
+  delegate: {
+    createPlanner: (options) => {
+      // return an object that implements the Planner interface
+
+      // optionally fallback to the default implementation
+      return createPlanner(options);
+    }
+  },
+
+  schemaVersion: 2
+};
+```
+
+The default implementation of `createPlanner` behaves as follows:
+
+```js
+const { SyncPlanner } = require('@s3-publish/core');
+
+function createPlanner(options) {
+  return new SyncPlanner(options);
+}
+```
+
+Note: `SyncPlanner` is not exported by the `s3-publish` meta package. To use it directly, you must [install the bundled modules individually](getting-started.html#individual-modules).
 
 ## Custom Providers
 
