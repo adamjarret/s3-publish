@@ -1,6 +1,6 @@
 {
   "name": "@s3-publish/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Keep files in sync with programmable hooks",
   "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "pak": "npm pack"
   },
   "dependencies": {
-    "p-limit": "^3.0.1"
+    "p-limit": "^3.0.2"
   },
   "devDependencies": {}
 }
