@@ -2,7 +2,7 @@
 
 // If provider ignores (function) is defined, ignorePatterns (array of glob strings) has no effect
 // Note: Any ignore patterns passed as command line arguments and/or loaded from an ignores file
-// also have no effect by default if a custom ignored function is defined.
+// also have no effect by default if a custom ignores function is defined.
 
 // The provider delegate is an optional object of functions that override request parameters
 // Supported functions/params are determined by the provider (see FSProviderDelegate and S3ProviderDelegate)

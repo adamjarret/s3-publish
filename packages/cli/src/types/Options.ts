@@ -45,7 +45,6 @@ export interface Options {
 
   /**
    * Max parallel list/put/copy/delete operations
-   * @remarks Only relevant to ls command
    * @default 3
    */
   limitRequests?: number | false;
