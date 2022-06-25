@@ -30,7 +30,7 @@ function fakeCreateFile(SourceProvider: Provider) {
   });
 }
 
-test('S3Provider.listFiles', async (done) => {
+test('S3Provider.listFiles', async () => {
   const files: FileWithoutProvider[] = [
     {
       Key: 'Apple.txt',
@@ -46,11 +46,9 @@ test('S3Provider.listFiles', async (done) => {
   const expected = files.reduce(createFileMapReducer(provider), new Map());
 
   expect(await provider.listFiles()).toEqual(expected);
-
-  done();
 });
 
-test('S3Provider.listFiles: prefix', async (done) => {
+test('S3Provider.listFiles: prefix', async () => {
   const files = [
     {
       Key: 'foo/',
@@ -74,11 +72,9 @@ test('S3Provider.listFiles: prefix', async (done) => {
   expect(await provider.listFiles()).toEqual(
     new Map([['Apple.txt', createFile({ ...files[1], Key: 'Apple.txt' })]])
   );
-
-  done();
 });
 
-test('S3Provider.listFiles: onIgnore', async (done) => {
+test('S3Provider.listFiles: onIgnore', async () => {
   const onIgnore = jest.fn();
   const files = [
     {
@@ -106,11 +102,9 @@ test('S3Provider.listFiles: onIgnore', async (done) => {
   expect(onIgnore).toHaveBeenNthCalledWith(1, expectedIgnoredFiles[0]);
 
   expect(onIgnore).toHaveBeenNthCalledWith(2, expectedIgnoredFiles[1]);
-
-  done();
 });
 
-test('S3Provider.listFiles: missing Key', async (done) => {
+test('S3Provider.listFiles: missing Key', async () => {
   const files: FileWithoutProvider[] = [
     {
       Key: 'Apple.txt',
@@ -134,11 +128,9 @@ test('S3Provider.listFiles: missing Key', async (done) => {
   expect(await provider.listFiles()).toEqual(
     new Map([[files[0].Key, createFile(files[0])]])
   );
-
-  done();
 });
 
-test('S3Provider.listFiles: missing ETag', async (done) => {
+test('S3Provider.listFiles: missing ETag', async () => {
   const files = [
     {
       Key: 'Apple.txt',
@@ -163,11 +155,9 @@ test('S3Provider.listFiles: missing ETag', async (done) => {
       ]
     ])
   );
-
-  done();
 });
 
-test('S3Provider.listFiles: invalid S3 URL', async (done) => {
+test('S3Provider.listFiles: invalid S3 URL', async () => {
   const provider = new S3Provider({
     root: 's3p-test-a',
     bridge: new MockS3Bridge()
@@ -179,11 +169,9 @@ test('S3Provider.listFiles: invalid S3 URL', async (done) => {
   } catch (error) {
     expect(error.message).toBe('Invalid S3 URL');
   }
-
-  done();
 });
 
-test('S3Provider.listFiles: delegate', async (done) => {
+test('S3Provider.listFiles: delegate', async () => {
   const onWalkObjects = jest.fn();
   const files: FileWithoutProvider[] = [
     {
@@ -209,11 +197,9 @@ test('S3Provider.listFiles: delegate', async (done) => {
     Prefix: '',
     MaxKeys: 5
   });
-
-  done();
 });
 
-test('S3Provider.getFile', async (done) => {
+test('S3Provider.getFile', async () => {
   const onGetObject = jest.fn((params) => Readable.from([params.Key]));
   const provider = new S3Provider({
     root: 's3://s3p-test-a',
@@ -232,11 +218,9 @@ test('S3Provider.getFile', async (done) => {
     Bucket: 's3p-test-a',
     Key: 'Apple.txt'
   });
-
-  done();
 });
 
-test('S3Provider.getFile: delegate', async (done) => {
+test('S3Provider.getFile: delegate', async () => {
   const onGetObject = jest.fn(() => Readable.from(['hello']));
   const provider = new S3Provider({
     root: 's3://s3p-test-a',
@@ -259,11 +243,9 @@ test('S3Provider.getFile: delegate', async (done) => {
     Bucket: 's3p-test-c',
     Key: 'Apple.txt'
   });
-
-  done();
 });
 
-test('S3Provider.getFileETag', async (done) => {
+test('S3Provider.getFileETag', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test-a'
   });
@@ -275,11 +257,9 @@ test('S3Provider.getFileETag', async (done) => {
   };
 
   expect(await provider.getFileETag(file)).toBe(file.ETag);
-
-  done();
 });
 
-test('S3Provider.getFileETag: missing', async (done) => {
+test('S3Provider.getFileETag: missing', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test-a'
   });
@@ -295,11 +275,9 @@ test('S3Provider.getFileETag: missing', async (done) => {
   } catch (error) {
     expect(error.message).toMatch(/Missing ETag/);
   }
-
-  done();
 });
 
-test('S3Provider.getTargetFileKey', async (done) => {
+test('S3Provider.getTargetFileKey', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test-a',
     bridge: new MockS3Bridge()
@@ -310,11 +288,9 @@ test('S3Provider.getTargetFileKey', async (done) => {
   };
 
   expect(await provider.getTargetFileKey(file)).toBe(file.Key);
-
-  done();
 });
 
-test('S3Provider.getTargetFileKey: delegate', async (done) => {
+test('S3Provider.getTargetFileKey: delegate', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test-a',
     bridge: new MockS3Bridge(),
@@ -328,6 +304,4 @@ test('S3Provider.getTargetFileKey: delegate', async (done) => {
   };
 
   expect(await provider.getTargetFileKey(file)).toBe('Apple.txt.0');
-
-  done();
 });

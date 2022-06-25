@@ -68,7 +68,10 @@
 
     /* Advanced Options */
     /** Disallow inconsistently-cased references to the same file. */
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+
+    /** Use `any` for Error type (see https://www.typescriptlang.org/tsconfig#useUnknownInCatchVariables) */
+    "useUnknownInCatchVariables": false
   },
   "exclude": [
     ".*/",

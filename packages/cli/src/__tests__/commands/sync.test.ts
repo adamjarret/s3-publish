@@ -21,7 +21,7 @@ describe('sync', () => {
     rimraf.sync(tmp);
   });
 
-  test('sync: no logger', async (done) => {
+  test('sync: no logger', async () => {
     const mockStdout = mockProcessStdout();
     const origin = new MockProvider({ root: './public', files: [A, B, C] });
     const target = new MockProvider({ root: 's3://s3p-test', files: [A, B] });
@@ -32,11 +32,9 @@ describe('sync', () => {
     expect(mockStdout).toHaveBeenCalledTimes(0);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('sync: nothing to do', async (done) => {
+  test('sync: nothing to do', async () => {
     const log = jest.fn();
     const logger = { log };
     const files: FileWithoutProvider[] = [];
@@ -58,11 +56,9 @@ describe('sync', () => {
       skipped: [],
       skippedCount: 0
     });
-
-    done();
   });
 
-  test('sync: confirm', async (done) => {
+  test('sync: confirm', async () => {
     const mockStdout = mockProcessStdout();
     const stdin = mockStdin.stdin();
     const log = jest.fn();
@@ -118,11 +114,9 @@ describe('sync', () => {
 
     stdin.restore();
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('sync: cancel', async (done) => {
+  test('sync: cancel', async () => {
     const mockStdout = mockProcessStdout();
     const stdin = mockStdin.stdin();
     const log = jest.fn();
@@ -160,11 +154,9 @@ describe('sync', () => {
 
     stdin.restore();
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('sync: proceed=false', async (done) => {
+  test('sync: proceed=false', async () => {
     const mockStdout = mockProcessStdout();
     const log = jest.fn();
     const logger = { log };
@@ -196,11 +188,9 @@ describe('sync', () => {
     );
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('sync: ignore', async (done) => {
+  test('sync: ignore', async () => {
     const log = jest.fn();
     const logger = { log };
     const origin = new MockProvider({
@@ -248,11 +238,9 @@ describe('sync', () => {
         type: 'sync:result'
       })
     );
-
-    done();
   });
 
-  test('sync: ignore + trackIgnored', async (done) => {
+  test('sync: ignore + trackIgnored', async () => {
     const log = jest.fn();
     const logger = { log };
     const origin = new MockProvider({
@@ -317,11 +305,9 @@ describe('sync', () => {
         type: 'sync:result'
       })
     );
-
-    done();
   });
 
-  test('sync: skip', async (done) => {
+  test('sync: skip', async () => {
     const log = jest.fn();
     const logger = { log };
     const origin = new MockProvider({
@@ -368,11 +354,9 @@ describe('sync', () => {
         type: 'sync:result'
       })
     );
-
-    done();
   });
 
-  test('sync: skip + trackSkipped', async (done) => {
+  test('sync: skip + trackSkipped', async () => {
     let i = 1;
     const log = jest.fn((message) => {
       switch (i) {
@@ -437,8 +421,6 @@ describe('sync', () => {
     expect(log).toHaveBeenNthCalledWith(1, {
       type: 'sync:plan:begin'
     });
-
-    done();
   });
 
   // END describe

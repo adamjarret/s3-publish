@@ -26,7 +26,7 @@ module.exports = {
   insertPragma: false,
 
   // Put > on the last line instead of at a new line. (default: false)
-  jsxBracketSameLine: false,
+  bracketSameLine: false,
 
   // Use single quotes in JSX. (default: false)
   jsxSingleQuote: true,

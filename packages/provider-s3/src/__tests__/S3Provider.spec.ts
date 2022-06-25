@@ -1,17 +1,15 @@
 import { S3Provider } from '../S3Provider';
 
-test('S3Provider.listFiles', async (done) => {
+test('S3Provider.listFiles', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test/fixtures/root'
   });
   const files = await provider.listFiles();
 
   expect(files.size).toBe(7);
-
-  done();
 });
 
-test('S3Provider.listFiles: delegate', async (done) => {
+test('S3Provider.listFiles: delegate', async () => {
   const provider = new S3Provider({
     root: 's3://s3p-test-b',
     delegate: {
@@ -93,6 +91,4 @@ test('S3Provider.listFiles: delegate', async (done) => {
   files.forEach(handler);
 
   expect(handler).toHaveBeenCalledTimes(7);
-
-  done();
 });

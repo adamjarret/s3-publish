@@ -25,7 +25,7 @@ describe('FSProvider: read', () => {
     expect(provider.root).toBe(root);
   });
 
-  test('FSProvider.listFiles', async (done) => {
+  test('FSProvider.listFiles', async () => {
     const provider = new FSProvider({ root });
     const result = await provider.listFiles();
 
@@ -106,11 +106,9 @@ describe('FSProvider: read', () => {
       }
       i++;
     });
-
-    done();
   });
 
-  test('FSProvider.listFiles: ignores', async (done) => {
+  test('FSProvider.listFiles: ignores', async () => {
     const provider = new FSProvider({
       root,
       ignores: (file) => file.Key.endsWith('.css') || file.Key === 'ace.txt'
@@ -176,11 +174,9 @@ describe('FSProvider: read', () => {
       }
       i++;
     });
-
-    done();
   });
 
-  test('FSProvider.listFiles: ignores directory', async (done) => {
+  test('FSProvider.listFiles: ignores directory', async () => {
     const provider = new FSProvider({
       root,
       ignores: (file) => file.Key === 'docs'
@@ -216,11 +212,9 @@ describe('FSProvider: read', () => {
       }
       i++;
     });
-
-    done();
   });
 
-  test('FSProvider.listFiles: non-existent', async (done) => {
+  test('FSProvider.listFiles: non-existent', async () => {
     const provider = new FSProvider({ root: path.resolve(root, 'nope') });
 
     try {
@@ -229,11 +223,9 @@ describe('FSProvider: read', () => {
     } catch (error) {
       expect(error.message).toMatch(/not found/);
     }
-
-    done();
   });
 
-  test('FSProvider.listFiles: empty', async (done) => {
+  test('FSProvider.listFiles: empty', async () => {
     const provider = new FSProvider({ root: '' });
 
     try {
@@ -242,12 +234,10 @@ describe('FSProvider: read', () => {
     } catch (error) {
       expect(error.message).toMatch(/Missing root/);
     }
-
-    done();
   });
 
   // Non-delegate is covered by getFileETag test
-  test('FSProvider.getFile: delegate', async (done) => {
+  test('FSProvider.getFile: delegate', async () => {
     const getFileParams = jest.fn((file, params) =>
       Promise.resolve({ ...params, filePath: path.resolve(root, 'ace.txt') })
     );
@@ -267,11 +257,9 @@ describe('FSProvider: read', () => {
     expect(getFileParams).toHaveBeenCalledWith(file, {
       filePath: path.resolve(root, file.Key)
     });
-
-    done();
   });
 
-  test('FSProvider.getFileCopySource', async (done) => {
+  test('FSProvider.getFileCopySource', async () => {
     const provider = new FSProvider({ root });
     const result = await provider.getFileCopySource({
       SourceProvider: provider,
@@ -279,11 +267,9 @@ describe('FSProvider: read', () => {
     });
 
     expect(result).toBe(path.resolve(root, 'Apple.txt'));
-
-    done();
   });
 
-  test('FSProvider.getFileETag', async (done) => {
+  test('FSProvider.getFileETag', async () => {
     const provider = new FSProvider({ root });
     const file: File = { SourceProvider: provider, Key: 'Apple.txt' };
     const result = await provider.getFileETag(file);
@@ -296,11 +282,9 @@ describe('FSProvider: read', () => {
 
     expect(again).toBe(expected);
     expect(file.ETag).toBe(expected);
-
-    done();
   });
 
-  test('FSProvider.getFileETag: null', async (done) => {
+  test('FSProvider.getFileETag: null', async () => {
     const bridge = new FSBridgeBadMD5();
     const provider = new FSProvider({ bridge, root });
 
@@ -310,11 +294,9 @@ describe('FSProvider: read', () => {
     } catch (error) {
       expect(error.message).toMatch(/Missing ETag/);
     }
-
-    done();
   });
 
-  test('FSProvider.getTargetFileKey', async (done) => {
+  test('FSProvider.getTargetFileKey', async () => {
     const provider = new FSProvider({ root });
     const result = await provider.getTargetFileKey({
       SourceProvider: provider,
@@ -322,11 +304,9 @@ describe('FSProvider: read', () => {
     });
 
     expect(result).toBe('Apple.txt');
-
-    done();
   });
 
-  test('FSProvider.getTargetFileKey: delegate', async (done) => {
+  test('FSProvider.getTargetFileKey: delegate', async () => {
     const provider = new FSProvider({
       root,
       delegate: { targetFileKey: (file) => Promise.resolve(`${file.Key}.0`) }
@@ -337,8 +317,6 @@ describe('FSProvider: read', () => {
     });
 
     expect(result).toBe('Apple.txt.0');
-
-    done();
   });
 
   // END describe

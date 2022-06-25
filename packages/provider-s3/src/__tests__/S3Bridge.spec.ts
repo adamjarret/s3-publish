@@ -2,7 +2,7 @@ import { S3Bridge } from '../S3Bridge';
 import { streamToString } from '@s3-publish/core/lib/__mock__/__util__/streamToString';
 import { Readable } from 'stream';
 
-test('S3Bridge.walkObjects', async (done) => {
+test('S3Bridge.walkObjects', async () => {
   let i = 1;
   const handler = jest.fn((obj) => {
     switch (i) {
@@ -109,11 +109,9 @@ test('S3Bridge.walkObjects', async (done) => {
   );
 
   expect(handler).toHaveBeenCalledTimes(10);
-
-  done();
 });
 
-test('S3Bridge.walkObjects: prefix', async (done) => {
+test('S3Bridge.walkObjects: prefix', async () => {
   let i = 0;
   const handler = jest.fn((obj) => {
     switch (i) {
@@ -230,11 +228,9 @@ test('S3Bridge.walkObjects: prefix', async (done) => {
   );
 
   expect(handler).toHaveBeenCalledTimes(11);
-
-  done();
 });
 
-test('S3Bridge.getObjectReadStream', async (done) => {
+test('S3Bridge.getObjectReadStream', async () => {
   const bridge = new S3Bridge();
 
   const stream = bridge.getObjectReadStream({
@@ -243,12 +239,10 @@ test('S3Bridge.getObjectReadStream', async (done) => {
   });
 
   expect(await streamToString(stream)).toBe('ace.txt');
-
-  done();
 });
 
 describe('S3Bridge: write', () => {
-  test('S3Bridge.copyObject', async (done) => {
+  test('S3Bridge.copyObject', async () => {
     const bridge = new S3Bridge();
 
     const result = await bridge.copyObject({
@@ -260,11 +254,9 @@ describe('S3Bridge: write', () => {
     expect(result.CopyObjectResult).toMatchObject({
       ETag: '"353274e173aabffd4138c8db40c6fdec"'
     });
-
-    done();
   });
 
-  test('S3Bridge.putObject', async (done) => {
+  test('S3Bridge.putObject', async () => {
     const bridge = new S3Bridge();
 
     const result = await bridge.putObject({
@@ -277,11 +269,9 @@ describe('S3Bridge: write', () => {
     expect(result).toMatchObject({
       ETag: '"0a5353a3c313e216080c06097286c52f"'
     });
-
-    done();
   });
 
-  test('S3Bridge.deleteObject', async (done) => {
+  test('S3Bridge.deleteObject', async () => {
     const bridge = new S3Bridge();
 
     const result = await bridge.deleteObject({
@@ -290,7 +280,5 @@ describe('S3Bridge: write', () => {
     });
 
     expect(result).toEqual({});
-
-    done();
   });
 });

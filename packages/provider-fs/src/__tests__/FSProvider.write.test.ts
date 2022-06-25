@@ -27,7 +27,7 @@ describe('FSProvider: write', () => {
     rimraf.sync(tmp);
   });
 
-  test('FSProvider.putFile', async (done) => {
+  test('FSProvider.putFile', async () => {
     const filePath = path.resolve(tmp, 'Apple.txt');
     const providerA = new FSProvider({ root });
     const providerB = new FSProvider({ root: tmp });
@@ -44,11 +44,9 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe('Apple.txt');
-
-    done();
   });
 
-  test('FSProvider.putFile: delegate', async (done) => {
+  test('FSProvider.putFile: delegate', async () => {
     const filePath = path.resolve(tmp, 'foo.txt');
     const providerA = new FSProvider({ root });
     const providerB = new FSProvider({
@@ -70,11 +68,9 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe('Apple.txt');
-
-    done();
   });
 
-  test('FSProvider.putFile: delegate with body', async (done) => {
+  test('FSProvider.putFile: delegate with body', async () => {
     const filePath = path.resolve(tmp, 'foo.txt');
     const providerA = new FSProvider({ root });
     const providerB = new FSProvider({
@@ -97,11 +93,9 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe('hello');
-
-    done();
   });
 
-  test('FSProvider.copyFile', async (done) => {
+  test('FSProvider.copyFile', async () => {
     const toPath = path.resolve(tmp, 'Apple.txt');
     const providerA = new FSProvider({ root });
     const providerB = new FSProvider({ root: tmp });
@@ -122,11 +116,9 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(toPath)).toBe(true);
     expect(await readFile(toPath, 'utf8')).toBe('Apple.txt');
-
-    done();
   });
 
-  test('FSProvider.copyFile: delegate', async (done) => {
+  test('FSProvider.copyFile: delegate', async () => {
     const toPath = path.resolve(tmp, 'foo.txt');
     const providerA = new FSProvider({ root });
     const providerB = new FSProvider({
@@ -159,11 +151,9 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(toPath)).toBe(true);
     expect(await readFile(toPath, 'utf8')).toBe('Apple.txt');
-
-    done();
   });
 
-  test('FSProvider.deleteFile', async (done) => {
+  test('FSProvider.deleteFile', async () => {
     const filePath = path.resolve(tmp, 'Apple.txt');
     const provider = new FSProvider({ root: tmp });
     const file: File = { SourceProvider: provider, Key: 'Apple.txt' };
@@ -182,11 +172,9 @@ describe('FSProvider: write', () => {
     await operation.job();
 
     expect(fs.existsSync(filePath)).toBe(false);
-
-    done();
   });
 
-  test('FSProvider.deleteFile: delegate', async (done) => {
+  test('FSProvider.deleteFile: delegate', async () => {
     const filePath = path.resolve(tmp, 'foo.txt');
     const provider = new FSProvider({
       root: tmp,
@@ -210,8 +198,6 @@ describe('FSProvider: write', () => {
     await operation.job();
 
     expect(fs.existsSync(filePath)).toBe(false);
-
-    done();
   });
 
   // END describe

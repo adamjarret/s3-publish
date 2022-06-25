@@ -27,7 +27,7 @@ describe('init', () => {
     process.chdir(cwd);
   });
 
-  test('init: comprehensive', async (done) => {
+  test('init: comprehensive', async () => {
     const log = jest.fn();
     const logForce = jest.fn();
     const logger = { log };
@@ -60,11 +60,9 @@ describe('init', () => {
       type: 'init:result',
       wrote
     });
-
-    done();
   });
 
-  test('init: no logger', async (done) => {
+  test('init: no logger', async () => {
     const mockStdout = mockProcessStdout();
     const mockStderr = mockProcessStderr();
 
@@ -75,11 +73,9 @@ describe('init', () => {
 
     mockStdout.mockRestore();
     mockStderr.mockRestore();
-
-    done();
   });
 
-  test('init: writePath (alt)', async (done) => {
+  test('init: writePath (alt)', async () => {
     const log = jest.fn();
     const logger = { log };
     const writePath = '.s3p.config.settings.js';
@@ -95,11 +91,9 @@ describe('init', () => {
       type: 'init:result',
       wrote
     });
-
-    done();
   });
 
-  test('init: writePath (non-existent)', async (done) => {
+  test('init: writePath (non-existent)', async () => {
     const log = jest.fn();
     const logger = { log };
 
@@ -111,8 +105,6 @@ describe('init', () => {
     }
 
     expect(log).toHaveBeenCalledTimes(0);
-
-    done();
   });
 
   test('init: writePath (false)', (done) => {

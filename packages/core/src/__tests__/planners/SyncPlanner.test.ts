@@ -222,24 +222,22 @@ test('SyncPlanner: compare=FN, limitCompares=1 (mixed protocol)', (done) => {
     }
     i++;
   });
-  const compare = jest.fn(
-    async (a: File, b: File): Promise<boolean> => {
-      switch (c) {
-        case 0:
-          expect(a.Key).toEqual(A.Key);
-          break;
-        case 1:
-          expect(a.Key).toEqual(B.Key);
-          break;
-        case 2:
-          expect(a.Key).toEqual(C.Key);
-          break;
-      }
-      c++;
-      await sleep((4 - c) * 16);
-      return a.Size === b.Size;
+  const compare = jest.fn(async (a: File, b: File): Promise<boolean> => {
+    switch (c) {
+      case 0:
+        expect(a.Key).toEqual(A.Key);
+        break;
+      case 1:
+        expect(a.Key).toEqual(B.Key);
+        break;
+      case 2:
+        expect(a.Key).toEqual(C.Key);
+        break;
     }
-  );
+    c++;
+    await sleep((4 - c) * 16);
+    return a.Size === b.Size;
+  });
   const origin = new MockProvider({
     root: './public',
     files: [A, B, C]
@@ -282,24 +280,22 @@ test('SyncPlanner: compare=FN, limitCompares=2 (mixed protocol)', (done) => {
     }
     i++;
   });
-  const compare = jest.fn(
-    async (a: File, b: File): Promise<boolean> => {
-      switch (c) {
-        case 0:
-          expect(a.Key).toEqual(A.Key);
-          break;
-        case 1:
-          expect(a.Key).toEqual(B.Key);
-          break;
-        case 2:
-          expect(a.Key).toEqual(C.Key);
-          break;
-      }
-      c++;
-      await sleep((4 - c) * 16);
-      return a.Size === b.Size;
+  const compare = jest.fn(async (a: File, b: File): Promise<boolean> => {
+    switch (c) {
+      case 0:
+        expect(a.Key).toEqual(A.Key);
+        break;
+      case 1:
+        expect(a.Key).toEqual(B.Key);
+        break;
+      case 2:
+        expect(a.Key).toEqual(C.Key);
+        break;
     }
-  );
+    c++;
+    await sleep((4 - c) * 16);
+    return a.Size === b.Size;
+  });
   const origin = new MockProvider({
     root: './public',
     files: [A, B, C]
