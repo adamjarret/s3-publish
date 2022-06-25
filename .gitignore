@@ -8,6 +8,8 @@ packages/examples/*/fixtures/*
 
 packages/meta/config/
 
+!.github/**
+
 !.vscode/cSpell.json
 !.vscode/extensions.json
 !.vscode/*.sample.json
