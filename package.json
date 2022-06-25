@@ -23,7 +23,7 @@
     "pak": "lerna run pak",
     "cover": "COVER=1 yarn test",
     "spec": "SPEC=1 COVER=1 yarn test",
-    "test": "jest"
+    "test": "TZ=UTC jest"
   },
   "devDependencies": {
     "@types/jest": "^26.0.5",
