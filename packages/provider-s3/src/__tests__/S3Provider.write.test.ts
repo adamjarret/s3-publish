@@ -5,7 +5,7 @@ import { streamToString } from '@s3-publish/core/lib/__mock__/__util__/streamToS
 import { S3Provider } from '../S3Provider';
 import { MockS3Bridge } from '../__mock__/MockS3Bridge';
 
-test('S3Provider.putFile', async (done) => {
+test('S3Provider.putFile', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.txt');
@@ -42,11 +42,9 @@ test('S3Provider.putFile', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: delegate', async (done) => {
+test('S3Provider.putFile: delegate', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.txt');
@@ -88,11 +86,9 @@ test('S3Provider.putFile: delegate', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: delegate with body', async (done) => {
+test('S3Provider.putFile: delegate with body', async () => {
   const Body = Readable.from(['hello']);
   const onPutObject = jest.fn(async (params) => {
     expect(params).toEqual(expectedParams);
@@ -134,11 +130,9 @@ test('S3Provider.putFile: delegate with body', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: checksum=false', async (done) => {
+test('S3Provider.putFile: checksum=false', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.txt');
@@ -176,11 +170,9 @@ test('S3Provider.putFile: checksum=false', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: checksum=false, no ETag', async (done) => {
+test('S3Provider.putFile: checksum=false, no ETag', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.txt');
@@ -216,11 +208,9 @@ test('S3Provider.putFile: checksum=false, no ETag', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: checksum=true, no ETag', async (done) => {
+test('S3Provider.putFile: checksum=true, no ETag', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.txt');
@@ -260,11 +250,9 @@ test('S3Provider.putFile: checksum=true, no ETag', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.putFile: unknown mime type', async (done) => {
+test('S3Provider.putFile: unknown mime type', async () => {
   const onPutObject = jest.fn(async (params) => {
     expect(params).toMatchObject(expectedParams);
     expect(await streamToString(params.Body)).toBe('Apple.not-a-thing');
@@ -301,11 +289,9 @@ test('S3Provider.putFile: unknown mime type', async (done) => {
   await operation.job();
 
   expect(onPutObject).toHaveBeenCalledTimes(1);
-
-  done();
 });
 
-test('S3Provider.copyFile', async (done) => {
+test('S3Provider.copyFile', async () => {
   const onCopyObject = jest.fn();
   const providerA = new S3Provider({
     root: 's3://s3p-test-a',
@@ -337,11 +323,9 @@ test('S3Provider.copyFile', async (done) => {
 
   expect(onCopyObject).toHaveBeenCalledTimes(1);
   expect(onCopyObject).toHaveBeenCalledWith(expectedParams);
-
-  done();
 });
 
-test('S3Provider.copyFile: delegate', async (done) => {
+test('S3Provider.copyFile: delegate', async () => {
   const onCopyObject = jest.fn();
   const providerA = new S3Provider({
     root: 's3://s3p-test-a',
@@ -377,11 +361,9 @@ test('S3Provider.copyFile: delegate', async (done) => {
 
   expect(onCopyObject).toHaveBeenCalledTimes(1);
   expect(onCopyObject).toHaveBeenCalledWith(expectedParams);
-
-  done();
 });
 
-test('S3Provider.deleteFile', async (done) => {
+test('S3Provider.deleteFile', async () => {
   const onDeleteObject = jest.fn();
   const providerA = new S3Provider({
     root: 's3://s3p-test-a',
@@ -412,11 +394,9 @@ test('S3Provider.deleteFile', async (done) => {
 
   expect(onDeleteObject).toHaveBeenCalledTimes(1);
   expect(onDeleteObject).toHaveBeenCalledWith(expectedParams);
-
-  done();
 });
 
-test('S3Provider.deleteFile: delegate', async (done) => {
+test('S3Provider.deleteFile: delegate', async () => {
   const onDeleteObject = jest.fn();
   const providerA = new S3Provider({
     root: 's3://s3p-test-a',
@@ -451,6 +431,4 @@ test('S3Provider.deleteFile: delegate', async (done) => {
 
   expect(onDeleteObject).toHaveBeenCalledTimes(1);
   expect(onDeleteObject).toHaveBeenCalledWith(expectedParams);
-
-  done();
 });

@@ -23,7 +23,7 @@ async function loggerOutput(
   });
 }
 
-test('TextLogger: initResult', async (done) => {
+test('TextLogger: initResult', async () => {
   const output = await loggerOutput({}, [
     {
       type: initResult,
@@ -34,11 +34,9 @@ test('TextLogger: initResult', async (done) => {
   expect(output).toMatch(
     /\[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\] Wrote \/path\/to\/.s3.config.js/
   );
-
-  done();
 });
 
-test('TextLogger: initResult (wrote: undefined)', async (done) => {
+test('TextLogger: initResult (wrote: undefined)', async () => {
   const output = await loggerOutput({}, [
     {
       type: initResult
@@ -47,6 +45,4 @@ test('TextLogger: initResult (wrote: undefined)', async (done) => {
 
   // If the message does not define a `wrote` property, it is not logged
   expect(output).toBe('');
-
-  done();
 });

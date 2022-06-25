@@ -6,7 +6,7 @@ class S3BridgeNoContent extends S3Bridge {
   }
 }
 
-test('S3Bridge.walkObjects: no content', async (done) => {
+test('S3Bridge.walkObjects: no content', async () => {
   const handler = jest.fn();
   const bridge = new S3BridgeNoContent();
 
@@ -19,6 +19,4 @@ test('S3Bridge.walkObjects: no content', async (done) => {
   );
 
   expect(handler).toHaveBeenCalledTimes(0);
-
-  done();
 });

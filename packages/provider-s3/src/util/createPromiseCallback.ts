@@ -3,10 +3,10 @@
  * @internal
  */
 export function createPromiseCallback<T>(
-  resolve: (result?: T) => void,
+  resolve: (result: T) => void,
   reject: (result: Error) => void
 ) {
-  return (error: Error | null, result?: T): void => {
+  return (error: Error | null, result: T): void => {
     if (error) {
       reject(error);
     } else {

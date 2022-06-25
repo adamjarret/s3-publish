@@ -6,7 +6,7 @@ import { MockProvider } from '@s3-publish/core/lib/__mock__/MockProvider';
 import { A, B, C } from '../__fixtures__/files';
 import ls from '../../commands/ls';
 
-test('ls: empty', async (done) => {
+test('ls: empty', async () => {
   const log = jest.fn();
   const logger = { log };
 
@@ -17,11 +17,9 @@ test('ls: empty', async (done) => {
     expect(error.message).toMatch(/Nothing to do/);
     expect(log).toHaveBeenCalledTimes(0);
   }
-
-  done();
 });
 
-test('ls: mock', async (done) => {
+test('ls: mock', async () => {
   let i = 1;
   const log = jest.fn((msg) => {
     switch (i) {
@@ -70,11 +68,9 @@ test('ls: mock', async (done) => {
     type: 'ls:begin',
     provider: providers[1]
   });
-
-  done();
 });
 
-test('ls: mock (no logger)', async (done) => {
+test('ls: mock (no logger)', async () => {
   const mockStdout = mockProcessStdout();
   const mockStderr = mockProcessStderr();
   const providers = [
@@ -95,11 +91,9 @@ test('ls: mock (no logger)', async (done) => {
 
   mockStdout.mockRestore();
   mockStderr.mockRestore();
-
-  done();
 });
 
-test('ls: mock (ignore)', async (done) => {
+test('ls: mock (ignore)', async () => {
   let i = 1;
   const log = jest.fn((msg) => {
     switch (i) {
@@ -154,11 +148,9 @@ test('ls: mock (ignore)', async (done) => {
     type: 'ls:begin',
     provider: providers[1]
   });
-
-  done();
 });
 
-test('ls: mock (ignore + trackIgnored)', async (done) => {
+test('ls: mock (ignore + trackIgnored)', async () => {
   let i = 1;
   const log = jest.fn((msg) => {
     switch (i) {
@@ -230,6 +222,4 @@ test('ls: mock (ignore + trackIgnored)', async (done) => {
     type: 'ls:begin',
     provider: providers[1]
   });
-
-  done();
 });

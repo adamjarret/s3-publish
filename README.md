@@ -95,6 +95,8 @@ See **.prettierrc.js** for configuration.
 
 Runs `cspell` (see [cspell](https://www.npmjs.com/package/cspell)) to spell-check source code files.
 
+The command reads the file paths to check from stdin (the list includes all files tracked in git and files that are untracked but not ignored, see https://stackoverflow.com/a/39064584/3618925). This is used because `cspell "**"` (the example from the documentation) stopped working (it never found any files to check) after upgrading from v4 to v6.
+
 See **.vscode/cSpell.json** for configuration.
 
 Note: This configuration path is used so the settings can also be honored by the [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) plugin for VS Code.
@@ -145,13 +147,13 @@ Use `-u` flag to update version numbers in all **package.json** files.
 
 Any additional arguments will be passed to the `ncu` command for each package. See [npm-check-updates](https://github.com/tjunnone/npm-check-updates) for available options.
 
-Note: `yarn ncu` does not check for updates to dependencies of the workspace itself. To check for these as well, use `npx` to run `ncu`:
+Note: `yarn ncu` does not check for updates to dependencies of the workspace itself. To check for these as well, use `ncu-ws`:
 
     # Check dependencies in all package.json files
-    npx ncu && yarn ncu
+    yarn ncu-ns && yarn ncu
 
     # Update versions in all package.json files
-    npx ncu -u && yarn ncu -u
+    yarn ncu-ns -u && yarn ncu -u
 
 ### `yarn bundle`
 

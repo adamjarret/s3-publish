@@ -15,7 +15,7 @@ const configLoader = createConfigLoader(require);
 
 type ExitCallback = (code?: number) => never;
 
-const mockExitCallback: ExitCallback = ((() => {}) as unknown) as ExitCallback;
+const mockExitCallback: ExitCallback = (() => {}) as unknown as ExitCallback;
 
 describe('createCli', () => {
   const OLD_ENV = process.env;
@@ -37,7 +37,7 @@ describe('createCli', () => {
     rimraf.sync(tmp);
   });
 
-  test('createCli: no command', async (done) => {
+  test('createCli: no command', async () => {
     const mockStdout = mockProcessStdout();
 
     await createCli({
@@ -48,11 +48,9 @@ describe('createCli', () => {
     expect(mockStdout).toHaveBeenCalledWith(`${helpText}${helpFooter}\n`);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: help', async (done) => {
+  test('createCli: help', async () => {
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
     process.argv = [node, script, 'help'];
@@ -65,11 +63,9 @@ describe('createCli', () => {
     expect(mockStdout).toHaveBeenCalledWith(`${helpText}${helpFooter}\n`);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: init --cwd', async (done) => {
+  test('createCli: init --cwd', async () => {
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
     process.argv = [node, script, 'init', '--cwd', tmp];
@@ -82,11 +78,9 @@ describe('createCli', () => {
     expect(mockStdout).toHaveBeenCalled();
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: version --json', async (done) => {
+  test('createCli: version --json', async () => {
     const msg = { type: 'version', packageVersions };
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
@@ -109,11 +103,9 @@ describe('createCli', () => {
     }
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: demo.ls', async (done) => {
+  test('createCli: demo.ls', async () => {
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
     const [node, script] = process.argv;
@@ -136,11 +128,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(4); // begin/end for each provider
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: demo.sync -y', async (done) => {
+  test('createCli: demo.sync -y', async () => {
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
     const [node, script] = process.argv;
@@ -164,11 +154,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(9); // sync:plan:begin, sync:plan:result, sync:operation:begin x3, sync:operation:result x3, sync:result
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: demo.sync -cy', async (done) => {
+  test('createCli: demo.sync -cy', async () => {
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
     const [node, script] = process.argv;
@@ -192,11 +180,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(9); // sync:plan:begin, sync:plan:result, sync:operation:begin x3, sync:operation:result x3, sync:result
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: demo.sync -n', async (done) => {
+  test('createCli: demo.sync -n', async () => {
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
     const [node, script] = process.argv;
@@ -220,11 +206,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(2); // sync:plan:begin, sync:plan:result
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: ls --cwd -i', async (done) => {
+  test('createCli: ls --cwd -i', async () => {
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
     const root = path.resolve(fix, 'root-a');
@@ -255,11 +239,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(2); // begin/end for each provider
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: ls additional roots', async (done) => {
+  test('createCli: ls additional roots', async () => {
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
     const root = path.resolve(fix, 'root-a');
@@ -290,11 +272,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(2); // begin/end for each provider
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: ls non-existent root', async (done) => {
+  test('createCli: ls non-existent root', async () => {
     const mockExit = jest.spyOn(process, 'exit').mockImplementation(mockExitCallback);
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
@@ -306,11 +286,9 @@ describe('createCli', () => {
     expect(mockExit).toHaveBeenCalledWith(1);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: sync no delegate', async (done) => {
+  test('createCli: sync no delegate', async () => {
     const mockStdout = mockProcessStdout();
     const onLog = jest.fn();
     const [node, script] = process.argv;
@@ -328,11 +306,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalled();
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: sync delegate.createPlanner', async (done) => {
+  test('createCli: sync delegate.createPlanner', async () => {
     const plan = jest.fn();
     const planner = { plan };
     const mockStdout = mockProcessStdout();
@@ -353,11 +329,9 @@ describe('createCli', () => {
     expect(plan).toHaveBeenCalledTimes(1);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: delegate.createLogger', async (done) => {
+  test('createCli: delegate.createLogger', async () => {
     const log = jest.fn();
     const logger = { log };
     const mockStdout = mockProcessStdout();
@@ -378,11 +352,9 @@ describe('createCli', () => {
     expect(log).toHaveBeenCalledTimes(2);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: MUTE=1', async (done) => {
+  test('createCli: MUTE=1', async () => {
     const mockStdout = mockProcessStdout();
     const [node, script] = process.argv;
     const root = path.resolve(fix, 'root-a');
@@ -394,11 +366,9 @@ describe('createCli', () => {
     expect(mockStdout).toHaveBeenCalledTimes(0);
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: parseArgs', async (done) => {
+  test('createCli: parseArgs', async () => {
     const mockStdout = mockProcessStdout();
     const root = path.resolve(fix, 'root-a');
     const parseArgs = () => ({ _: ['ls'], origin: root });
@@ -429,11 +399,9 @@ describe('createCli', () => {
     expect(onLog).toHaveBeenCalledTimes(2); // begin/end for each provider
 
     mockStdout.mockRestore();
-
-    done();
   });
 
-  test('createCli: handleError', async (done) => {
+  test('createCli: handleError', async () => {
     const mockStdout = mockProcessStdout();
     const handleError = jest.fn();
     const [node, script] = process.argv;
@@ -449,8 +417,6 @@ describe('createCli', () => {
     );
 
     mockStdout.mockRestore();
-
-    done();
   });
 
   // END describe

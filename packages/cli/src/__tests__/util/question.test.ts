@@ -2,7 +2,7 @@ import { question } from '../../util/question';
 import { mockProcessStdout } from 'jest-mock-process';
 import mockStdin from 'mock-stdin';
 
-test('question', async (done) => {
+test('question', async () => {
   const mockStdout = mockProcessStdout();
   const stdin = mockStdin.stdin();
 
@@ -22,6 +22,4 @@ test('question', async (done) => {
 
   stdin.restore();
   mockStdout.mockRestore();
-
-  done();
 });

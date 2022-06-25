@@ -33,60 +33,50 @@ describe('FSBridge', () => {
     process.chdir(cwd);
   });
 
-  test('FSBridge.listObjects', async (done) => {
+  test('FSBridge.listObjects', async () => {
     const bridge = new FSBridge();
     const result = await bridge.listObjects(root);
 
     expect(result).toEqual(['Apple.txt', 'ace.txt', 'docs']);
-
-    done();
   });
 
-  test('FSBridge.objectExists: true', async (done) => {
+  test('FSBridge.objectExists: true', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(root, 'Apple.txt');
     const result = await bridge.objectExists(filePath);
 
     expect(fs.existsSync(filePath)).toEqual(true);
     expect(result).toEqual(true);
-
-    done();
   });
 
-  test('FSBridge.objectExists: false', async (done) => {
+  test('FSBridge.objectExists: false', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(root, 'does-not-exist.txt');
     const result = await bridge.objectExists(filePath);
 
     expect(fs.existsSync(filePath)).toEqual(false);
     expect(result).toEqual(false);
-
-    done();
   });
 
-  test('FSBridge.objectStats: file', async (done) => {
+  test('FSBridge.objectStats: file', async () => {
     const bridge = new FSBridge();
     const result = await bridge.objectStats(path.resolve(root, 'ace.txt'));
 
     expect(result.isDirectory()).toBe(false);
     expect(result.size).toBeDefined();
     expect(result.mtime).toBeDefined();
-
-    done();
   });
 
-  test('FSBridge.objectStats: directory', async (done) => {
+  test('FSBridge.objectStats: directory', async () => {
     const bridge = new FSBridge();
     const result = await bridge.objectStats(path.resolve(root, 'docs'));
 
     expect(result.isDirectory()).toBe(true);
     expect(result.size).toBeDefined();
     expect(result.mtime).toBeDefined();
-
-    done();
   });
 
-  test('FSBridge.putObject', async (done) => {
+  test('FSBridge.putObject', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(tmp, 'A.txt');
     const content = 'The quick brown fox jumped over the lazy dog.';
@@ -100,11 +90,9 @@ describe('FSBridge', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe(content);
-
-    done();
   });
 
-  test('FSBridge.putObject: prefix', async (done) => {
+  test('FSBridge.putObject: prefix', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(tmp, 'foo', 'bar', 'A.txt');
     const content = 'The quick brown fox jumped over the lazy dog.';
@@ -118,11 +106,9 @@ describe('FSBridge', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe(content);
-
-    done();
   });
 
-  test('FSBridge.putObject: missing body', async (done) => {
+  test('FSBridge.putObject: missing body', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(tmp, 'A.txt');
 
@@ -132,11 +118,9 @@ describe('FSBridge', () => {
     } catch (error) {
       expect(error.message).toMatch(/Missing body/);
     }
-
-    done();
   });
 
-  test('FSBridge.copyObject', async (done) => {
+  test('FSBridge.copyObject', async () => {
     const bridge = new FSBridge();
     const fromPath = path.resolve(root, 'ace.txt');
     const toPath = path.resolve(tmp, 'ace.txt');
@@ -147,11 +131,9 @@ describe('FSBridge', () => {
 
     expect(fs.existsSync(toPath)).toBe(true);
     expect(await readFile(toPath, 'utf8')).toBe(aceContent);
-
-    done();
   });
 
-  test('FSBridge.copyObject: prefix', async (done) => {
+  test('FSBridge.copyObject: prefix', async () => {
     const bridge = new FSBridge();
     const fromPath = path.resolve(root, 'ace.txt');
     const toPath = path.resolve(tmp, 'foo', 'bar', 'ace.txt');
@@ -162,11 +144,9 @@ describe('FSBridge', () => {
 
     expect(fs.existsSync(toPath)).toBe(true);
     expect(await readFile(toPath, 'utf8')).toBe(aceContent);
-
-    done();
   });
 
-  test('FSBridge.copyObject: flags', async (done) => {
+  test('FSBridge.copyObject: flags', async () => {
     const bridge = new FSBridge();
     const fromPath = path.resolve(root, 'ace.txt');
     const toPath = path.resolve(tmp, 'ace.txt');
@@ -177,11 +157,9 @@ describe('FSBridge', () => {
 
     expect(fs.existsSync(toPath)).toBe(true);
     expect(await readFile(toPath, 'utf8')).toBe(aceContent);
-
-    done();
   });
 
-  test('FSBridge.deleteObject', async (done) => {
+  test('FSBridge.deleteObject', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(tmp, 'del-me.txt');
 
@@ -192,11 +170,9 @@ describe('FSBridge', () => {
     await bridge.deleteObject({ filePath });
 
     expect(fs.existsSync(filePath)).toBe(false);
-
-    done();
   });
 
-  test('FSBridge.deleteObject: non-existent', async (done) => {
+  test('FSBridge.deleteObject: non-existent', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(tmp, 'del-me.txt');
 
@@ -205,11 +181,9 @@ describe('FSBridge', () => {
     await bridge.deleteObject({ filePath });
 
     expect(fs.existsSync(filePath)).toBe(false);
-
-    done();
   });
 
-  test('FSBridge.getObjectReadStream', async (done) => {
+  test('FSBridge.getObjectReadStream', async () => {
     const bridge = new FSBridge();
     const filePath = path.resolve(root, 'ace.txt');
 
@@ -219,18 +193,14 @@ describe('FSBridge', () => {
     const result = bridge.getObjectReadStream({ filePath });
 
     expect(await streamToString(result)).toBe(aceContent);
-
-    done();
   });
 
-  test('FSBridge.getMD5FromReadStream', async (done) => {
+  test('FSBridge.getMD5FromReadStream', async () => {
     const bridge = new FSBridge();
 
     const result = await bridge.getMD5FromReadStream(Readable.from(['foo']));
 
     expect(result).toBe(fooMd5);
-
-    done();
   });
 
   // END describe

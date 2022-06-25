@@ -16,7 +16,7 @@ test('createPromiseCallback: error', () => {
   const reject = jest.fn();
   const callback = createPromiseCallback(resolve, reject);
   const error = new Error('Fake error');
-  callback(error);
+  callback(error, undefined);
   expect(resolve).toHaveBeenCalledTimes(0);
   expect(reject).toHaveBeenCalledWith(error);
   expect(reject).toHaveBeenCalledTimes(1);
