@@ -182,8 +182,8 @@ ${chalk.bold('# Finished in 122ms')}
     const displayRoot = `# ${process.cwd()}/public`;
     const expected = `
 ${chalk.bold(displayRoot)}
-${chalk.grey('! 2020-01-01T08:42:17.000Z             122 B      A.txt')}
-  2020-04-01T13:42:17.000Z         1048576 B      B.txt
+${chalk.grey('! 2020-01-01T03:42:17.000Z             122 B      A.txt')}
+  2020-04-01T09:42:17.000Z         1048576 B      B.txt
                                          0 B      broken.txt
 ${chalk.bold('# 1 ignored')}
 ${chalk.bold('# 2 files (1048576 B)')}
