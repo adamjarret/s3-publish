@@ -69,6 +69,32 @@ to watch for changes and re-run tests automatically.
 
 See the package script definition below for additional options.
 
+### Update Dependencies
+
+To check for dependency updates, run:
+
+    yarn ncu
+
+To update version numbers in the relevant **package.json** files, run:
+
+    yarn ncu -u
+
+See the package script definition below for additional options.
+
+### Determine Minimum Node Engine
+
+To ensure the minimum node engine declared in the workspace package.json is correct (especially after updating dependencies), run:
+
+    npx ls-engines
+
+To include `devDependencies` in the check (relevant for configuring CI node version matrix), run: 
+
+    npx ls-engines --dev
+
+> Note: [`ls-engines`](https://www.npmjs.com/package/ls-engines) is not a workspace dependency. To install it globally, run:
+
+    npm i -g ls-engines
+
 ## Package Scripts
 
 ### `yarn all`

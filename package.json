@@ -19,7 +19,7 @@
     "serve": "serve -c serve.json",
     "theme": "yarn --cwd docs-src/theme build",
     "ncu": "lerna run ncu -- --packageFile package.json",
-    "ncu-ws": "ncu --packageFile package.json -x @types/node",
+    "ncu-ws": "ncu \\!typedoc* --packageFile package.json -x @types/node",
     "bundle": "lerna run bundle",
     "pak": "lerna run pak",
     "cover": "COVER=1 yarn test",
