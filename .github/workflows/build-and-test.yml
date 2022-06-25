@@ -21,6 +21,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Install dependencies
       - run: yarn install
+
+      # Build all packages
       - run: yarn run build
+
+      # Bundle meta package
+      - run: yarn run bundle
+
+      # Run tests for all packages
       - run: yarn run test
