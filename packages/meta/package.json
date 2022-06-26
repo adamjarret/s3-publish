@@ -19,7 +19,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "bundle": "webpack -p",
+    "bundle": "webpack --mode=production",
     "ncu": "ncu",
     "pak": "npm pack"
   },
@@ -29,9 +29,9 @@
     "@s3-publish/loggers": "^1.0.0",
     "@s3-publish/provider-fs": "^1.0.0",
     "@s3-publish/provider-s3": "^1.0.0",
-    "copy-webpack-plugin": "^6.0.3",
-    "license-webpack-plugin": "^2.3.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "copy-webpack-plugin": "^11.0.0",
+    "license-webpack-plugin": "^4.0.2",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
   }
 }
