@@ -1,5 +1,6 @@
 import { S3Bridge } from '../S3Bridge';
 import { streamToString } from '@s3-publish/core/lib/__mock__/__util__/streamToString';
+import { randomBytes } from 'crypto';
 import { Readable } from 'stream';
 
 test('S3Bridge.walkObjects', async () => {
@@ -242,12 +243,16 @@ test('S3Bridge.getObjectReadStream', async () => {
 });
 
 describe('S3Bridge: write', () => {
+  const now = new Date();
+  const suffix = randomBytes(3).toString('hex');
+  const prefix = `${now.toISOString().substring(0, 10)}-${now.getTime()}-${suffix}`;
+
   test('S3Bridge.copyObject', async () => {
     const bridge = new S3Bridge();
 
     const result = await bridge.copyObject({
       Bucket: 's3p-tmp',
-      Key: 'fixtures/root/ace.txt',
+      Key: `${prefix}/fixtures/root/ace.txt`,
       CopySource: '/s3p-test/fixtures/root/ace.txt'
     });
 
@@ -261,7 +266,7 @@ describe('S3Bridge: write', () => {
 
     const result = await bridge.putObject({
       Bucket: 's3p-tmp',
-      Key: 'fixtures/root/ace.txt',
+      Key: `${prefix}/fixtures/root/ace.txt`,
       Body: Readable.from(['Apple.txt']),
       ContentLength: 9
     });
@@ -276,7 +281,7 @@ describe('S3Bridge: write', () => {
 
     const result = await bridge.deleteObject({
       Bucket: 's3p-tmp',
-      Key: 'fixtures/root/ace.txt'
+      Key: `${prefix}/fixtures/root/ace.txt`
     });
 
     expect(result).toEqual({});

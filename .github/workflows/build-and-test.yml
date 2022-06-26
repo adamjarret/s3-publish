@@ -2,11 +2,10 @@ name: build-and-test
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,4 +30,7 @@ jobs:
       - run: yarn run bundle
 
       # Run tests for all packages
-      - run: yarn run test
+      - run: yarn run spec
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_USER_A_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_USER_A_SECRET }}
