@@ -54,7 +54,7 @@
     "typescript": "^4.7.4"
   },
   "resolutions": {
-    "handlebars": "^4.7.6",
-    "minimist": "^1.2.5"
+    "handlebars": "^4.7.7",
+    "minimist": "^1.2.6"
   }
 }
