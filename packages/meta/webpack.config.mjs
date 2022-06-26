@@ -1,37 +1,37 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin;
+import { dirname, resolve as resolvePath, sep } from 'path';
+import { fileURLToPath } from 'url';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import { LicenseWebpackPlugin } from 'license-webpack-plugin';
 
-const README_PATH = __dirname;
-const OUT_PATH = path.resolve(__dirname, 'lib');
-const CONFIG_PATH = path.resolve(__dirname, 'config');
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-module.exports = {
+const config = {
   entry: {
-    index: path.resolve(__dirname, 'src', 'index.js')
+    index: resolvePath(__dirname, 'src', 'index.js')
   },
   externals: {
     worker_threads: 'worker_threads'
   },
   output: {
-    path: OUT_PATH,
+    path: resolvePath(__dirname, 'lib'),
     filename: '[name].js',
-    library: '[name]',
-    libraryTarget: 'commonjs2'
+    library: {
+      type: 'commonjs2'
+    }
   },
   plugins: [
     new LicenseWebpackPlugin(),
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
         {
-          from: '../cli/config/s3p.config*.js',
-          to: CONFIG_PATH,
-          flatten: true
+          from: resolvePath(__dirname, '../cli/config'),
+          to: resolvePath(__dirname, 'config'),
+          filter: async (resourcePath) =>
+            resourcePath.includes(`${sep}s3p.config`) && resourcePath.endsWith('.js')
         },
         {
           from: '../cli/README.md',
-          to: README_PATH,
-          flatten: true,
+          to: __dirname,
           transform: (content) => {
             const msg =
               '`s3-publish` is a meta package that includes [`@s3-publish/cli`](https://github.com/adamjarret/s3-publish/tree/master/packages/cli) and all dependencies bundled with webpack.';
@@ -48,3 +48,5 @@ module.exports = {
   ],
   target: 'node'
 };
+
+export default config;

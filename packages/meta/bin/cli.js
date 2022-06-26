@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-// @ts-check
 
-const path = require('path');
+const { resolve: resolvePath } = require('path');
 const { createCli, createConfigLoader } = require('../lib');
 
 createCli({
-  templatePath: path.resolve(__dirname, '..', 'config'),
+  templatePath: resolvePath(__dirname, '..', 'config'),
   configLoader: createConfigLoader(require)
 });

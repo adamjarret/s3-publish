@@ -30,6 +30,14 @@ module.exports = {
       }
     },
     {
+      files: ['*.mjs'],
+      extends: ['eslint:recommended', 'prettier'],
+      parserOptions: {
+        ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
+        sourceType: 'module' // Allows for the use of imports
+      }
+    },
+    {
       files: ['**/__tests__/**/*', '*.test.[jt]s'],
       plugins: ['jest'],
       env: {
