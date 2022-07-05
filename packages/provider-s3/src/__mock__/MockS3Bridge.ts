@@ -46,9 +46,11 @@ export class MockS3Bridge implements S3ProviderBridge {
     return onPutObject ? onPutObject(params) : Promise.resolve({});
   }
 
-  getObjectReadStream(params: S3GetParams): Readable {
+  getObjectReadStream(params: S3GetParams): Promise<Readable> {
     const { onGetObject } = this.options;
-    return onGetObject ? onGetObject(params) : Readable.from([params.Key]);
+    return Promise.resolve(
+      onGetObject ? onGetObject(params) : Readable.from([params.Key])
+    );
   }
 
   walkObjects(params: S3ListParams, handler: S3ObjectHandler): Promise<void> {

@@ -234,7 +234,7 @@ test('S3Bridge.walkObjects: prefix', async () => {
 test('S3Bridge.getObjectReadStream', async () => {
   const bridge = new S3Bridge();
 
-  const stream = bridge.getObjectReadStream({
+  const stream = await bridge.getObjectReadStream({
     Bucket: 's3p-test',
     Key: 'fixtures/root/ace.txt'
   });
@@ -284,6 +284,8 @@ describe('S3Bridge: write', () => {
       Key: `${prefix}/fixtures/root/ace.txt`
     });
 
-    expect(result).toEqual({});
+    expect(result).toMatchObject({
+      VersionId: undefined
+    });
   });
 });

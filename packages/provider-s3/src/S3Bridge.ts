@@ -1,5 +1,6 @@
 import { Readable } from 'stream';
-import S3 from 'aws-sdk/clients/s3';
+import { S3 } from '@aws-sdk/client-s3';
+import { Upload, Progress } from '@aws-sdk/lib-storage';
 import {
   S3ProviderBridge,
   S3CopyParams,
@@ -13,7 +14,6 @@ import {
   S3PutResult,
   S3ObjectHandler
 } from './types';
-import { createPromiseCallback } from './util/createPromiseCallback';
 
 export class S3Bridge implements S3ProviderBridge {
   protected s3: S3;
@@ -23,51 +23,63 @@ export class S3Bridge implements S3ProviderBridge {
    * - Use {@link createS3Bridge} to create an `S3Bridge` instance from AWS.S3 client configuration options
    */
   constructor(s3?: S3) {
-    this.s3 = s3 ?? new S3();
+    this.s3 = s3 ?? new S3({});
   }
 
   /**
    * Send CopyObject request to S3 endpoint
    */
   copyObject(params: S3CopyParams): Promise<S3CopyResult> {
-    return new Promise((resolve, reject) =>
-      this.s3.copyObject(params, createPromiseCallback(resolve, reject))
-    );
+    return this.s3.copyObject(params);
   }
 
   /**
    * Send DeleteObject request to S3 endpoint
    */
   deleteObject(params: S3DeleteParams): Promise<S3DeleteResult> {
-    return new Promise((resolve, reject) =>
-      this.s3.deleteObject(params, createPromiseCallback(resolve, reject))
-    );
+    return this.s3.deleteObject(params);
   }
 
   /**
    * Get readable stream for an S3 object
    * @see {@link https://nodejs.org/api/stream.html#stream_class_stream_readable | Readable}
    */
-  getObjectReadStream(params: S3GetParams): Readable {
-    return this.s3.getObject(params).createReadStream();
+  async getObjectReadStream(params: S3GetParams): Promise<Readable> {
+    const { Body } = await this.s3.getObject(params);
+    if (Body instanceof Readable) {
+      return Body;
+    } else {
+      throw new Error('Unknown object stream type');
+    }
   }
 
   /**
    * Send ListObjectsV2 request to S3 endpoint
    */
   protected listObjects(params: S3ListParams): Promise<S3ListResult> {
-    return new Promise((resolve, reject) =>
-      this.s3.listObjectsV2(params, createPromiseCallback(resolve, reject))
-    );
+    return this.s3.listObjectsV2(params);
   }
 
   /**
    * Send PutObject request to S3 endpoint
    */
-  putObject(params: S3PutParams): Promise<S3PutResult> {
-    return new Promise((resolve, reject) =>
-      this.s3.putObject(params, createPromiseCallback(resolve, reject))
-    );
+  putObject(
+    params: S3PutParams,
+    onHttpProgress?: (progress: Progress) => void
+  ): Promise<S3PutResult> {
+    const upload = new Upload({
+      client: this.s3,
+      params,
+      queueSize: 1, // optional concurrency configuration
+      partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 5MB
+      leavePartsOnError: false // optional manually handle dropped parts
+    });
+
+    if (onHttpProgress) {
+      upload.on('httpUploadProgress', onHttpProgress);
+    }
+
+    return upload.done();
   }
 
   /**

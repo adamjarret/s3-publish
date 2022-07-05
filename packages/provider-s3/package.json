@@ -1,6 +1,6 @@
 {
   "name": "@s3-publish/provider-s3",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "S3 provider for s3-publish",
   "author": "Adam Jarret <adam@atj.me> (https://atj.me)",
   "license": "MIT",
@@ -14,17 +14,23 @@
   "files": [
     "lib/**/*"
   ],
+  "engines": {
+    "node": ">= v12.17"
+  },
   "scripts": {
     "ncu": "ncu",
     "pak": "npm pack"
   },
   "dependencies": {
-    "aws-sdk": "^2.715.0",
-    "mime": "^2.4.6"
+    "@aws-sdk/abort-controller": "3.110.0",
+    "@aws-sdk/client-s3": "3.121.0",
+    "@aws-sdk/lib-storage": "3.121.0",
+    "mime": "^3.0.0"
   },
   "devDependencies": {
-    "@types/mime": "^2.0.2",
-    "@s3-publish/core": "^1.0.0"
+    "@aws-sdk/types": "3.110.0",
+    "@s3-publish/core": "^1.0.0",
+    "@types/mime": "^2.0.3"
   },
   "peerDependencies": {
     "@s3-publish/core": "^1.0.0"

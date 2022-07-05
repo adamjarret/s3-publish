@@ -1,9 +1,9 @@
-import S3 from 'aws-sdk/clients/s3';
+import type S3 from '@aws-sdk/client-s3';
 
 /**
  * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property | ClientConfiguration}
  */
-export type S3ClientConfiguration = S3.ClientConfiguration;
+export type S3ClientConfiguration = S3.S3ClientConfig;
 
 /**
  * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property | CopyObjectRequest}
@@ -54,7 +54,7 @@ export type S3PutResult = S3.PutObjectOutput;
  * S3 file information returned by `listObjectsV2`
  * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property | Object}
  */
-export type S3Object = S3.Object;
+export type S3Object = S3._Object;
 
 export type S3ObjectHandler = (obj: S3Object) => void;
 

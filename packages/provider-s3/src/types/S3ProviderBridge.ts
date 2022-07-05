@@ -26,7 +26,7 @@ export interface S3ProviderBridge {
    * Get readable stream for an S3 object
    * @see {@link https://nodejs.org/api/stream.html#stream_class_stream_readable | Readable}
    */
-  getObjectReadStream(params: S3GetParams): Readable;
+  getObjectReadStream(params: S3GetParams): Promise<Readable>;
 
   /**
    * Send PutObject request to S3 endpoint
