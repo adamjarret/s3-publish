@@ -18,9 +18,7 @@
     "ncu": "ncu",
     "pak": "npm pack"
   },
-  "dependencies": {
-    "hasha": "^5.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@s3-publish/core": "^1.0.0"
   },

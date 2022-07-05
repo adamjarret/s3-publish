@@ -1,16 +1,15 @@
-import { Readable } from 'stream';
-import hasha from 'hasha';
+import { createHash } from 'crypto';
+import { Readable, pipeline } from 'stream';
+import { promisify } from 'util';
 
-const options = {
-  algorithm: 'md5'
-};
+const pipelineAsync = promisify(pipeline);
 
 /**
  * Calculate MD5 hash from readable stream
- * @remarks This is a thin wrapper around {@link https://github.com/sindresorhus/hasha | hasha.fromStream}
- * @see {@link https://nodejs.org/api/stream.html#stream_class_stream_readable | Readable}
  * @internal
  */
 export async function md5FromStream(stream: Readable): Promise<string | null> {
-  return await hasha.fromStream(stream, options);
+  const hash = createHash('md5');
+  await pipelineAsync(stream, hash);
+  return hash.digest('hex');
 }
