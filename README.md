@@ -87,7 +87,7 @@ To ensure the minimum node engine declared in the workspace package.json is corr
 
     npx ls-engines
 
-To include `devDependencies` in the check (relevant for configuring CI node version matrix), run: 
+To include `devDependencies` in the check (relevant for configuring CI node version matrix), run:
 
     npx ls-engines --dev
 
