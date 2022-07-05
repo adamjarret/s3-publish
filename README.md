@@ -176,10 +176,10 @@ Any additional arguments will be passed to the `ncu` command for each package. S
 Note: `yarn ncu` does not check for updates to dependencies of the workspace itself. To check for these as well, use `ncu-ws`:
 
     # Check dependencies in all package.json files
-    yarn ncu-ns && yarn ncu
+    yarn ncu-ws && yarn ncu
 
     # Update versions in all package.json files
-    yarn ncu-ns -u && yarn ncu -u
+    yarn ncu-ws -u && yarn ncu -u
 
 ### `yarn bundle`
 
