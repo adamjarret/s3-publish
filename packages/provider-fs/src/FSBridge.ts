@@ -1,6 +1,6 @@
-import fs from 'fs';
+import { promises as fs, createReadStream, createWriteStream, existsSync } from 'fs';
 import path from 'path';
-import { Readable, Writable } from 'stream';
+import { Readable, pipeline } from 'stream';
 import { promisify } from 'util';
 import {
   FSProviderBridge,
@@ -12,24 +12,7 @@ import {
 } from './types';
 import { md5FromStream } from './util';
 
-const fsExistsAsync = (p: string): Promise<boolean> =>
-  new Promise((resolve) => fs.exists(p, resolve));
-
-const fsReaddirAsync = promisify<string, string[]>(fs.readdir);
-
-const fsMkdirAsync = promisify<string, fs.MakeDirectoryOptions>(fs.mkdir);
-
-const fsStatAsync = promisify<string, Stats>(fs.stat);
-
-const fsUnlinkAsync = promisify<string>(fs.unlink);
-
-const fsCopyFileAsync = promisify<string, string, number>(fs.copyFile);
-
-const pipe = (input: Readable, output: Writable): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    input.pipe(output).on('finish', resolve).on('error', reject);
-  });
-};
+const pipelineAsync = promisify(pipeline);
 
 export class FSBridge implements FSProviderBridge {
   async putObject(params: FSPutParams): Promise<void> {
@@ -38,33 +21,33 @@ export class FSBridge implements FSProviderBridge {
       throw new Error('Missing body');
     }
 
-    await fsMkdirAsync(path.dirname(filePath), { recursive: true, mode: dirMode });
+    await fs.mkdir(path.dirname(filePath), { recursive: true, mode: dirMode });
 
-    return pipe(body, fs.createWriteStream(filePath, writeStreamOptions));
+    return pipelineAsync(body, createWriteStream(filePath, writeStreamOptions));
   }
 
   async copyObject(params: FSCopyParams): Promise<void> {
     const { dirMode, flags, fromPath, toPath } = params;
 
-    await fsMkdirAsync(path.dirname(toPath), { recursive: true, mode: dirMode });
+    await fs.mkdir(path.dirname(toPath), { recursive: true, mode: dirMode });
 
-    return fsCopyFileAsync(fromPath, toPath, flags ?? 0);
+    return fs.copyFile(fromPath, toPath, flags ?? 0);
   }
 
   async deleteObject(params: FSDeleteParams): Promise<void> {
     const { filePath } = params;
-    if (!(await fsExistsAsync(filePath))) {
+    if (!(await this.objectExists(filePath))) {
       return;
     }
 
-    return fsUnlinkAsync(filePath);
+    return fs.unlink(filePath);
   }
 
   /**
    * @see {@link https://nodejs.org/api/stream.html#stream_class_stream_readable | Readable}
    */
   getObjectReadStream(params: FSGetParams): Readable {
-    return fs.createReadStream(params.filePath, params.readStreamOptions);
+    return createReadStream(params.filePath, params.readStreamOptions);
   }
 
   getMD5FromReadStream(stream: Readable): Promise<string | null> {
@@ -72,14 +55,27 @@ export class FSBridge implements FSProviderBridge {
   }
 
   listObjects(directoryPath: string): Promise<string[]> {
-    return fsReaddirAsync(directoryPath);
+    return fs.readdir(directoryPath);
   }
 
-  objectExists(filePath: string): Promise<boolean> {
-    return fsExistsAsync(filePath);
+  /**
+   * Warning from https://nodejs.org/docs/latest-v10.x/api/fs.html#fs_fspromises_access_path_mode:
+   * > Using fsPromises.access() to check for the accessibility of a file before calling
+   * > fsPromises.open() is not recommended. Doing so introduces a race condition, since
+   * > other processes may change the file's state between the two calls.
+   * > Instead, user code should open/read/write the file directly and handle the error raised if
+   * > the file is not accessible.
+   */
+  async objectExists(filePath: string): Promise<boolean> {
+    try {
+      await fs.access(filePath);
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   objectStats(filePath: string): Promise<Stats> {
-    return fsStatAsync(filePath);
+    return fs.stat(filePath);
   }
 }
