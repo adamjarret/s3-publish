@@ -167,7 +167,7 @@ See **docs-src/README.md** for details.
 
 ### `yarn ncu`
 
-Runs `ncu` in each workspace package directory (using [lerna](http://lerna.js.org)) to check for dependency updates.
+Runs `ncu` in each workspace package directory to check for dependency updates.
 
 Use `-u` flag to update version numbers in all **package.json** files.
 
@@ -189,7 +189,7 @@ See **packages/meta/webpack.config.js** for configuration.
 
 ### `yarn pak`
 
-Runs `npm pack` in each workspace directory (using [lerna](http://lerna.js.org)) to output the packages as individual .tgz archives.
+Runs `npm pack` in each workspace directory to output the packages as individual .tgz archives.
 
 ### `yarn test`
 
