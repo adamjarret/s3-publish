@@ -1,0 +1,41 @@
+{
+    "Contents": [
+        {
+            "Key": "Apple.txt",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"0a5353a3c313e216080c06097286c52f\"",
+            "Size": 9,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "ace.txt",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"353274e173aabffd4138c8db40c6fdec\"",
+            "Size": 7,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/about.md",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/assets/",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        }
+    ],
+    "IsTruncated": true,
+    "NextContinuationToken": "eyJDb250aW51YXRpb25Ub2tlbiI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDV9"
+}

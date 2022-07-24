@@ -1,6 +1,14 @@
 import { Readable } from 'stream';
 import mime from 'mime';
 import {
+  S3Client,
+  CopyObjectCommand,
+  DeleteObjectCommand,
+  GetObjectCommand,
+  paginateListObjectsV2
+} from '@aws-sdk/client-s3';
+import { Upload } from '@aws-sdk/lib-storage';
+import {
   File,
   FileMap,
   FileHandler,
@@ -11,22 +19,18 @@ import {
   unixPathJoin
 } from '@s3-publish/core';
 import {
-  S3ClientConfiguration,
   S3CopyParams,
   S3DeleteParams,
   S3GetParams,
   S3PutParams,
   S3ListParams,
-  S3ProviderBridge,
   S3ProviderDelegate,
   S3Root,
   S3Object
 } from './types';
-import { createS3Bridge } from './util/createS3Bridge';
+import { createS3Client } from './util/createS3Client';
 import { parseS3Root } from './util/parseS3Root';
-
-const reQuote = /"/g;
-const reLeadingSlashes = /^\/+/;
+import createFileFromS3Object from './util/createFileFromS3Object';
 
 /** @category Constructor Options */
 export type S3ProviderOptions = {
@@ -36,18 +40,6 @@ export type S3ProviderOptions = {
   root: string;
 
   /**
-   * The bridge object is responsible for sending requests to the AWS S3 API
-   *
-   * Providing a custom bridge is considered [advanced usage](https://adamjarret.github.io/s3-publish/pages/guides/advanced.html)
-   * (you probably won't need to do it).
-   *
-   * The recommended way to customize behavior is to define the `client` and/or `delegate` options instead:
-   * - Use the `client` option to configure the underlying AWS S3 client instance
-   * - Use the `delegate` option to customize request parameters
-   */
-  bridge?: S3ProviderBridge;
-
-  /**
    * Calculate the MD5 file hash so that an error is returned if the uploaded file hash does not match
    * @see https://aws.amazon.com/premiumsupport/knowledge-center/data-integrity-s3/
    * @default true
@@ -55,10 +47,10 @@ export type S3ProviderOptions = {
   checksum?: boolean;
 
   /**
-   * This object will be passed to the AWS S3 client constructor
-   * @remarks Has no effect if a `bridge` object is also defined
+   * AWS.S3Client instance
+   * @remarks If not provided, a default client will be created
    */
-  client?: S3ClientConfiguration;
+  client?: S3Client;
 
   /**
    * The delegate object provides hooks that allow the various request parameters to be set programmatically
@@ -75,17 +67,17 @@ export type S3ProviderOptions = {
 export class S3Provider implements Provider {
   public readonly protocol = 's3';
   public readonly root: string;
+  protected client: S3Client;
   protected rootParams?: S3Root;
-  protected bridge: S3ProviderBridge;
   protected checksum: boolean;
   protected delegate?: S3ProviderDelegate;
   protected ignores?: FilePredicate;
 
   constructor(options: S3ProviderOptions) {
-    const { root, bridge, checksum, client, delegate, ignores } = options;
+    const { root, checksum, client, delegate, ignores } = options;
 
     this.root = root;
-    this.bridge = bridge ?? createS3Bridge(client);
+    this.client = client ?? createS3Client();
     this.checksum = checksum ?? true;
     this.delegate = delegate;
     this.ignores = ignores;
@@ -96,17 +88,33 @@ export class S3Provider implements Provider {
 
   async listFiles(onIgnore?: FileHandler): Promise<FileMap> {
     const fileMap: FileMap = new Map();
+    const params = await this.listFilesParams();
 
-    await this.bridge.walkObjects(await this.listFilesParams(), (obj) => {
-      const file = this.createFile(obj);
-      if (file) {
-        if (this.ignores && this.ignores(file)) {
-          onIgnore && onIgnore(file);
-        } else {
-          fileMap.set(file.Key, file);
+    // paginateListObjectsV2 clobbers the MaxKeys input param with the pageSize value from config
+    // so the config value is set to params.MaxKeys here to preserve the param value if set
+    const config = { client: this.client, pageSize: params.MaxKeys };
+
+    // List objects in batches
+    for await (const { Contents } of paginateListObjectsV2(config, params)) {
+      if (Contents) {
+        // Loop over objects in batch
+        for (const obj of Contents) {
+          // Create File object from S3Object
+          const file = this.createFile(obj);
+          // File will be null for "directory" objects (and those with invaid Keys)
+          if (file) {
+            // If file is ignored, invoke onIngnore handler
+            if (this.ignores && this.ignores(file)) {
+              onIgnore && onIgnore(file);
+            }
+            // Otherwise, add file to Map
+            else {
+              fileMap.set(file.Key, file);
+            }
+          }
         }
       }
-    });
+    }
 
     return fileMap;
   }
@@ -122,17 +130,23 @@ export class S3Provider implements Provider {
   // getFile
 
   /**
+   * Get readable stream for an S3 object
    * @see {@link https://nodejs.org/api/stream.html#stream_class_stream_readable | Readable}
    */
   async getFile(file: File): Promise<Readable> {
     const params = await this.getFileParams(file);
 
-    return this.bridge.getObjectReadStream(params);
+    const { Body } = await this.client.send(new GetObjectCommand(params));
+    if (Body instanceof Readable) {
+      return Body;
+    } else {
+      throw new Error('Unknown object stream type');
+    }
   }
 
   protected async getFileParams(file: File): Promise<S3GetParams> {
     const getFileParams = this.delegate?.getFileParams;
-    const params = {
+    const params: S3GetParams = {
       Bucket: this.getRootParams().Bucket,
       Key: this.renderPathForKey(file.Key)
     };
@@ -176,7 +190,7 @@ export class S3Provider implements Provider {
 
   async putFile(file: File, reason: Reason): Promise<ProviderOperation> {
     const type = 'PUT';
-    const params = await this.putFileParams(file);
+    const { multipart, ...params } = await this.putFileParams(file);
 
     return {
       type,
@@ -184,12 +198,21 @@ export class S3Provider implements Provider {
       params,
       file,
       job: async (): Promise<void> => {
-        await this.bridge.putObject({
-          ...params,
-          // Body is set inside job (instead of in putFileParams)
-          //  so the the read stream is not created until needed
-          Body: params.Body ?? (await file.SourceProvider.getFile(file))
+        const upload = new Upload({
+          ...multipart,
+          client: this.client,
+          params: {
+            ...params,
+            // Body is set inside job (instead of in putFileParams)
+            //  so the the read stream is not created until needed
+            Body: params.Body ?? (await file.SourceProvider.getFile(file))
+          }
         });
+
+        // TODO: Support detailed progress updates for large files
+        //upload.on('httpUploadProgress', onHttpProgress);
+
+        await upload.done();
       }
     };
   }
@@ -197,12 +220,17 @@ export class S3Provider implements Provider {
   protected async putFileParams(file: File): Promise<S3PutParams> {
     const putFileParams = this.delegate?.putFileParams;
     const targetKey = await this.getTargetFileKey(file);
-    const params = {
+    const params: S3PutParams = {
       Bucket: this.getRootParams().Bucket,
       Key: this.renderPathForKey(targetKey),
       ContentType: this.renderContentType(targetKey),
       ContentMD5: await this.renderContentMD5(file), // optional
-      ContentLength: file.Size
+      ContentLength: file.Size,
+      multipart: {
+        queueSize: 1, // optional concurrency configuration
+        partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 5MB
+        leavePartsOnError: false // optional manually handle dropped parts
+      }
     };
 
     return putFileParams ? await putFileParams(file, params) : params;
@@ -221,7 +249,7 @@ export class S3Provider implements Provider {
       params,
       file,
       job: async (): Promise<void> => {
-        await this.bridge.copyObject(params);
+        await this.client.send(new CopyObjectCommand(params));
       }
     };
   }
@@ -229,7 +257,7 @@ export class S3Provider implements Provider {
   protected async copyFileParams(file: File): Promise<S3CopyParams> {
     const copyFileParams = this.delegate?.copyFileParams;
     const targetKey = await this.getTargetFileKey(file);
-    const params = {
+    const params: S3CopyParams = {
       Bucket: this.getRootParams().Bucket,
       Key: this.renderPathForKey(targetKey),
       CopySource: await file.SourceProvider.getFileCopySource(file)
@@ -250,14 +278,14 @@ export class S3Provider implements Provider {
       params,
       file,
       job: async (): Promise<void> => {
-        await this.bridge.deleteObject(params);
+        await this.client.send(new DeleteObjectCommand(params));
       }
     };
   }
 
   protected async deleteFileParams(file: File): Promise<S3DeleteParams> {
     const deleteFileParams = this.delegate?.deleteFileParams;
-    const params = {
+    const params: S3DeleteParams = {
       Bucket: this.getRootParams().Bucket,
       // getTargetFileKey is not used here because the delete operation is only relevant
       //  to objects that already exist at a provider location (like getFile), and so
@@ -275,6 +303,23 @@ export class S3Provider implements Provider {
     return !this.checksum ? undefined : await file.SourceProvider.getFileETag(file);
   }
 
+  protected createFile(obj: S3Object): File | null {
+    const { Prefix } = this.getRootParams();
+    return createFileFromS3Object(obj, this, Prefix);
+  }
+
+  protected getRootParams(): S3Root {
+    if (!this.rootParams) {
+      const rootParams = parseS3Root(this.root);
+      if (!rootParams) {
+        throw new Error('Invalid S3 URL');
+      }
+      this.rootParams = rootParams;
+    }
+
+    return this.rootParams;
+  }
+
   protected async renderContentMD5(file: File): Promise<string | undefined> {
     const ETag = file.ETag ?? (await this.calculateChecksum(file));
 
@@ -287,43 +332,6 @@ export class S3Provider implements Provider {
 
   protected renderPathForKey(Key: string, Bucket = ''): string {
     return unixPathJoin(Bucket, this.getRootParams().Prefix, Key);
-  }
-
-  protected createFile(obj: S3Object): File | null {
-    if (!obj.Key) {
-      return null;
-    }
-
-    // Key is relative to SourceProvider root and should not begin with a slash
-    const Key = obj.Key.replace(this.getRootParams().Prefix, '').replace(
-      reLeadingSlashes,
-      ''
-    );
-
-    // file.Key will be '' for root, do not process "directories"
-    if (!Key || Key.endsWith('/')) {
-      return null;
-    }
-
-    return {
-      SourceProvider: this,
-      Key,
-      Size: obj.Size,
-      LastModified: obj.LastModified,
-      // Remove quotes from ETag (if defined)
-      ETag: !obj.ETag ? undefined : obj.ETag.replace(reQuote, '')
-    };
-  }
-
-  protected getRootParams(): S3Root {
-    if (!this.rootParams) {
-      const rootParams = parseS3Root(this.root);
-      if (!rootParams) {
-        throw new Error('Invalid S3 URL');
-      }
-      this.rootParams = rootParams;
-    }
-    return this.rootParams;
   }
 }
 

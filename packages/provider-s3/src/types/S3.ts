@@ -1,61 +1,67 @@
-import type S3 from '@aws-sdk/client-s3';
+import type {
+  _Object,
+  CopyObjectCommandInput,
+  CopyObjectCommandOutput,
+  DeleteObjectCommandInput,
+  DeleteObjectCommandOutput,
+  GetObjectCommandInput,
+  ListObjectsV2CommandInput,
+  ListObjectsV2CommandOutput,
+  PutObjectCommandInput,
+  PutObjectCommandOutput
+} from '@aws-sdk/client-s3';
+import { Configuration } from '@aws-sdk/lib-storage';
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property | ClientConfiguration}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/copyobjectcommandinput.html | CopyObjectCommandInput}
  */
-export type S3ClientConfiguration = S3.S3ClientConfig;
+export type S3CopyParams = CopyObjectCommandInput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property | CopyObjectRequest}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/copyobjectcommandoutput.html | CopyObjectCommandOutput}
  */
-export type S3CopyParams = S3.CopyObjectRequest;
+export type S3CopyResult = CopyObjectCommandOutput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#copyObject-property | CopyObjectOutput}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/deleteobjectcommandinput.html | DeleteObjectCommandInput}
  */
-export type S3CopyResult = S3.CopyObjectOutput;
+export type S3DeleteParams = DeleteObjectCommandInput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property | DeleteObjectRequest}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/deleteobjectcommandoutput.html | DeleteObjectCommandOutput}
  */
-export type S3DeleteParams = S3.DeleteObjectRequest;
+export type S3DeleteResult = DeleteObjectCommandOutput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property | DeleteObjectOutput}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/getobjectcommandinput.html | GetObjectCommandInput}
  */
-export type S3DeleteResult = S3.DeleteObjectOutput;
+export type S3GetParams = GetObjectCommandInput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property | GetObjectRequest}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/listobjectsv2commandoutput.html | ListObjectsV2CommandInput}
  */
-export type S3GetParams = S3.GetObjectRequest;
+export type S3ListParams = ListObjectsV2CommandInput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property | ListObjectsV2Request}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/listobjectsv2commandoutput.html | ListObjectsV2CommandOutput}
  */
-export type S3ListParams = S3.ListObjectsV2Request;
+export type S3ListResult = ListObjectsV2CommandOutput;
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property | ListObjectsV2Output}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectcommandinput.html | PutObjectCommandInput}
+ * @see {@link https://www.npmjs.com/package/@aws-sdk/lib-storage | Upload}
  */
-export type S3ListResult = S3.ListObjectsV2Output;
+export type S3PutParams = PutObjectCommandInput & { multipart?: Partial<Configuration> };
 
 /**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property | PutObjectRequest}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/interfaces/putobjectcommandoutput.html | PutObjectCommandOutput}
  */
-export type S3PutParams = S3.PutObjectRequest;
-
-/**
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property | PutObjectOutput}
- */
-export type S3PutResult = S3.PutObjectOutput;
+export type S3PutResult = PutObjectCommandOutput;
 
 /**
  * S3 file information returned by `listObjectsV2`
- * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjectsV2-property | Object}
+ * @see {@link https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-s3/modules/_object.html | _Object}
  */
-export type S3Object = S3._Object;
-
-export type S3ObjectHandler = (obj: S3Object) => void;
+export type S3Object = _Object;
 
 export type S3Root = { Bucket: string; Prefix: string };

@@ -1,0 +1,39 @@
+{
+    "Contents": [
+        {
+            "Key": "docs/assets/image.jpg",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"1fb5f004af66ba389b9d0d320cb14cea\"",
+            "Size": 220399,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/assets/styles.css",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/getting-started.md",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/tmp/",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        },
+        {
+            "Key": "docs/tmp/out.bak",
+            "LastModified": "2020-06-28T18:20:50+00:00",
+            "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+            "Size": 0,
+            "StorageClass": "STANDARD"
+        }
+    ]
+}
