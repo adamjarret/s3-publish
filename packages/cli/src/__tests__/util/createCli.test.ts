@@ -2,7 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import rimraf from 'rimraf';
 import { mockProcessStdout } from 'jest-mock-process';
-// import { MockS3Bridge } from '@s3-publish/provider-s3/lib/__mock__/MockS3Bridge';
 import { helpText, helpFooter } from '../../commands/help';
 import { createCli } from '../../util/createCli';
 import { createConfigLoader } from '../../util/createConfigLoader';

@@ -15,3 +15,5 @@ export function parseS3Root(s3Uri: string): S3Root | null {
     Prefix: matches[2]
   };
 }
+
+export default parseS3Root;
