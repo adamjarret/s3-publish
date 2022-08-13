@@ -12,6 +12,13 @@ const writeFile = promisify(fs.writeFile);
 const root = path.resolve(__dirname, '__fixtures__', 'root');
 const tmp = path.resolve(__dirname, '__tmp__', 'FSProvider');
 
+class FSProviderBadFile extends FSProvider {
+  getFile(): Promise<Readable> {
+    // @ts-ignore
+    return Promise.resolve(null);
+  }
+}
+
 describe('FSProvider: write', () => {
   beforeAll(() => {
     rimraf.sync(`${root}/**/.DS_Store`);
@@ -19,12 +26,9 @@ describe('FSProvider: write', () => {
 
   beforeEach(() => {
     jest.resetModules(); // this is important - it clears the cache
+    jest.restoreAllMocks(); // restore spyOn mocks
     rimraf.sync(tmp);
     fs.mkdirSync(tmp);
-  });
-
-  afterEach(() => {
-    rimraf.sync(tmp);
   });
 
   test('FSProvider.putFile', async () => {
@@ -93,6 +97,28 @@ describe('FSProvider: write', () => {
 
     expect(fs.existsSync(filePath)).toBe(true);
     expect(await readFile(filePath, 'utf8')).toBe('hello');
+  });
+
+  test('FSProvider.putFile: missing body', async () => {
+    const filePath = path.resolve(tmp, 'nobody.txt');
+    const providerA = new FSProviderBadFile({ root });
+    const providerB = new FSProvider({ root: tmp });
+    const file: File = { SourceProvider: providerA, Key: 'nobody.txt' };
+    const operation = await providerB.putFile(file, 'ADD');
+
+    expect(operation.file).toEqual(file);
+    expect(operation.params).toMatchObject({ filePath });
+    expect(operation.type).toBe('PUT');
+    expect(operation.reason).toBe('ADD');
+    expect(fs.existsSync(filePath)).toBe(false);
+
+    try {
+      await operation.job();
+
+      throw new Error('Did not throw');
+    } catch (error) {
+      expect(error.message).toMatch(/Missing body/);
+    }
   });
 
   test('FSProvider.copyFile', async () => {
@@ -198,6 +224,39 @@ describe('FSProvider: write', () => {
     await operation.job();
 
     expect(fs.existsSync(filePath)).toBe(false);
+  });
+
+  test('FSProvider.deleteFile: non-existent', async () => {
+    const filePath = path.resolve(tmp, 'does-not-exist.txt');
+    const provider = new FSProvider({ root: tmp });
+    const file: File = { SourceProvider: provider, Key: 'does-not-exist.txt' };
+    const operation = await provider.deleteFile(file);
+
+    expect(fs.existsSync(filePath)).toBe(false);
+
+    await operation.job();
+
+    expect(fs.existsSync(filePath)).toBe(false);
+  });
+
+  test('FSProvider.deleteFile: unknown error', async () => {
+    jest.spyOn(fs.promises, 'unlink').mockImplementation(() => {
+      throw new Error('Unknown error');
+    });
+
+    const filePath = path.resolve(tmp, 'does-not-exist.txt');
+    const provider = new FSProvider({ root: tmp });
+    const file: File = { SourceProvider: provider, Key: 'does-not-exist.txt' };
+    const operation = await provider.deleteFile(file);
+
+    expect(fs.existsSync(filePath)).toBe(false);
+
+    try {
+      await operation.job();
+      throw new Error('Did not throw');
+    } catch (error) {
+      expect(error.message).toMatch(/Unknown error/);
+    }
   });
 
   // END describe

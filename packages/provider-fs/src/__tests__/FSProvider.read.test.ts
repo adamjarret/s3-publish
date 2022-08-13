@@ -2,14 +2,13 @@ import path from 'path';
 import rimraf from 'rimraf';
 import { File } from '@s3-publish/core';
 import { streamToString } from '@s3-publish/core/lib/__mock__/__util__/streamToString';
-import { FSBridge } from '../FSBridge';
 import { FSProvider } from '../FSProvider';
 
 const root = path.resolve(__dirname, '__fixtures__', 'root');
 
-class FSBridgeBadMD5 extends FSBridge {
-  getMD5FromReadStream(): Promise<string | null> {
-    return Promise.resolve(null);
+class FSProviderBadMD5 extends FSProvider {
+  getMD5FromReadStream(): Promise<string> {
+    return Promise.resolve('');
   }
 }
 
@@ -285,8 +284,7 @@ describe('FSProvider: read', () => {
   });
 
   test('FSProvider.getFileETag: null', async () => {
-    const bridge = new FSBridgeBadMD5();
-    const provider = new FSProvider({ bridge, root });
+    const provider = new FSProviderBadMD5({ root });
 
     try {
       await provider.getFileETag({ SourceProvider: provider, Key: 'Apple.txt' });
