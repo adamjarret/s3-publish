@@ -14,8 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **BREAKING** Minimum node version is now >= v10.17
-
+- **BREAKING** The `FSProvider` constructor no longer accepts a `bridge` property
 ### Removed
+- **BREAKING** The `FSProviderBridge` interface and the corresponding `FSBridge` implementation have been removed (functionality has been folded into the main `FSProvider` class)
 - [hasha](https://www.npmjs.com/package/hasha) dependency (now using native node crypto)
 
 ## [1.0.0] - 2020-07-05
